@@ -1,0 +1,468 @@
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\AircraftSwap.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\AircraftSwap.pdb
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\Assembly-CSharp-firstpass.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\Assembly-CSharp.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\ModLoader.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\Unity.Analytics.DataPrivacy.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\Unity.TextMeshPro.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\Unity.Timeline.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.AccessibilityModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.AIModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.AnimationModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.ARModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.AssetBundleModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.AudioModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.ClothModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.ClusterInputModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.ClusterRendererModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.CoreModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.CrashReportingModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.DirectorModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.FileSystemHttpModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.GameCenterModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.GridModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.HotReloadModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.ImageConversionModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.IMGUIModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.InputModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.JSONSerializeModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.LocalizationModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.ParticleSystemModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.PerformanceReportingModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.Physics2DModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.PhysicsModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.ProfilerModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.Purchasing.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.ScreenCaptureModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.SharedInternalsModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.SpriteMaskModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.SpriteShapeModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.StreamingModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.StyleSheetsModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.SubstanceModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.TerrainModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.TerrainPhysicsModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.TextCoreModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.TextRenderingModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.TilemapModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.TLSModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.UI.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.UIElementsModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.UIModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.UmbraModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.UNETModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.UnityAnalyticsModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.UnityConnectModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.UnityTestProtocolModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.UnityWebRequestAssetBundleModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.UnityWebRequestAudioModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.UnityWebRequestModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.UnityWebRequestTextureModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.UnityWebRequestWWWModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.VehiclesModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.VFXModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.VideoModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.VRModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.WindModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\UnityEngine.XRModule.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\Valve.Newtonsoft.Json.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\netstandard.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\MP3Sharp.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\Oculus.VR.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\Rewired_Core.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\NAudio.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\SteamVR.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\CsvHelper.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\HttpAuth.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\System.Diagnostics.StackTrace.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\System.Globalization.Extensions.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\System.Runtime.Serialization.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\System.Runtime.Serialization.Xml.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\System.Xml.XPath.XDocument.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\Mono.Security.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\System.ServiceModel.Internals.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\bin\Debug\ModLoader.xml
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\obj\Debug\AircraftSwap.csprojAssemblyReference.cache
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\obj\Debug\AircraftSwap.csproj.CoreCompileInputs.cache
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\obj\Debug\AircraftSwap.csproj.CopyComplete
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\obj\Debug\AircraftSwap.dll
+D:\VTOLVRMODS\Code\f16\CustomBobbleHead\obj\Debug\AircraftSwap.pdb
+D:\VTOLVRMODS\Code\f16\AircraftSwap\obj\Debug\AircraftSwap.csprojAssemblyReference.cache
+D:\VTOLVRMODS\Code\f16\AircraftSwap\obj\Debug\AircraftSwap.csproj.CoreCompileInputs.cache
+D:\VTOLVRMODS\Code\f16\AircraftSwap\obj\Debug\AircraftSwap.csproj.CopyComplete
+D:\VTOLVRMODS\Code\f16\AircraftSwap\obj\Debug\AircraftSwap.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\obj\Debug\AircraftSwap.pdb
+D:\VTOLVRMODS\Code\f16\AircraftSwap\AircraftSwap.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\AircraftSwap.pdb
+D:\VTOLVRMODS\Code\f16\AircraftSwap\Microsoft.Win32.Primitives.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\netstandard.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.AppContext.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Collections.Concurrent.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Collections.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Collections.NonGeneric.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Collections.Specialized.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.ComponentModel.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.ComponentModel.EventBasedAsync.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.ComponentModel.Primitives.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.ComponentModel.TypeConverter.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Console.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Data.Common.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Diagnostics.Contracts.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Diagnostics.Debug.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Diagnostics.FileVersionInfo.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Diagnostics.Process.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Diagnostics.StackTrace.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Diagnostics.TextWriterTraceListener.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Diagnostics.Tools.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Diagnostics.TraceSource.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Diagnostics.Tracing.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Drawing.Primitives.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Dynamic.Runtime.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Globalization.Calendars.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Globalization.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Globalization.Extensions.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.IO.Compression.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.IO.Compression.ZipFile.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.IO.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.IO.FileSystem.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.IO.FileSystem.DriveInfo.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.IO.FileSystem.Primitives.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.IO.FileSystem.Watcher.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.IO.IsolatedStorage.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.IO.MemoryMappedFiles.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.IO.Pipes.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.IO.UnmanagedMemoryStream.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Linq.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Linq.Expressions.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Linq.Parallel.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Linq.Queryable.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Net.Http.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Net.NameResolution.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Net.NetworkInformation.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Net.Ping.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Net.Primitives.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Net.Requests.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Net.Security.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Net.Sockets.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Net.WebHeaderCollection.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Net.WebSockets.Client.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Net.WebSockets.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.ObjectModel.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Reflection.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Reflection.Extensions.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Reflection.Primitives.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Resources.Reader.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Resources.ResourceManager.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Resources.Writer.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Runtime.CompilerServices.VisualC.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Runtime.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Runtime.Extensions.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Runtime.Handles.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Runtime.InteropServices.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Runtime.Numerics.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Runtime.Serialization.Formatters.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Runtime.Serialization.Json.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Runtime.Serialization.Primitives.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Runtime.Serialization.Xml.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Security.Claims.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Security.Cryptography.Algorithms.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Security.Cryptography.Csp.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Security.Cryptography.Encoding.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Security.Cryptography.Primitives.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Security.Cryptography.X509Certificates.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Security.Principal.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Security.SecureString.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Text.Encoding.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Text.Encoding.Extensions.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Text.RegularExpressions.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Threading.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Threading.Overlapped.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Threading.Tasks.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Threading.Tasks.Parallel.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Threading.Thread.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Threading.ThreadPool.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Threading.Timer.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.ValueTuple.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Xml.ReaderWriter.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Xml.XDocument.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Xml.XmlDocument.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Xml.XmlSerializer.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Xml.XPath.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\System.Xml.XPath.XDocument.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\0Harmony.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\Assembly-CSharp-firstpass.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\Assembly-CSharp.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\ModLoader.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\Multiplayer.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\Unity.Analytics.DataPrivacy.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\Unity.TextMeshPro.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\Unity.Timeline.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.AccessibilityModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.AIModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.AnimationModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.ARModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.AssetBundleModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.AudioModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.ClothModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.ClusterInputModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.ClusterRendererModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.CoreModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.CrashReportingModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.DirectorModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.FileSystemHttpModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.GameCenterModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.GridModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.HotReloadModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.ImageConversionModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.IMGUIModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.InputModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.JSONSerializeModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.LocalizationModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.ParticleSystemModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.PerformanceReportingModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.Physics2DModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.PhysicsModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.ProfilerModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.Purchasing.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.ScreenCaptureModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.SharedInternalsModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.SpriteMaskModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.SpriteShapeModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.StreamingModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.StyleSheetsModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.SubstanceModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.TerrainModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.TerrainPhysicsModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.TextCoreModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.TextRenderingModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.TilemapModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.TLSModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.UI.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.UIElementsModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.UIModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.UmbraModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.UNETModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.UnityAnalyticsModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.UnityConnectModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.UnityTestProtocolModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.UnityWebRequestAssetBundleModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.UnityWebRequestAudioModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.UnityWebRequestModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.UnityWebRequestTextureModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.UnityWebRequestWWWModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.VehiclesModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.VFXModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.VideoModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.VRModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.WindModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\UnityEngine.XRModule.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\Valve.Newtonsoft.Json.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\CsvHelper.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\MP3Sharp.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\Oculus.VR.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\Rewired_Core.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\NAudio.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\SteamVR.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\HttpAuth.dll
+D:\VTOLVRMODS\Code\f16\AircraftSwap\ModLoader.xml
+D:\VTOLVRMODS\Code\f16\AircraftSwap\BDLearningBot.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\obj\Debug\AircraftSwap.csprojAssemblyReference.cache
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\obj\Debug\AircraftSwap.csproj.CoreCompileInputs.cache
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\obj\Debug\AircraftSwap.csproj.CopyComplete
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\obj\Debug\AircraftSwap.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\obj\Debug\AircraftSwap.pdb
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\AircraftSwap.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\AircraftSwap.pdb
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\Microsoft.Win32.Primitives.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\netstandard.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.AppContext.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Collections.Concurrent.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Collections.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Collections.NonGeneric.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Collections.Specialized.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.ComponentModel.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.ComponentModel.EventBasedAsync.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.ComponentModel.Primitives.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.ComponentModel.TypeConverter.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Console.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Data.Common.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Diagnostics.Contracts.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Diagnostics.Debug.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Diagnostics.FileVersionInfo.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Diagnostics.Process.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Diagnostics.StackTrace.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Diagnostics.TextWriterTraceListener.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Diagnostics.Tools.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Diagnostics.TraceSource.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Diagnostics.Tracing.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Drawing.Primitives.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Dynamic.Runtime.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Globalization.Calendars.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Globalization.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Globalization.Extensions.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.IO.Compression.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.IO.Compression.ZipFile.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.IO.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.IO.FileSystem.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.IO.FileSystem.DriveInfo.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.IO.FileSystem.Primitives.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.IO.FileSystem.Watcher.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.IO.IsolatedStorage.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.IO.MemoryMappedFiles.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.IO.Pipes.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.IO.UnmanagedMemoryStream.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Linq.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Linq.Expressions.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Linq.Parallel.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Linq.Queryable.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Net.Http.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Net.NameResolution.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Net.NetworkInformation.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Net.Ping.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Net.Primitives.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Net.Requests.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Net.Security.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Net.Sockets.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Net.WebHeaderCollection.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Net.WebSockets.Client.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Net.WebSockets.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.ObjectModel.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Reflection.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Reflection.Extensions.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Reflection.Primitives.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Resources.Reader.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Resources.ResourceManager.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Resources.Writer.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Runtime.CompilerServices.VisualC.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Runtime.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Runtime.Extensions.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Runtime.Handles.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Runtime.InteropServices.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Runtime.Numerics.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Runtime.Serialization.Formatters.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Runtime.Serialization.Json.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Runtime.Serialization.Primitives.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Runtime.Serialization.Xml.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Security.Claims.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Security.Cryptography.Algorithms.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Security.Cryptography.Csp.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Security.Cryptography.Encoding.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Security.Cryptography.Primitives.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Security.Cryptography.X509Certificates.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Security.Principal.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Security.SecureString.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Text.Encoding.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Text.Encoding.Extensions.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Text.RegularExpressions.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Threading.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Threading.Overlapped.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Threading.Tasks.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Threading.Tasks.Parallel.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Threading.Thread.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Threading.ThreadPool.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Threading.Timer.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.ValueTuple.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Xml.ReaderWriter.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Xml.XDocument.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Xml.XmlDocument.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Xml.XmlSerializer.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Xml.XPath.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\System.Xml.XPath.XDocument.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\0Harmony.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\Assembly-CSharp-firstpass.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\Assembly-CSharp.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\ModLoader.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\Multiplayer.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\Unity.Analytics.DataPrivacy.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\Unity.TextMeshPro.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\Unity.Timeline.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.AccessibilityModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.AIModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.AnimationModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.ARModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.AssetBundleModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.AudioModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.ClothModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.ClusterInputModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.ClusterRendererModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.CoreModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.CrashReportingModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.DirectorModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.FileSystemHttpModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.GameCenterModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.GridModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.HotReloadModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.ImageConversionModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.IMGUIModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.InputModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.JSONSerializeModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.LocalizationModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.ParticleSystemModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.PerformanceReportingModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.Physics2DModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.PhysicsModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.ProfilerModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.Purchasing.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.ScreenCaptureModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.SharedInternalsModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.SpriteMaskModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.SpriteShapeModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.StreamingModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.StyleSheetsModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.SubstanceModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.TerrainModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.TerrainPhysicsModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.TextCoreModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.TextRenderingModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.TilemapModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.TLSModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.UI.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.UIElementsModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.UIModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.UmbraModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.UNETModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.UnityAnalyticsModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.UnityConnectModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.UnityTestProtocolModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.UnityWebRequestAssetBundleModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.UnityWebRequestAudioModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.UnityWebRequestModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.UnityWebRequestTextureModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.UnityWebRequestWWWModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.VehiclesModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.VFXModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.VideoModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.VRModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.WindModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\UnityEngine.XRModule.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\Valve.Newtonsoft.Json.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\BDLearningBot.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\CsvHelper.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\MP3Sharp.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\Oculus.VR.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\Rewired_Core.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\NAudio.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\SteamVR.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\HttpAuth.dll
+D:\VTOLVRMODS\Code\f16  New\AircraftSwap\ModLoader.xml
+D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\obj\Debug\AircraftSwap.csprojAssemblyReference.cache
+D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\obj\Debug\AircraftSwap.csproj.CoreCompileInputs.cache
+D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\obj\Debug\AircraftSwap.csproj.CopyComplete
+D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\obj\Debug\AircraftSwap.dll
+D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\obj\Debug\AircraftSwap.pdb
+D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\AircraftSwap.dll
+D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\AircraftSwap.pdb
+D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\BDLearningBot.dll
+D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\CsvHelper.dll
+D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\MP3Sharp.dll
+D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\Oculus.VR.dll
+D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\Rewired_Core.dll
+D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\NAudio.dll
+D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\SteamVR.dll
+D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\HttpAuth.dll
+D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\ModLoader.xml
