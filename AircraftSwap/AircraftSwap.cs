@@ -67,20 +67,36 @@ namespace AircraftSwap
         {
 
         }
-        public static void disableMesh(GameObject parent, WeaponManager wm)
+
+        public void disableMesh(GameObject parent)
         {
+
             MeshRenderer[] meshes = parent.GetComponentsInChildren<MeshRenderer>(true);
 
-            foreach (MeshRenderer mesh in meshes)
+            foreach (MeshRenderer meshtohide in meshes)
             {
-                if (wm != null && !isHardPoint(mesh, wm))
-                {
-                    mesh.enabled = false;
-                }
+                Debug.Log("Hiding: " + meshtohide.ToString());
+                meshtohide.enabled = false;
 
             }
 
         }
+
+
+        //public static void disableMesh(GameObject parent, WeaponManager wm)
+        //{
+        //    MeshRenderer[] meshes = parent.GetComponentsInChildren<MeshRenderer>(true);
+
+        //    foreach (MeshRenderer mesh in meshes)
+        //    {
+        //        if (wm != null && !isHardPoint(mesh, wm))
+        //        {
+        //            mesh.enabled = false;
+        //        }
+
+        //    }
+
+        //}
         public static bool isHardPoint(MeshRenderer mesh, WeaponManager wm)
         {
             foreach (Transform transform in wm.hardpointTransforms)
@@ -93,11 +109,11 @@ namespace AircraftSwap
 
             return false;
         }
-        public static GameObject GetChildWithName(GameObject obj, string name)
+        public static GameObject GetChildWithName(GameObject obj, string name, bool active)
         {
 
 
-            Transform[] children = obj.GetComponentsInChildren<Transform>(true);
+            Transform[] children = obj.GetComponentsInChildren<Transform>(active);
             foreach (Transform child in children)
             {
                 if (child.name == name || child.name.Contains(name + "(clone"))
@@ -112,35 +128,58 @@ namespace AircraftSwap
         }
         public void doSetup()
         {
-
-
+            Debug.unityLogger.logEnabled = false;
+            Debug.Log("Do Setup Started");
             WeaponManager wm = planeObject.GetComponent<WeaponManager>();
-            disableMesh(GetChildWithName(gameObject, "body"), wm);
-            disableMesh(GetChildWithName(gameObject, "body (LOD1)"), wm);
-            disableMesh(GetChildWithName(gameObject, "FuelPort"), wm);
-            disableMesh(GetChildWithName(gameObject, "intakeLeft"), wm);
-            disableMesh(GetChildWithName(gameObject, "intakeRight"), wm);
-            disableMesh(GetChildWithName(gameObject, "elevonLeftPart"), wm);
-            disableMesh(GetChildWithName(gameObject, "elevonRightPart"), wm);
-            disableMesh(GetChildWithName(gameObject, "verticalStabLeft"), wm);
-            disableMesh(GetChildWithName(gameObject, "verticalStabRight"), wm);
-            disableMesh(GetChildWithName(gameObject, "wingLeftPart"), wm);
-            disableMesh(GetChildWithName(gameObject, "wingRightPart"), wm);
-            disableMesh(GetChildWithName(gameObject, "combinedEngine"), wm);
-            disableMesh(GetChildWithName(gameObject, "LandingGear"), wm);
-            disableMesh(GetChildWithName(gameObject, "airbrakeParent"), wm);
-            disableMesh(GetChildWithName(gameObject, "canopy"), wm);
-            disableMesh(GetChildWithName(gameObject, "windshield"), wm);
-            disableMesh(GetChildWithName(gameObject, "windshield.002 (LOD1)"), wm);
-            disableMesh(GetChildWithName(gameObject, "cockpitFrame"), wm);
-            disableMesh(GetChildWithName(gameObject, "cockpitFrame.002 (LOD1)"), wm);
-            disableMesh(GetChildWithName(gameObject, "WingVapor (3)"), wm);
-            disableMesh(GetChildWithName(gameObject, "WingVapor (1)"), wm);
-            disableMesh(GetChildWithName(gameObject, "MachCloud"), wm);
-            disableMesh(GetChildWithName(gameObject, "ExtLights"), wm);
-            disableMesh(GetChildWithName(gameObject, "lod2"), wm);
+            disableMesh(GetChildWithName(gameObject, "body", true));
+            disableMesh(GetChildWithName(gameObject, "body (LOD1)", true));
+            disableMesh(GetChildWithName(gameObject, "FuelPort", true));
+            disableMesh(GetChildWithName(gameObject, "intakeLeft", true));
+            disableMesh(GetChildWithName(gameObject, "intakeRight", true));
+            disableMesh(GetChildWithName(gameObject, "elevonLeftPart", true));
+            disableMesh(GetChildWithName(gameObject, "elevonRightPart", true));
+            disableMesh(GetChildWithName(gameObject, "verticalStabLeft", true));
+            disableMesh(GetChildWithName(gameObject, "verticalStabRight", true));
+            disableMesh(GetChildWithName(gameObject, "wingLeftPart", true));
+            disableMesh(GetChildWithName(gameObject, "wingRightPart", true));
+            //disableMesh(GetChildWithName(gameObject, "vgEngineLowPoly", true));
+            disableMesh(GetChildWithName(gameObject, "afterBurner", true));
+            disableMesh(GetChildWithName(gameObject, "LandingGear", true));
+            disableMesh(GetChildWithName(gameObject, "airbrakeParent", true));
+            disableMesh(GetChildWithName(gameObject, "canopy", true));
+            disableMesh(GetChildWithName(gameObject, "windshield", true));
+            disableMesh(GetChildWithName(gameObject, "windshield.002 (LOD1)", true));
+            disableMesh(GetChildWithName(gameObject, "cockpitFrame", true));
+            disableMesh(GetChildWithName(gameObject, "cockpitFrame.002 (LOD1)", true));
+            disableMesh(GetChildWithName(gameObject, "WingVapor (3)", true));
+            disableMesh(GetChildWithName(gameObject, "WingVapor (1)", true));
+            disableMesh(GetChildWithName(gameObject, "MachCloud", true));
+            disableMesh(GetChildWithName(gameObject, "lod2", true));
+            disableMesh(GetChildWithName(gameObject, "ExtLights", true));
+            disableMesh(GetChildWithName(gameObject, "HookTurret", true));
+            disableMesh(GetChildWithName(gameObject, "lowPolyInterior", true));
+
+            GameObject leftengine = GetChildWithName(gameObject, "vgEngineLowPoly", true);
+            leftengine.SetActive(false);
+            GameObject rightengine = GetChildWithName(gameObject, "vgEngineLowPoly", false);
+            rightengine.SetActive(false);
+            leftengine.SetActive(true);
             //disableMesh(GetChildWithName(gameObject, "WingVapor (3)"), wm);
 
+            GameObject engineFXgo = GetChildWithName(gameObject, "EngineFX", true);
+
+            engineFXgo.transform.localPosition = new Vector3(-0.2f, 0f, 0f);
+            
+            GameObject left2engineburner = GetChildWithName(gameObject, "afterBurner", true);
+            left2engineburner.SetActive(false);
+            GameObject rightengineburner = GetChildWithName(gameObject, "afterBurner", false);
+            GameObject left2engineburnerouter = GetChildWithName(left2engineburner, "afterBurnerOuter", true);
+            
+            GameObject rightengineburnerouter = GetChildWithName(rightengineburner, "afterBurnerOuter", false);
+
+
+            
+            
 
 
 
@@ -148,10 +187,28 @@ namespace AircraftSwap
 
             newAircraftUnit = Instantiate(AircraftSwapper.newAircraftPrefab, planeObject.transform);
             ///newAircraftUnitbody = aSwaper.PickupAllChildrensTransforms(newAircraftUnit, "Body");
+            left2engineburner.SetActive(true);
+
+            leftengine.transform.localPosition = new Vector3(0f, 0.13f,-2.6f);
+            leftengine.transform.localScale = new Vector3(0.88f, 0.88f, 0.88f);
+            left2engineburner.transform.localPosition = new Vector3(0f, 0f, 0f);
+
+
+            rightengineburner.transform.localPosition = new Vector3 (0f, 0f,-1f) ;
+            rightengineburnerouter.transform.localPosition = new Vector3(0f, 0f, -1f);
+
+            rightengineburner.transform.localScale = new Vector3(0.88f, 0.88f, 0.88f);
+            rightengine.transform.localPosition = new Vector3(2f, 1.32f, 2f);
+
+
+            left2engineburner.GetComponent<ParticleSystem>().enableEmission = false;
+            left2engineburnerouter.GetComponent<ParticleSystem>().enableEmission = false;
+            rightengine.SetActive(false);
+            disableMesh(rightengine);
 
 
             newAircraftUnit.transform.localScale = Vector3.Scale(newAircraftUnit.transform.localScale, new Vector3(1.22f, 1.22f, 1.22f));
-            newAircraftUnit.transform.localPosition = new Vector3(0.0f, 1.2f, -0.2f);
+            newAircraftUnit.transform.localPosition = new Vector3(0.0f, 1.2f, -0.12f);
             newAircraftUnit.transform.localRotation = planeObject.transform.localRotation;
             newAircraftUnit.transform.localEulerAngles = new Vector3(0f, 90.0000f, 0f);
 
@@ -1209,6 +1266,7 @@ namespace AircraftSwap
         private Transform mpradionewDisplay;
         private Transform mpradionewDisplayall;
         private Transform f16radioparent;
+        private Transform f16radiobuttonEnter;
         private Transform f16radiobutton1;
         private Transform f16radiobutton2;
         private Transform f16radiobutton3;
@@ -2013,7 +2071,7 @@ namespace AircraftSwap
         private Transform f16EjectorHandle;
         private string noMPDEDRadioText;
         private Transform f26leftenginethrust;
-        private bool debugbool = true;
+        private bool debugbool = false;
         private VRInteractable clrWptButVRI;
         public bool MPActive;
         public bool PlaneSetupDone;
@@ -2128,13 +2186,7 @@ namespace AircraftSwap
                         StartCoroutine(refuelIndexerlights(port));
 
                     }
-                    if (MPActive && !MPRadioRunAlready)
-                    {
-                        Debug.Log("enabling mp radio");
-                        StartCoroutine(MPRadio());
-                        MPRadioRunAlready = true;
-
-                    }
+                   
 
 
 
@@ -2151,7 +2203,10 @@ namespace AircraftSwap
 
 
                     //if (Input.GetKey("1")) { f16TestLightInt.enabled = false; }
-                    //if (Input.GetKey("2")) { testPick = PickupAllChildrensTransforms(defaultf26, "testF17"); }
+                    if (Input.GetKey("2")) {
+                        //testPick = PickupAllChildrensTransforms(defaultf26, "testF17");
+                        Debug.Log("key 2 pressed");
+                    }
 
 
 
@@ -2251,9 +2306,12 @@ namespace AircraftSwap
         }
         private void MPRespawnHook(PlayerManager.CustomPlaneDef def)
         {
+            Debug.Log("MP Respawn Hook");
             MPRadioRunAlready = false;
             PlaneSetupDone = false;
             StartCoroutine(InitWaiter(def.planeObj));
+            
+            
         }
 
         //Waits 2 seconds for the scenario to initialize and the player vehicle to spawn in.
@@ -3676,6 +3734,15 @@ namespace AircraftSwap
                     //get mp buttons
                     mpRadioButton1 = PickupAllChildrensTransforms(defaultf26, "1");
 
+                    if (MPActive)
+                    {
+                        Debug.Log("enabling mp radio");
+                        StartCoroutine(MPRadio());
+
+                        
+
+                    }
+
                     //setupded
 
                     f16DED = PickupAllChildrensTransforms(frontupperpanelgobj, "DEDDisplay");
@@ -3707,9 +3774,11 @@ namespace AircraftSwap
                     AutoPilot2 = defaultf26.GetComponent<VTOLAutoPilot>();
 
                     f16radioparent = PickupAllChildrensTransforms(newAircraftUnit, "radioparent");
-                    f16radiobuttonClr = PickupAllChildrensTransforms(f16radioparent.gameObject, "f16buttonClr");
+                    f16radiobuttonEnter = PickupAllChildrensTransforms(f16radioparent.gameObject, "f16buttonEnter");
                     f26ClearWaypointButton = PickupAllChildrensTransforms(HUDDashF26.gameObject, "ClrWptButton");
-                    f26ClearWaypointButton.position = f16radiobuttonClr.position;
+                    
+                   f26ClearWaypointButton.position = f16radiobuttonEnter.position;
+                    
                     clrWptButVRI = f26ClearWaypointButton.GetComponent<VRInteractable>();
                     clrWptButVRI.poseBounds = null;
 
@@ -6839,7 +6908,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 
             }
             Debug.Log("ded3 ");
-            if (mploaded == true)
+            if (MPActive == true)
             {
                 Debug.Log("ded4 ");
                 Debug.Log("UHF: ");
