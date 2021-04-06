@@ -63,10 +63,428 @@ namespace AircraftSwap
         public GameObject newAircraftUnit;
 
         public AircraftSwapper aSwaper;
+        private AIPilot aiPilot;
+        private GameObject RightLGmainpivot;
+        private GameObject LeftLGmainpivot;
+        private GameObject FrontLGPivot;
+        private GameObject f16leftgearcover;
+        private GameObject f16rightgearcover;
+        private GameObject f16frontgearcover;
+        private Vector3 f16leftgearcoverup = new Vector3(-90, 0, 0);
+        private Vector3 f16rightgearcoverup = new Vector3(0, 0, 0);
+        private Vector3 f16frontgearcoverup = new Vector3(90, 0, 0);
+        private Vector3 f16leftgearcoverdown = new Vector3(10, 0, 0);
+        private Vector3 f16rightgearcoverdown = new Vector3(-100, 0, 0);
+        private Vector3 f16frontgearcoverdown = new Vector3(0, 0, 0);
+        private Transform tailnavlightsf26;
+        private Transform frontlandinglightsf26;
+        private Transform frontlandinglightsflaref26;
+        private Transform leftNavLightredf26;
+        private Transform LeftRedStrobeLightf26;
+        private Transform leftNavLightRearWhitef26;
+        private Transform LeftStrobeLightWhitef26;
+        private Transform rightNavLightGreenf26;
+        private Transform rightNavLightRearWhitef26;
+        private Transform RightRedStrobeLightf26;
+        private Transform RightStrobeLightWhitef26;
+        private Transform frontlandinglightsf16transform;
+        private Transform rightwingtoplightsf16transform;
+        private Transform leftwingtoplightsf16transform;
+        private Transform rightwingbottomlightsf16transform;
+        private Transform leftwingbottomlightsf16transform;
+        private Transform rightintakelightsf16transform;
+        private Transform leftintakelightsf16transform;
+        private Transform taillightsf16transform;
+        private Transform rearfuselageleftlightsf16transform;
+        private Transform rearfuselagerightlightsf16transform;
+       
+        private GameObject LeftStrobeLightWhitef26obj;
+        private GameObject RightRedStrobeLightf26obj;
+        private GameObject RightStrobeLightWhitef26obj;
+        private GameObject frontlandinglightsf26parent;
+        private Transform frontlandinglightsf26light;
+        private GameObject landinglightobj;
+        private Transform IntakeLightLeft;
+        private Transform IntakeLightRight;
+        private Transform tailLight;
+        private Light IntakeLightLeftLightComp;
+        private Light IntakeLightRightLightComp;
+        private Light tailLightComp;
+        private Transform tailLightCylinder;
+        private Material[] tailLightCompRendererMaterials;
+        private Material tailLightCompRendererMaterial;
+        private Component[] allComponents;
+        private int i;
+        private Transform HelperLights;
+        private Transform aiCockpit;
+        private Transform ActiveSwitches;
+        private Transform cockpit_in;
+        private Transform InstrumentLights;
+        private Transform console_F;
+        private Transform eject_seat;
+        private Transform glareshield;
+        private Transform opt_sight;
+        private Transform PointerKnob;
+        private Transform FullTwisty;
+        private Transform SmallTwisty;
+        private Transform Normalswitches;
+        private Transform cons_F_ins;
+        private Transform cons_L_aux;
+        private Transform cons_R_aux;
+        private Transform console_L;
+        private Transform console_R;
+        private Transform consR_lamp;
+        private Transform leftwingtipvapors;
+        private Transform rightwingtipvapors;
+        private Transform leftwinginnervapors;
+        private Transform rightwinginnervapors;
+        private Transform leftwingovervapors;
+        private Transform rightwingovervapors;
+        private Transform leftwingvaporf16;
+        private Transform righttwingvaporf16;
+        private Transform leftwingvaporinnerf16;
+        private Transform rightwingvaporinnerf16;
+        private Transform leftwingovervaporf16;
+        private Transform rightwingovervaporf16;
+
         private void Awake()
         {
+            aiPilot = GetComponent<AIPilot>();
+            
+        }
+
+        public Transform PickupAllChildrensTransforms(GameObject go, string namewanted)
+        {
+            Debug.Log("Running PickupAllChildrensTransforms for : " + go + " , " + namewanted);
+            Transform[] allChildren = go.GetComponentsInChildren<Transform>(true);
+            foreach (Transform child in allChildren)
+            {
+                Debug.Log("Getting child: " + child.gameObject.name);
+
+
+                if (child.gameObject.name != namewanted)
+                {
+
+                }
+                else
+                {
+                    Debug.Log("Getting components of children");
+
+                    GameObject childobj = child.gameObject;
+
+                    //this just lists all the components in the system for the one we were looking for to help with fixing
+                    allComponents = childobj.GetComponents(typeof(Transform));
+                    i = 0;
+                    foreach (Transform component in allComponents)
+                    {
+                        ++i;
+                        Debug.Log(childobj.name + " Text " + i + ": " + component.name);
+
+                        return component;
+                    }
+
+
+
+
+                }
+
+
+
+            }
+            return null;
+        }
+
+        private void vapors()
+        {
+            //wingtip vapors
+            leftwingtipvapors = PickupAllChildrensTransforms(gameObject, "WingVapor (7)");
+            rightwingtipvapors = PickupAllChildrensTransforms(gameObject, "WingVapor (6)");
+            leftwinginnervapors = PickupAllChildrensTransforms(gameObject, "WingVapor (3)");
+            rightwinginnervapors = PickupAllChildrensTransforms(gameObject, "WingVapor (1)");
+            leftwingovervapors = PickupAllChildrensTransforms(gameObject, "WingVapor (4)");
+            rightwingovervapors = PickupAllChildrensTransforms(gameObject, "WingVapor (2)");
+
+
+            leftwingvaporf16 = PickupAllChildrensTransforms(newAircraftUnit, "leftwingvaporf16");
+            righttwingvaporf16 = PickupAllChildrensTransforms(newAircraftUnit, "rightwingvaporf16");
+            leftwingvaporinnerf16 = PickupAllChildrensTransforms(newAircraftUnit, "leftwingvaporf16innerwing");
+            rightwingvaporinnerf16 = PickupAllChildrensTransforms(newAircraftUnit, "rightwingvaporf16innerwing");
+            leftwingovervaporf16 = PickupAllChildrensTransforms(newAircraftUnit, "leftwingvaporf16overwing");
+            rightwingovervaporf16 = PickupAllChildrensTransforms(newAircraftUnit, "rightwingvaporf16overwing");
+
+
+            leftwingtipvapors.position = leftwingvaporf16.position;
+            rightwingtipvapors.position = righttwingvaporf16.position;
+            leftwinginnervapors.position = leftwingvaporinnerf16.position;
+            rightwinginnervapors.position = rightwingvaporinnerf16.position;
+            leftwingovervapors.position = leftwingovervaporf16.position;
+            rightwingovervapors.position = rightwingovervaporf16.position;
+            leftwingovervapors.localScale = new Vector3(0.66f, 1f, 0.66f);
+            rightwingovervapors.localScale = new Vector3(0.66f, 1f, 0.66f);
+        }
+
+        private void hardpoints()
+        {
+            GameObject HP1actual = PickupAllChildrensTransforms(gameObject, "HP1").gameObject;
+            GameObject HP2actual = PickupAllChildrensTransforms(gameObject, "HP2").gameObject;
+            GameObject HP9actual = PickupAllChildrensTransforms(gameObject, "HP9").gameObject;
+            GameObject HP10actual = PickupAllChildrensTransforms(gameObject, "HP10").gameObject;
+            GameObject HP3actual = PickupAllChildrensTransforms(gameObject, "HP3").gameObject;
+            GameObject HP4actual = PickupAllChildrensTransforms(gameObject, "HP4").gameObject;
+            GameObject HP5actual = PickupAllChildrensTransforms(gameObject, "HP5").gameObject;
+            GameObject HP6actual = PickupAllChildrensTransforms(gameObject, "HP6").gameObject;
+            GameObject HP7actual = PickupAllChildrensTransforms(gameObject, "HP7").gameObject;
+            GameObject HP8actual = PickupAllChildrensTransforms(gameObject, "HP8").gameObject;
+            GameObject HP13actual = PickupAllChildrensTransforms(gameObject, "HP13DropTank").gameObject;
+            GameObject HP12actual = PickupAllChildrensTransforms(gameObject, "HP12DropTank").gameObject;
+            GameObject HP11actual = PickupAllChildrensTransforms(gameObject, "HP11DropTank").gameObject;
+            GameObject HP14actual = PickupAllChildrensTransforms(gameObject, "HP14 TGP").gameObject;
+            
+
+            Transform f16HP1 = PickupAllChildrensTransforms(newAircraftUnit, "F16Hardpoint1");
+            Transform f16HP2 = PickupAllChildrensTransforms(newAircraftUnit, "F16Hardpoint2");
+            Transform f16HP3 = PickupAllChildrensTransforms(newAircraftUnit, "F16Hardpoint3");
+
+            Transform f16HP8 = PickupAllChildrensTransforms(newAircraftUnit, "F16Hardpoint8");
+            Transform f16HP9 = PickupAllChildrensTransforms(newAircraftUnit, "F16Hardpoint9");
+            Transform f16HP10 = PickupAllChildrensTransforms(newAircraftUnit, "F16Hardpoint10");
+            Transform f16HP11 = PickupAllChildrensTransforms(newAircraftUnit, "F16Hardpoint11");
+            Transform f16HP12 = PickupAllChildrensTransforms(newAircraftUnit, "F16Hardpoint12");
+            Transform f16HP13 = PickupAllChildrensTransforms(newAircraftUnit, "F16Hardpoint13");
+            Transform f16HP14 = PickupAllChildrensTransforms(newAircraftUnit, "F16Hardpoint14");
+            Transform f16GunTransform = PickupAllChildrensTransforms(newAircraftUnit, "f16gunbarrels");
+
+            
+            
+
+            Transform f26GunBoxTransform = PickupAllChildrensTransforms(gameObject, "HPGun");
+            f26GunBoxTransform.position = f16GunTransform.position;
+
+            
+
+           
+
+            //Move Hardpoints
+
+
+            HP1actual.transform.position = f16HP1.position;
+            HP1actual.transform.SetParent(f16HP1);
+            HP2actual.transform.position = f16HP2.position;
+            HP2actual.transform.SetParent(f16HP2);
+            HP3actual.transform.position = f16HP3.position;
+            HP3actual.transform.rotation = f16HP3.rotation;
+            HP3actual.transform.SetParent(f16HP3);
+            HP8actual.transform.position = f16HP8.position;
+            HP8actual.transform.SetParent(f16HP8);
+            HP8actual.transform.rotation = f16HP8.rotation;
+            HP9actual.transform.position = f16HP9.position;
+            HP9actual.transform.SetParent(f16HP9);
+            HP10actual.transform.position = f16HP10.position;
+            HP10actual.transform.SetParent(f16HP10);
+            HP11actual.transform.position = f16HP11.position;
+            HP11actual.transform.SetParent(f16HP11);
+            HP12actual.transform.position = f16HP12.position;
+            HP12actual.transform.SetParent(f16HP12);
+            HP13actual.transform.position = f16HP13.position;
+            HP13actual.transform.SetParent(f16HP13);
+            HP14actual.transform.position = f16HP14.position;
+            HP14actual.transform.rotation = f16HP14.rotation;
+            HP14actual.transform.SetParent(f16HP14);
 
         }
+
+        private void lights()
+        {
+            //get all lights from f26
+
+            Debug.Log("lights_1");
+
+            tailnavlightsf26 = PickupAllChildrensTransforms(gameObject, "TailNavLight");
+            enableMesh(tailnavlightsf26.gameObject);
+            leftNavLightredf26 = PickupAllChildrensTransforms(gameObject, "LeftFwdLight");
+            enableMesh(leftNavLightredf26.gameObject); 
+            LeftRedStrobeLightf26 = PickupAllChildrensTransforms(gameObject, "LeftRedStrobeLight");
+            enableMesh(LeftRedStrobeLightf26.gameObject);
+            leftNavLightRearWhitef26 = PickupAllChildrensTransforms(gameObject, "LeftRearLight");
+            enableMesh(leftNavLightRearWhitef26.gameObject);
+            LeftStrobeLightWhitef26 = PickupAllChildrensTransforms(gameObject, "LeftStrobeLight");
+            enableMesh(LeftStrobeLightWhitef26.gameObject);
+            rightNavLightGreenf26 = PickupAllChildrensTransforms(gameObject, "RightFwdNavLight");
+            enableMesh(rightNavLightGreenf26.gameObject);
+            rightNavLightRearWhitef26 = PickupAllChildrensTransforms(gameObject, "RightRearNavLight");
+            enableMesh(rightNavLightRearWhitef26.gameObject);
+            RightRedStrobeLightf26 = PickupAllChildrensTransforms(gameObject, "RightRedStrobeLight");
+            enableMesh(RightRedStrobeLightf26.gameObject);
+            RightStrobeLightWhitef26 = PickupAllChildrensTransforms(gameObject, "RightStrobeLight");
+            enableMesh(RightStrobeLightWhitef26.gameObject);
+
+            frontlandinglightsf26 = PickupAllChildrensTransforms(gameObject, "LandingLightGearDownEnabler");
+            enableMesh(frontlandinglightsf26.gameObject);
+            Debug.Log("lights_2");
+            //get all f16 light locations in model
+            frontlandinglightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "frontlandinglightsf16transform");
+            rightwingtoplightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "rightwingtoplightsf16transform");
+            leftwingtoplightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "leftwingtoplightsf16transform");
+            rightwingbottomlightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "rightwingbottomlightsf16transform");
+            leftwingbottomlightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "leftwingbottomlightsf16transform");
+            rightintakelightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "rightintakelightsf16transform");
+            leftintakelightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "leftintakelightsf16transform");
+            taillightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "taillightsf16transform");
+
+            rearfuselageleftlightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "rearfuselageleftlightsf16transform");
+            rearfuselagerightlightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "rearfuselagerightlightsf16transform");
+
+            Debug.Log("lights_3");
+
+            List<Transform> LightList = new List<Transform>();
+            LightList.Add(frontlandinglightsf26);
+
+            LightList.Add(leftNavLightredf26);
+            LightList.Add(LeftRedStrobeLightf26);
+            LightList.Add(leftNavLightRearWhitef26);
+            LightList.Add(LeftStrobeLightWhitef26);
+            LightList.Add(rightNavLightGreenf26);
+            LightList.Add(rightNavLightRearWhitef26);
+            LightList.Add(RightRedStrobeLightf26);
+            LightList.Add(RightStrobeLightWhitef26);
+            LightList.Add(frontlandinglightsf16transform);
+            LightList.Add(rightwingtoplightsf16transform);
+            LightList.Add(leftwingtoplightsf16transform);
+            LightList.Add(rightwingbottomlightsf16transform);
+            LightList.Add(leftwingbottomlightsf16transform);
+            LightList.Add(rightintakelightsf16transform);
+            LightList.Add(leftintakelightsf16transform);
+            LightList.Add(taillightsf16transform);
+
+            foreach (Transform lightitem in LightList)
+
+            {
+                if (lightitem == null) { Debug.Log("This item could not be found = " + lightitem.name); } else { Debug.Log("This item found = " + lightitem.name); }
+                Light lightComponent = lightitem.GetComponent<Light>();
+                SpriteRenderer lightSprite = lightitem.GetComponent<SpriteRenderer>();
+                if (lightComponent != null) { lightComponent.enabled = true; }
+                if (lightSprite != null) { lightSprite.enabled = true; }
+
+
+                if (lightitem.name == "TailNavLight") { lightSprite.enabled = false; lightComponent.enabled = false; }
+            }
+
+
+            //place all lights on f16 transforms
+            frontlandinglightsf26.transform.position = frontlandinglightsf16transform.position;
+            frontlandinglightsf26.transform.rotation = frontlandinglightsf16transform.rotation;
+
+
+            Debug.Log("lights_4");
+            leftNavLightredf26.position = leftintakelightsf16transform.position;
+            LeftRedStrobeLightf26.position = leftwingbottomlightsf16transform.position;
+            leftNavLightRearWhitef26.position = rearfuselageleftlightsf16transform.position;
+            LeftStrobeLightWhitef26.position = rearfuselageleftlightsf16transform.position; //needs to be red
+
+            Debug.Log("lights_5");
+            rightNavLightGreenf26.position = rightintakelightsf16transform.position;
+            rightNavLightRearWhitef26.position = rearfuselagerightlightsf16transform.position;
+            RightRedStrobeLightf26.position = rightwingtoplightsf16transform.position; //needs to be green
+            RightStrobeLightWhitef26.position = rightwingbottomlightsf16transform.position; //needs to be green
+            Debug.Log("lights_6");
+
+            Color color0 = Color.red;
+
+
+
+            //change this white light to red
+            LeftStrobeLightWhitef26obj = LeftStrobeLightWhitef26.gameObject;
+            Light lsf26 = LeftStrobeLightWhitef26obj.GetComponent<Light>();
+            lsf26.color = color0;
+
+
+
+
+            Color color1 = Color.green;
+
+            Debug.Log("lights_7");
+            //change this red light to green
+            RightRedStrobeLightf26obj = RightRedStrobeLightf26.gameObject;
+            Light rrsf26 = RightRedStrobeLightf26obj.GetComponent<Light>();
+            Debug.Log("lights_8");
+
+            rrsf26.color = color1;
+
+            //change this white light to green
+            RightStrobeLightWhitef26obj = RightStrobeLightWhitef26.gameObject;
+            Light rsw26 = RightStrobeLightWhitef26obj.GetComponent<Light>();
+
+            rsw26.color = color1;
+
+
+
+
+            IntakeLightLeft = PickupAllChildrensTransforms(leftintakelightsf16transform.gameObject, "leftIntakeLight");
+            IntakeLightRight = PickupAllChildrensTransforms(rightintakelightsf16transform.gameObject, "rightIntakeLight");
+            tailLight = PickupAllChildrensTransforms(taillightsf16transform.gameObject, "tailLight");
+
+            IntakeLightLeftLightComp = IntakeLightLeft.GetComponent<Light>();
+            IntakeLightRightLightComp = IntakeLightRight.GetComponent<Light>();
+            tailLightComp = tailLight.GetComponent<Light>();
+
+            tailLightCylinder = PickupAllChildrensTransforms(taillightsf16transform.gameObject, "Cylinder");
+            tailLightCompRendererMaterials = tailLightCylinder.GetComponent<MeshRenderer>().materials;
+            foreach (Material materialitem in tailLightCompRendererMaterials)
+            {
+                Debug.Log("Material Name = " + materialitem.name);
+                if (materialitem.name == "taillight (Instance)")
+                {
+                    tailLightCompRendererMaterial = materialitem;
+
+                }
+            }
+
+
+        }
+
+        private void SetLandingGearClose()
+        {
+            Debug.Log("Landing Gear Close AI");
+            RightLGmainpivot = GetChildWithName(newAircraftUnit, "RightLGmainpivot", true);
+            LeftLGmainpivot = GetChildWithName(newAircraftUnit, "LeftLGmainpivot", true);
+            FrontLGPivot = GetChildWithName(newAircraftUnit, "FrontLGPivot", true);
+            f16leftgearcover = GetChildWithName(newAircraftUnit, "LeftMainLGCoverPivot",true);
+            f16rightgearcover = GetChildWithName(newAircraftUnit, "RightMainLGCoverPivot", true);
+            f16frontgearcover = GetChildWithName(newAircraftUnit, "frontLGcoverpivot", true);
+
+
+            disableMesh(RightLGmainpivot);
+            disableMesh(LeftLGmainpivot);
+            disableMesh(FrontLGPivot);
+            
+            f16leftgearcover.transform.localEulerAngles = f16leftgearcoverup;
+            f16rightgearcover.transform.localEulerAngles = f16rightgearcoverup;
+            f16frontgearcover.transform.localEulerAngles = f16frontgearcoverup;
+
+
+        }
+        private void SetLandingGearOpen()
+        {
+            Debug.Log("Landing Gear Open AI");
+            RightLGmainpivot = GetChildWithName(newAircraftUnit, "RightLGmainpivot", true);
+            LeftLGmainpivot = GetChildWithName(newAircraftUnit, "LeftLGmainpivot", true);
+            FrontLGPivot = GetChildWithName(newAircraftUnit, "FrontLGPivot", true);
+            f16leftgearcover = GetChildWithName(newAircraftUnit, "LeftMainLGCoverPivot", true);
+            f16rightgearcover = GetChildWithName(newAircraftUnit, "RightMainLGCoverPivot", true);
+            f16frontgearcover = GetChildWithName(newAircraftUnit, "frontLGcoverpivot", true);
+
+
+            
+
+            f16leftgearcover.transform.localEulerAngles = f16leftgearcoverdown;
+            f16rightgearcover.transform.localEulerAngles = f16rightgearcoverdown;
+            f16frontgearcover.transform.localEulerAngles = f16frontgearcoverdown;
+            enableMesh(RightLGmainpivot);
+            enableMesh(LeftLGmainpivot);
+            enableMesh(FrontLGPivot);
+
+        }
+
 
         public void disableMesh(GameObject parent)
         {
@@ -82,6 +500,19 @@ namespace AircraftSwap
 
         }
 
+        public void enableMesh(GameObject parent)
+        {
+
+            MeshRenderer[] meshes = parent.GetComponentsInChildren<MeshRenderer>(true);
+
+            foreach (MeshRenderer meshtohide in meshes)
+            {
+                Debug.Log("unhiding: " + meshtohide.ToString());
+                meshtohide.enabled = true;
+
+            }
+
+        }
 
         //public static void disableMesh(GameObject parent, WeaponManager wm)
         //{
@@ -155,9 +586,12 @@ namespace AircraftSwap
             disableMesh(GetChildWithName(gameObject, "WingVapor (1)", true));
             disableMesh(GetChildWithName(gameObject, "MachCloud", true));
             disableMesh(GetChildWithName(gameObject, "lod2", true));
-            disableMesh(GetChildWithName(gameObject, "ExtLights", true));
+            //disableMesh(GetChildWithName(gameObject, "ExtLights", true));
             disableMesh(GetChildWithName(gameObject, "HookTurret", true));
             disableMesh(GetChildWithName(gameObject, "lowPolyInterior", true));
+
+
+           
 
             GameObject leftengine = GetChildWithName(gameObject, "vgEngineLowPoly", true);
             leftengine.SetActive(false);
@@ -206,12 +640,44 @@ namespace AircraftSwap
             rightengine.SetActive(false);
             disableMesh(rightengine);
 
+            HelperLights = PickupAllChildrensTransforms(newAircraftUnit, "HelperLights");
+            HelperLights.gameObject.SetActiveRecursively(false);
+            InstrumentLights = PickupAllChildrensTransforms(newAircraftUnit, "InstrumentLights");
+            InstrumentLights.gameObject.SetActiveRecursively(false);
+
+            aiCockpit = PickupAllChildrensTransforms(newAircraftUnit, "f16cockpit");
+            ActiveSwitches = PickupAllChildrensTransforms(aiCockpit.gameObject, "ActiveSwitches");
+            ActiveSwitches.gameObject.SetActive(false);
+            PointerKnob = PickupAllChildrensTransforms(aiCockpit.gameObject, "Pointerknob");
+            PointerKnob.gameObject.SetActive(false);
+            FullTwisty = PickupAllChildrensTransforms(aiCockpit.gameObject, "Fulltwisty");
+            FullTwisty.gameObject.SetActive(false);
+            SmallTwisty = PickupAllChildrensTransforms(aiCockpit.gameObject, "Smalltwisty");
+            SmallTwisty.gameObject.SetActive(false);
+            cons_F_ins = PickupAllChildrensTransforms(aiCockpit.gameObject, "cons_F_ins");
+            cons_F_ins.gameObject.SetActive(false);
+            cons_L_aux = PickupAllChildrensTransforms(aiCockpit.gameObject, "cons_L_aux");
+            cons_L_aux.gameObject.SetActive(false);
+            cons_R_aux = PickupAllChildrensTransforms(aiCockpit.gameObject, "cons_R_aux");
+            cons_R_aux.gameObject.SetActive(false);
+            console_L = PickupAllChildrensTransforms(aiCockpit.gameObject, "console_L");
+            console_L.gameObject.SetActive(false);
+            console_R = PickupAllChildrensTransforms(aiCockpit.gameObject, "console_R");
+            console_R.gameObject.SetActive(false);
+            consR_lamp = PickupAllChildrensTransforms(aiCockpit.gameObject, "consR_lamp");
+            consR_lamp.gameObject.SetActive(false);
+
+
 
             newAircraftUnit.transform.localScale = Vector3.Scale(newAircraftUnit.transform.localScale, new Vector3(1.22f, 1.22f, 1.22f));
             newAircraftUnit.transform.localPosition = new Vector3(0.0f, 1.2f, -0.12f);
             newAircraftUnit.transform.localRotation = planeObject.transform.localRotation;
             newAircraftUnit.transform.localEulerAngles = new Vector3(0f, 90.0000f, 0f);
-
+            aiPilot.gearAnimator.OnClosed.AddListener(SetLandingGearClose);
+            aiPilot.gearAnimator.OnOpened.AddListener(SetLandingGearOpen);
+            lights();
+            vapors();
+            hardpoints();
 
         }
         void FixedUpdate()
@@ -2109,6 +2575,7 @@ namespace AircraftSwap
                     PlayerManager.LoadedCustomPlaneString = "f16";
                     PlayerManager.onSpawnLocalPlayer += MPRespawnHook;
                     PlayerManager.onSpawnClient += ClientF16Spawned;
+                    
                 }
             }
         }
