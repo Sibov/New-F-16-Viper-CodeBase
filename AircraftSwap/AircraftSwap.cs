@@ -2666,7 +2666,9 @@ namespace AircraftSwap
                 f16client.planeObject = def.planeObj;
                 f16client.aSwaper = this;
                 f16client.doSetup();
-            }
+            }else
+    AircraftInfo.AircraftSelected = false;
+
         }
 
         void Update()
