@@ -9,6 +9,8 @@ using Harmony;
 using TMPro;
 using UnityEngine.UI.Extensions;
 using System.Reflection;
+using UnityEngine.Networking;
+
 
 namespace AircraftSwap
 {
@@ -559,7 +561,7 @@ namespace AircraftSwap
         }
         public void doSetup()
         {
-            Debug.unityLogger.logEnabled = false;
+            Debug.unityLogger.logEnabled = true;
             Debug.Log("Do Setup Started");
             WeaponManager wm = planeObject.GetComponent<WeaponManager>();
             disableMesh(GetChildWithName(gameObject, "body", true));
@@ -2537,10 +2539,13 @@ namespace AircraftSwap
         private Transform f16EjectorHandle;
         private string noMPDEDRadioText;
         private Transform f26leftenginethrust;
-        private bool debugbool = false;
+        private bool debugbool = true;
         private VRInteractable clrWptButVRI;
         public bool MPActive;
         public bool PlaneSetupDone;
+        private Transform LeftEngineJetWash;
+        private Transform RightEngineJetWash;
+
         public override void ModLoaded() {
 
 
@@ -2982,6 +2987,11 @@ namespace AircraftSwap
                     leftengineactual.gameObject.SetActiveRecursively(false);
                     rightengineactual.gameObject.SetActiveRecursively(false);
 
+                    LeftEngineJetWash = PickupAllChildrensTransforms(leftengineactual, "JetWash");
+                    RightEngineJetWash = PickupAllChildrensTransforms(rightengineactual, "JetWash");
+
+                    
+
                     int i = 1;
                     foreach (var engine in vehMaster.engines)
                     {
@@ -3017,7 +3027,8 @@ namespace AircraftSwap
                     }
                     leftengineactual.gameObject.SetActiveRecursively(true);
                     rightengineactual.gameObject.SetActiveRecursively(true);
-
+                    LeftEngineJetWash.gameObject.SetActiveRecursively(false);
+                    RightEngineJetWash.gameObject.SetActiveRecursively(false);
 
                     Debug.Log("Section HP");
 
@@ -9135,86 +9146,87 @@ public static class Patch0
                 Dictionary<string, string> allowedhardpointbyweapon = new Dictionary<string, string>();
 
                 //unlimited version 
-                //allowedhardpointbyweapon.Add("fa26-cft", "");
-                //allowedhardpointbyweapon.Add("fa26_agm89x1", "1,11,12,10");
-                //allowedhardpointbyweapon.Add("fa26_agm161", "11,12");
-                //allowedhardpointbyweapon.Add("fa26_aim9x2", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_aim9x3", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_cagm-6", "1,11,12,10");
-                //allowedhardpointbyweapon.Add("fa26_cbu97x1", "1,10,11,12");
-                //allowedhardpointbyweapon.Add("fa26_droptank", "11,12");
-                //allowedhardpointbyweapon.Add("fa26_droptankXL", "13");
-                //allowedhardpointbyweapon.Add("fa26_gbu12x1", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_gbu12x2", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_gbu12x3", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_gbu38x1", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_gbu38x2", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_gbu38x3", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_gbu39x4uFront", "");
-                //allowedhardpointbyweapon.Add("fa26_gbu39x4uRear", "");
-                //allowedhardpointbyweapon.Add("fa26_gun", "0");
-                //allowedhardpointbyweapon.Add("fa26_harmx1", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_harmx1dpMount", "");
-                //allowedhardpointbyweapon.Add("fa26_iris-t-x1", "1,2,3,8,9,10,11,12");
-                //allowedhardpointbyweapon.Add("fa26_iris-t-x2", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_iris-t-x3", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_maverickx1", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_maverickx3", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_mk82HDx1", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_mk82HDx2", "11,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_mk82HDx3", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_mk82x2", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_mk82x3", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_mk83x1", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_sidearmx1", "1,2,3,8,9,10,11,12");
-                //allowedhardpointbyweapon.Add("fa26_sidearmx2", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_sidearmx3", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("fa26_tgp", "14");
-                //allowedhardpointbyweapon.Add("cagm-6", "11,12");
-                //allowedhardpointbyweapon.Add("cbu97x1", "1,10");
-                //allowedhardpointbyweapon.Add("gbu38x1", "1,10");
-                //allowedhardpointbyweapon.Add("gbu38x2", "1,10");
-                //allowedhardpointbyweapon.Add("gbu38x3", "1,10");
-                //allowedhardpointbyweapon.Add("gbu39x3", "1,10");
-                //allowedhardpointbyweapon.Add("gbu39x4u", "");
-                //allowedhardpointbyweapon.Add("h70-4x4", "1,11,10,12");
-                //allowedhardpointbyweapon.Add("h70-x7", "1,11,10,12");
-                //allowedhardpointbyweapon.Add("h70-x19", "1,11,10,12");
-                //allowedhardpointbyweapon.Add("hellfirex4", "");
-                //allowedhardpointbyweapon.Add("iris-t-x1", "1,2,3,8,9,10");
-                //allowedhardpointbyweapon.Add("iris-t-x2", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("iris-t-x3", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("m230", "");
-                //allowedhardpointbyweapon.Add("marmx1", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("maverickx1", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("maverickx3", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("mk82HDx1", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("mk82HDx2", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("mk82HDx3", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("mk82x1", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("mk82x2", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("mk82x3", "1,1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("sidearmx1", "1,2,3,8,9,10,11,12");
-                //allowedhardpointbyweapon.Add("sidearmx2", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("sidearmx3", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("sidewinderx1", "1,2,3,8,9,10,11,12");
-                //allowedhardpointbyweapon.Add("sidewinderx2", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("sidewinderx3", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("af_aim9", "1,2,3,8,9,10,11,12");
-                //allowedhardpointbyweapon.Add("af_amraam", "1,2,3,8,9,10,11,12");
-                //allowedhardpointbyweapon.Add("af_amraamRail", "1,2,3,8,9,10,11,12");
-                //allowedhardpointbyweapon.Add("af_amraamRailx2", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("af_dropTank", "13");
-                //allowedhardpointbyweapon.Add("af_maverickx1", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("af_maverickx3", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("af_mk82", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("af_tgp", "14");
-                //allowedhardpointbyweapon.Add("h70-x7ld", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("h70-x7ld-under", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("h70-x14ld-under", "1,10,3,8,11,12");
-                //allowedhardpointbyweapon.Add("h70-x14ld", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26-cft", "");
+                allowedhardpointbyweapon.Add("fa26_agm89x1", "1,11,12,10");
+                allowedhardpointbyweapon.Add("fa26_agm161", "11,12");
+                allowedhardpointbyweapon.Add("fa26_aim9x2", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_aim9x3", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_cagm-6", "1,11,12,10");
+                allowedhardpointbyweapon.Add("fa26_cbu97x1", "1,10,11,12");
+                allowedhardpointbyweapon.Add("fa26_droptank", "11,12");
+                allowedhardpointbyweapon.Add("fa26_droptankXL", "13");
+                allowedhardpointbyweapon.Add("fa26_gbu12x1", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_gbu12x2", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_gbu12x3", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_gbu38x1", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_gbu38x2", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_gbu38x3", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_gbu39x4uFront", "");
+                allowedhardpointbyweapon.Add("fa26_gbu39x4uRear", "");
+                allowedhardpointbyweapon.Add("fa26_gun", "0");
+                allowedhardpointbyweapon.Add("fa26_harmx1", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_harmx1dpMount", "");
+                allowedhardpointbyweapon.Add("fa26_iris-t-x1", "1,2,3,8,9,10,11,12");
+                allowedhardpointbyweapon.Add("fa26_iris-t-x2", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_iris-t-x3", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_maverickx1", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_maverickx3", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_mk82HDx1", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_mk82HDx2", "11,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_mk82HDx3", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_mk82x2", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_mk82x3", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_mk83x1", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_sidearmx1", "1,2,3,8,9,10,11,12");
+                allowedhardpointbyweapon.Add("fa26_sidearmx2", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_sidearmx3", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("fa26_tgp", "14");
+                allowedhardpointbyweapon.Add("cagm-6", "11,12");
+                allowedhardpointbyweapon.Add("cbu97x1", "1,10");
+                allowedhardpointbyweapon.Add("gbu38x1", "1,10");
+                allowedhardpointbyweapon.Add("gbu38x2", "1,10");
+                allowedhardpointbyweapon.Add("gbu38x3", "1,10");
+                allowedhardpointbyweapon.Add("gbu39x3", "1,10");
+                allowedhardpointbyweapon.Add("gbu39x4u", "");
+                allowedhardpointbyweapon.Add("h70-4x4", "1,11,10,12");
+                allowedhardpointbyweapon.Add("h70-x7", "1,11,10,12");
+                allowedhardpointbyweapon.Add("h70-x19", "1,11,10,12");
+                allowedhardpointbyweapon.Add("hellfirex4", "1,11,10,12");
+                allowedhardpointbyweapon.Add("iris-t-x1", "1,2,3,8,9,10,11,12");
+                allowedhardpointbyweapon.Add("iris-t-x2", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("iris-t-x3", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("m230", "");
+                allowedhardpointbyweapon.Add("marmx1", "1,2,9,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("maverickx1", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("maverickx3", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("mk82HDx1", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("mk82HDx2", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("mk82HDx3", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("mk82x1", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("mk82x2", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("mk82x3", "1,1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("sidearmx1", "1,2,3,8,9,10,11,12");
+                allowedhardpointbyweapon.Add("sidearmx2", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("sidearmx3", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("sidewinderx1", "1,2,3,8,9,10,11,12");
+                allowedhardpointbyweapon.Add("sidewinderx2", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("sidewinderx3", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("af_aim9", "1,2,3,8,9,10,11,12");
+                allowedhardpointbyweapon.Add("af_amraam", "1,2,3,8,9,10,11,12");
+                allowedhardpointbyweapon.Add("af_amraamRail", "1,2,3,8,9,10,11,12");
+                allowedhardpointbyweapon.Add("af_amraamRailx2", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("af_dropTank", "13");
+                allowedhardpointbyweapon.Add("af_maverickx1", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("af_maverickx3", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("af_mk82", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("af_tgp", "14");
+                allowedhardpointbyweapon.Add("h70-x7ld", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("h70-x7ld-under", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("h70-x14ld-under", "1,10,3,8,11,12");
+                allowedhardpointbyweapon.Add("h70-x14ld", "1,10,3,8,11,12");
                 //scl version
 
+                /*
                 allowedhardpointbyweapon.Add("fa26-cft", "");
                 allowedhardpointbyweapon.Add("fa26_agm89x1", "1,11,12,10");
                 allowedhardpointbyweapon.Add("fa26_agm161", "11,12");
@@ -9235,7 +9247,7 @@ public static class Patch0
                 allowedhardpointbyweapon.Add("fa26_gun", "0");
                 allowedhardpointbyweapon.Add("fa26_harmx1", "1,10,3,8");
                 allowedhardpointbyweapon.Add("fa26_harmx1dpMount", "");
-                allowedhardpointbyweapon.Add("fa26_iris-t-x1", "1,2,3,8,9,10");
+                allowedhardpointbyweapon.Add("fa26_iris-t-x1", "1,2,3,8,9,10,11,12");
                 allowedhardpointbyweapon.Add("fa26_iris-t-x2", "");
                 allowedhardpointbyweapon.Add("fa26_iris-t-x3", "");
                 allowedhardpointbyweapon.Add("fa26_maverickx1", "1,10,3,8,11,12");
@@ -9246,7 +9258,7 @@ public static class Patch0
                 allowedhardpointbyweapon.Add("fa26_mk82x2", "1,11,10,12");
                 allowedhardpointbyweapon.Add("fa26_mk82x3", "1,11,10,12");
                 allowedhardpointbyweapon.Add("fa26_mk83x1", "1,11,10,12");
-                allowedhardpointbyweapon.Add("fa26_sidearmx1", "1,2,3,8,9,10");
+                allowedhardpointbyweapon.Add("fa26_sidearmx1", "1,2,3,8,9,10,11,12");
                 allowedhardpointbyweapon.Add("fa26_sidearmx2", "");
                 allowedhardpointbyweapon.Add("fa26_sidearmx3", "");
                 allowedhardpointbyweapon.Add("fa26_tgp", "14");
@@ -9277,12 +9289,12 @@ public static class Patch0
                 allowedhardpointbyweapon.Add("sidearmx1", "1,2,3,8,9,10");
                 allowedhardpointbyweapon.Add("sidearmx2", "1,10");
                 allowedhardpointbyweapon.Add("sidearmx3", "");
-                allowedhardpointbyweapon.Add("sidewinderx1", "1,2,3,8,9,10");
+                allowedhardpointbyweapon.Add("sidewinderx1", "1,2,3,8,9,10,11,12");
                 allowedhardpointbyweapon.Add("sidewinderx2", "");
                 allowedhardpointbyweapon.Add("sidewinderx3", "");
-                allowedhardpointbyweapon.Add("af_aim9", "1,2,3,8,9,10");
-                allowedhardpointbyweapon.Add("af_amraam", "1,2,3,8,9,10");
-                allowedhardpointbyweapon.Add("af_amraamRail", "1,2,3,8,9,10");
+                allowedhardpointbyweapon.Add("af_aim9", "1,2,3,8,9,10,11,12");
+                allowedhardpointbyweapon.Add("af_amraam", "1,2,3,8,9,10,11,12");
+                allowedhardpointbyweapon.Add("af_amraamRail", "1,2,3,8,9,10,11,12");
                 allowedhardpointbyweapon.Add("af_amraamRailx2", "");
                 allowedhardpointbyweapon.Add("af_dropTank", "13");
                 allowedhardpointbyweapon.Add("af_maverickx1", "1,10,3,8,11,12");
@@ -9293,7 +9305,7 @@ public static class Patch0
                 allowedhardpointbyweapon.Add("h70-x7ld-under", "1,11,10,12");
                 allowedhardpointbyweapon.Add("h70-x14ld-under", "1,11,10,12");
                 allowedhardpointbyweapon.Add("h70-x14ld", "1,11,10,12");
-
+                */
 
                 Debug.Log("Equipment: " + equip.name + ", Allowed on" + equip.allowedHardpoints);
 
@@ -9600,3 +9612,55 @@ public static class Patch9
     }
 
 }
+
+[HarmonyPatch(typeof(VehicleSelectUI), nameof(VehicleSelectUI.UpdateUI))]
+ 
+public static class Patch_VehicleUI
+
+{
+
+    private static Texture2D theonesynthsenthowdoiloadimagesagain;
+
+    public static IEnumerator LoadPlaneImage()
+    {
+        Debug.Log("Loading f16 image 1");
+        UnityWebRequest www = UnityWebRequestTexture.GetTexture(Directory.GetCurrentDirectory() + @"\VTOLVR_ModLoader\mods\f16_Viper_Unlimited\av42c.png");
+        Debug.Log("Loading f16 image 2");
+        yield return www.SendWebRequest();
+
+        if (www.responseCode != 200)
+        {
+            Debug.Log("WWW Response code isn't 200, it's " + www.responseCode + "\n" + www.error);
+        }
+        else
+        {
+            Debug.Log("Loading plane image.");
+            theonesynthsenthowdoiloadimagesagain = ((DownloadHandlerTexture)www.downloadHandler).texture;
+            Debug.Log("Loaded plane image.");
+        }
+    }
+
+    public static bool Prefix(VehicleSelectUI __instance, PlayerVehicle v)
+    {
+        if (v.vehicleName != "F/A-26B")
+        {
+            Debug.Log(v.vehicleName + " isn't it");
+            return true;
+        }
+        Debug.Log("Loading f16 titles 1");
+        __instance.vehicleName.text = "F-16C Fighting Falcon";
+        Debug.Log("Loading f16 titles 2");
+        __instance.vehicleDescription.text = "The F-16C Viper has been the goto airframe of choice for 30 years. This new 2030 variant includes higher payloads and increased weapons systems.";
+        Debug.Log("Loading f16 titles 3");
+        LoadPlaneImage();
+        
+
+        Debug.Log("Loading f16 titles 4");
+        __instance.vehicleImage.texture = theonesynthsenthowdoiloadimagesagain;
+        return false;
+    }
+
+    
+    
+}
+
