@@ -1,0 +1,2 @@
+g:\F16\AircraftSwap\obj\Release\AircraftSwap.csprojAssemblyReference.cache
+g:\F16\AircraftSwap\obj\Release\AircraftSwap.csproj.CoreCompileInputs.cache

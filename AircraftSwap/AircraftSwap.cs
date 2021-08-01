@@ -29,13 +29,13 @@ namespace AircraftSwap
     //        Transform bodytohide = planeObject.transform.Find("aFighter2");
     //        GameObject bodytohideobj = bodytohide.gameObject;
 
-    //        Debug.Log("Running ClientAircraftSwapF16 DoSetup");
+    //        F16Debug.Log("Running ClientAircraftSwapF16 DoSetup");
 
     //        MeshRenderer[] meshes = bodytohideobj.GetComponentsInChildren<MeshRenderer>(true);
 
     //        foreach (MeshRenderer meshtohide in meshes)
     //        {
-    //            Debug.Log("Hiding: " + meshtohide.ToString());
+    //            F16Debug.Log("Hiding: " + meshtohide.ToString());
     //            meshtohide.enabled = false;
     //        }
 
@@ -59,6 +59,21 @@ namespace AircraftSwap
 
     //    }
     //}
+    
+    class AircraftInfo
+    {
+        public static bool AircraftSelected = false;
+
+        //Info about your aircraft
+        public const string AircraftName = "F16";
+        public const string AircraftNickName = "F16 Viper";
+        public const string AircraftDescription = "A multi-role light fighter";
+        public static Texture2D MenuTexture;
+        //Names of the various files you need to put in your builds folder
+        public  const string PreviewPngFileName = "preview.png";
+        public static string ModFolderString;
+    }
+   
     class ClientAircraftSwapF16 : MonoBehaviour
     {
         public GameObject planeObject;
@@ -157,11 +172,11 @@ namespace AircraftSwap
 
         public Transform PickupAllChildrensTransforms(GameObject go, string namewanted)
         {
-            Debug.Log("Running PickupAllChildrensTransforms for : " + go + " , " + namewanted);
+            F16Debug.Log("Running PickupAllChildrensTransforms for : " + go + " , " + namewanted);
             Transform[] allChildren = go.GetComponentsInChildren<Transform>(true);
             foreach (Transform child in allChildren)
             {
-                Debug.Log("Getting child: " + child.gameObject.name);
+                F16Debug.Log("Getting child: " + child.gameObject.name);
 
 
                 if (child.gameObject.name != namewanted)
@@ -170,7 +185,7 @@ namespace AircraftSwap
                 }
                 else
                 {
-                    Debug.Log("Getting components of children");
+                    F16Debug.Log("Getting components of children");
 
                     GameObject childobj = child.gameObject;
 
@@ -180,7 +195,7 @@ namespace AircraftSwap
                     foreach (Transform component in allComponents)
                     {
                         ++i;
-                        Debug.Log(childobj.name + " Text " + i + ": " + component.name);
+                        F16Debug.Log(childobj.name + " Text " + i + ": " + component.name);
 
                         return component;
                     }
@@ -299,7 +314,7 @@ namespace AircraftSwap
         {
             //get all lights from f26
 
-            Debug.Log("lights_1");
+            F16Debug.Log("lights_1");
 
             tailnavlightsf26 = PickupAllChildrensTransforms(gameObject, "TailNavLight");
             enableMesh(tailnavlightsf26.gameObject);
@@ -322,7 +337,7 @@ namespace AircraftSwap
 
             frontlandinglightsf26 = PickupAllChildrensTransforms(gameObject, "LandingLightGearDownEnabler");
             enableMesh(frontlandinglightsf26.gameObject);
-            Debug.Log("lights_2");
+            F16Debug.Log("lights_2");
             //get all f16 light locations in model
             frontlandinglightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "frontlandinglightsf16transform");
             rightwingtoplightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "rightwingtoplightsf16transform");
@@ -336,7 +351,7 @@ namespace AircraftSwap
             rearfuselageleftlightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "rearfuselageleftlightsf16transform");
             rearfuselagerightlightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "rearfuselagerightlightsf16transform");
 
-            Debug.Log("lights_3");
+            F16Debug.Log("lights_3");
 
             List<Transform> LightList = new List<Transform>();
             LightList.Add(frontlandinglightsf26);
@@ -361,7 +376,7 @@ namespace AircraftSwap
             foreach (Transform lightitem in LightList)
 
             {
-                if (lightitem == null) { Debug.Log("This item could not be found = " + lightitem.name); } else { Debug.Log("This item found = " + lightitem.name); }
+                if (lightitem == null) { F16Debug.Log("This item could not be found = " + lightitem.name); } else { F16Debug.Log("This item found = " + lightitem.name); }
                 Light lightComponent = lightitem.GetComponent<Light>();
                 SpriteRenderer lightSprite = lightitem.GetComponent<SpriteRenderer>();
                 if (lightComponent != null) { lightComponent.enabled = true; }
@@ -377,18 +392,18 @@ namespace AircraftSwap
             frontlandinglightsf26.transform.rotation = frontlandinglightsf16transform.rotation;
 
 
-            Debug.Log("lights_4");
+            F16Debug.Log("lights_4");
             leftNavLightredf26.position = leftintakelightsf16transform.position;
             LeftRedStrobeLightf26.position = leftwingbottomlightsf16transform.position;
             leftNavLightRearWhitef26.position = rearfuselageleftlightsf16transform.position;
             LeftStrobeLightWhitef26.position = rearfuselageleftlightsf16transform.position; //needs to be red
 
-            Debug.Log("lights_5");
+            F16Debug.Log("lights_5");
             rightNavLightGreenf26.position = rightintakelightsf16transform.position;
             rightNavLightRearWhitef26.position = rearfuselagerightlightsf16transform.position;
             RightRedStrobeLightf26.position = rightwingtoplightsf16transform.position; //needs to be green
             RightStrobeLightWhitef26.position = rightwingbottomlightsf16transform.position; //needs to be green
-            Debug.Log("lights_6");
+            F16Debug.Log("lights_6");
 
             Color color0 = Color.red;
 
@@ -404,11 +419,11 @@ namespace AircraftSwap
 
             Color color1 = Color.green;
 
-            Debug.Log("lights_7");
+            F16Debug.Log("lights_7");
             //change this red light to green
             RightRedStrobeLightf26obj = RightRedStrobeLightf26.gameObject;
             Light rrsf26 = RightRedStrobeLightf26obj.GetComponent<Light>();
-            Debug.Log("lights_8");
+            F16Debug.Log("lights_8");
 
             rrsf26.color = color1;
 
@@ -433,7 +448,7 @@ namespace AircraftSwap
             tailLightCompRendererMaterials = tailLightCylinder.GetComponent<MeshRenderer>().materials;
             foreach (Material materialitem in tailLightCompRendererMaterials)
             {
-                Debug.Log("Material Name = " + materialitem.name);
+                F16Debug.Log("Material Name = " + materialitem.name);
                 if (materialitem.name == "taillight (Instance)")
                 {
                     tailLightCompRendererMaterial = materialitem;
@@ -446,7 +461,7 @@ namespace AircraftSwap
 
         private void SetLandingGearClose()
         {
-            Debug.Log("Landing Gear Close AI");
+            F16Debug.Log("Landing Gear Close AI");
             RightLGmainpivot = GetChildWithName(newAircraftUnit, "RightLGmainpivot", true);
             LeftLGmainpivot = GetChildWithName(newAircraftUnit, "LeftLGmainpivot", true);
             FrontLGPivot = GetChildWithName(newAircraftUnit, "FrontLGPivot", true);
@@ -467,7 +482,7 @@ namespace AircraftSwap
         }
         private void SetLandingGearOpen()
         {
-            Debug.Log("Landing Gear Open AI");
+            F16Debug.Log("Landing Gear Open AI");
             RightLGmainpivot = GetChildWithName(newAircraftUnit, "RightLGmainpivot", true);
             LeftLGmainpivot = GetChildWithName(newAircraftUnit, "LeftLGmainpivot", true);
             FrontLGPivot = GetChildWithName(newAircraftUnit, "FrontLGPivot", true);
@@ -495,7 +510,7 @@ namespace AircraftSwap
 
             foreach (MeshRenderer meshtohide in meshes)
             {
-                Debug.Log("Hiding: " + meshtohide.ToString());
+                F16Debug.Log("Hiding: " + meshtohide.ToString());
                 meshtohide.enabled = false;
 
             }
@@ -509,7 +524,7 @@ namespace AircraftSwap
 
             foreach (MeshRenderer meshtohide in meshes)
             {
-                Debug.Log("unhiding: " + meshtohide.ToString());
+                F16Debug.Log("unhiding: " + meshtohide.ToString());
                 meshtohide.enabled = true;
 
             }
@@ -561,8 +576,8 @@ namespace AircraftSwap
         }
         public void doSetup()
         {
-            Debug.unityLogger.logEnabled = true;
-            Debug.Log("Do Setup Started");
+           // F16Debug.unityLogger.logEnabled = true;
+            F16Debug.Log("Do Setup Started");
             WeaponManager wm = planeObject.GetComponent<WeaponManager>();
             disableMesh(GetChildWithName(gameObject, "body", true));
             disableMesh(GetChildWithName(gameObject, "body (LOD1)", true));
@@ -695,6 +710,7 @@ namespace AircraftSwap
 
     public class AircraftSwapper : VTOLMOD
     {
+        public static AircraftSwapper instance;
         private const int V = 0;
         private bool AssetLoaded = false;
         private string PathToBundle;
@@ -2539,32 +2555,73 @@ namespace AircraftSwap
         private Transform f16EjectorHandle;
         private string noMPDEDRadioText;
         private Transform f26leftenginethrust;
-        private bool debugbool = true;
+       
         private VRInteractable clrWptButVRI;
         public bool MPActive;
         public bool PlaneSetupDone;
         private Transform LeftEngineJetWash;
         private Transform RightEngineJetWash;
+     
+
+  
+        public IEnumerator CreatePlaneMenuItem()
+        {
+            UnityWebRequest www = UnityWebRequestTexture.GetTexture(Path.Combine(AircraftInfo.ModFolderString, AircraftInfo.PreviewPngFileName));
+            yield return www.SendWebRequest();
+
+            if (www.responseCode != 200)
+            {
+                F16Debug.Log("WWW Response code isn't 200, it's " + www.responseCode + "\n" + www.error);
+            }
+            else
+            {
+                AircraftInfo.MenuTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+                F16Debug.Log("Loaded plane image.");
+            }
+
+            F16Debug.Log("F16Debug 1");
+            Traverse traverse = Traverse.Create(typeof(VTResources));
+            PlayerVehicleList vehicles = (PlayerVehicleList)traverse.Field("playerVehicles").GetValue();
+
+            F16Debug.Log("F16Debug 2");
+            PlayerVehicle newVehicle = ScriptableObject.CreateInstance<PlayerVehicle>();
+            newVehicle.vehicleName = AircraftInfo.AircraftName;
+            newVehicle.nickname = AircraftInfo.AircraftNickName;
+            newVehicle.description = AircraftInfo.AircraftDescription;
+            newVehicle.campaigns = PilotSaveManager.GetVehicle("F/A-26B").campaigns;
+            newVehicle.vehicleImage = AircraftInfo.MenuTexture;
+            vehicles.playerVehicles.Add(newVehicle);
+
+            F16Debug.Log("F16Debug 3");
+            traverse.Field("playerVehicles").SetValue(vehicles);
+
+
+            F16Debug.Log("F16Debug 4");
+            Traverse traverse2 = Traverse.Create(typeof(PilotSaveManager));
+            List<PlayerVehicle> vehicleList = (List<PlayerVehicle>)traverse2.Field("vehicleList").GetValue();
+            vehicleList.Add(newVehicle);
+            traverse.Field("vehicleList").SetValue(vehicleList);
+
+
+        }
 
         public override void ModLoaded() {
 
-
-
-
-
-            Debug.Log("Section 4");
+            F16Debug.Log("Section 4");
             HarmonyInstance.Create("Bovine.OnlyEquipWhatISay").PatchAll();
             //VTOLAPI.SceneLoaded += SceneChanged; // So when the scene is changed SceneChanged is called
             //VTOLAPI.MissionReloaded += DoMain; // So when the mission is reloaded DoMain is called
-            Debug.Log("Section 5");
-
+            F16Debug.Log("Section 5");
+            AircraftInfo.ModFolderString = ModFolder;
             base.ModLoaded();
+            StartCoroutine(CreatePlaneMenuItem());
+            AircraftSwapper.instance = this;
             checkMPloaded();
         }
 
-        void checkMPloaded()
+        public void checkMPloaded()
         {
-            Debug.Log("checking Multiplayer is installed");
+            F16Debug.Log("checking Multiplayer is installed");
 
             List<Mod> mods = new List<Mod>();
 
@@ -2574,23 +2631,37 @@ namespace AircraftSwap
             {
                 if (m.name.Contains("ultiplayer"))
                 {
-                    Debug.Log("found Multiplayer set f16 mp");
-                    MPActive = true;
-                    PlayerManager.PlayerIsCustomPlane = true;
-                    PlayerManager.LoadedCustomPlaneString = "f16";
-                    PlayerManager.onSpawnLocalPlayer += MPRespawnHook;
-                    PlayerManager.onSpawnClient += ClientF16Spawned;
-                    
+                    F16Debug.Log("found Multiplayer set f16 mp");
+                  
+                    MPLock();
                 }
             }
         }
 
+        public void MPLock()
+        {
+            if (MPActive)
+                return;
+            //PlayerManager.PlayerIsCustomPlane = true;
+            //PlayerManager.LoadedCustomPlaneString = "f16";
+            PlayerManager.onSpawnLocalPlayer += MPRespawnHook;
+            PlayerManager.onSpawnClient += ClientF16Spawned;
+
+            PlayerManager.RegisterCustomPlane("f16","F/A-26B");
+            MPActive = true;
+            //PlayerManager.SetCustomPlane("f16");
+        }
+        public void SetCustomPlaneMP()
+        {
+             PlayerManager.SetCustomPlane("f16");
+        }
+
         public void ClientF16Spawned(PlayerManager.CustomPlaneDef def)
         {
-            Debug.Log("checking if customplanestring is f16");
+            F16Debug.Log("checking if customplanestring is f16");
             if (def.CustomPlaneString == "f16")
             {
-                Debug.Log("spawned f16 in mp");
+                F16Debug.Log("spawned f16 in mp");
                 ClientAircraftSwapF16 f16client = def.planeObj.AddComponent<ClientAircraftSwapF16>();
                 f16client.planeObject = def.planeObj;
                 f16client.aSwaper = this;
@@ -2600,15 +2671,17 @@ namespace AircraftSwap
 
         void Update()
         {
-            Debug.unityLogger.logEnabled = debugbool;
+            //F16Debug.unityLogger.logEnabled = F16Debugbool;
             VTOLVehicles cv = VTOLAPI.GetPlayersVehicleEnum();
+            if (!AircraftInfo.AircraftSelected)
+                return;
             switch (cv)
             {
                 case VTOLVehicles.FA26B:
 
                     reduceinstruments = false;
                     //mpradiobuttonclr2 = GameObject.Find("Clr");
-                    //if (mpradiobuttonclr2 != null) { Debug.Log("Found Clr Button"); }
+                    //if (mpradiobuttonclr2 != null) { F16Debug.Log("Found Clr Button"); }
 
                     if (!AircraftLoaded)
                         return;
@@ -2662,7 +2735,7 @@ namespace AircraftSwap
 
 
 
-                    if (newrwrmodeswitchivr != null) { Debug.Log("rwrmode = " + newrwrmodeswitchivr.currentState); }
+                    if (newrwrmodeswitchivr != null) { F16Debug.Log("rwrmode = " + newrwrmodeswitchivr.currentState); }
 
 
 
@@ -2677,7 +2750,7 @@ namespace AircraftSwap
                     //if (Input.GetKey("1")) { f16TestLightInt.enabled = false; }
                     if (Input.GetKey("2")) {
                         //testPick = PickupAllChildrensTransforms(defaultf26, "testF17");
-                        Debug.Log("key 2 pressed");
+                        F16Debug.Log("key 2 pressed");
                     }
 
 
@@ -2685,7 +2758,7 @@ namespace AircraftSwap
                     break;
 
                 default:
-                    Debug.Log("f16 Off");
+                   // F16Debug.Log("f16 Off");
                     break;
             }
         }
@@ -2698,7 +2771,7 @@ namespace AircraftSwap
 
 
             //string directory = ModFolder;
-            //Debug.Log("Mod Path = " +directory);
+            //F16Debug.Log("Mod Path = " +directory);
 
             //PathToBundle = Directory.GetCurrentDirectory() + @"\VTOLVR_ModLoader\mods\f16\f16v12";
             //vehicleType = VTOLAPI.GetPlayersVehicleEnum();
@@ -2738,7 +2811,8 @@ namespace AircraftSwap
                     changeAmount = 0.75f;
                     waitVar = 0.6f;
                     AircraftLoaded = false;
-                    Debug.Log("InitWaiter being called by VTOLScenes Akutan Case");
+                    F16Debug.Log("InitWaiter being called by VTOLScenes Akutan Case");
+                    if(AircraftInfo.AircraftSelected)
                     if (!MPActive)
                         StartCoroutine(InitWaiter(null));
                     
@@ -2747,16 +2821,18 @@ namespace AircraftSwap
                     changeAmount = 0.75f;
                     waitVar = 0.6f;
                     AircraftLoaded = false;
-                    Debug.Log("InitWaiter being called by VTOLScenes Open Water Case");
-                    if (!MPActive)
+                    F16Debug.Log("InitWaiter being called by VTOLScenes Open Water Case");
+                    if (AircraftInfo.AircraftSelected)
+                        if (!MPActive)
                         StartCoroutine(InitWaiter(null));
                     break;
                 case VTOLScenes.CustomMapBase:
 
                     waitVar = 0.6f; changeAmount = 0.05f;
                     AircraftLoaded = false;
-                    Debug.Log("InitWaiter being called by VTOLScenes CustomMap Case");
-                    if (!MPActive)
+                    F16Debug.Log("InitWaiter being called by VTOLScenes CustomMap Case");
+                    if (AircraftInfo.AircraftSelected)
+                        if (!MPActive)
                         StartCoroutine(InitWaiter(null));
                     break;
                 case VTOLScenes.ReadyRoom:
@@ -2770,15 +2846,15 @@ namespace AircraftSwap
                     waitVar = 0.6f;
                     changeAmount = 0.05f;
                     AircraftLoaded = false;
-                    Debug.Log("InitWaiter being called by VTOLScenes Vehicle Config Case");
-
-                    StartCoroutine(InitWaiter(null));
+                    F16Debug.Log("InitWaiter being called by VTOLScenes Vehicle Config Case");
+                    if (AircraftInfo.AircraftSelected)
+                        StartCoroutine(InitWaiter(null));
                     break;
             }
         }
         private void MPRespawnHook(PlayerManager.CustomPlaneDef def)
         {
-            Debug.Log("MP Respawn Hook");
+            F16Debug.Log("MP Respawn Hook");
             MPRadioRunAlready = false;
             PlaneSetupDone = false;
             StartCoroutine(InitWaiter(def.planeObj));
@@ -2791,7 +2867,7 @@ namespace AircraftSwap
         private IEnumerator InitWaiter(GameObject plane)
         {
             Setuprunning = true;
-            Debug.Log("InitWaiter Started");
+            F16Debug.Log("InitWaiter Started");
             yield return new WaitForSeconds(waitVar);
             SetupNewAircraft(plane);
             Setuprunning = false;
@@ -2801,15 +2877,15 @@ namespace AircraftSwap
 
         private IEnumerator Checkhowmanyitemscontainname(String startstringtosearchfor, Transform transftolookthru)
         {
-            Debug.Log("Checkhowmanyitemscontainname Started");
+            F16Debug.Log("Checkhowmanyitemscontainname Started");
             if (airbrakeobj == null) { yield break; }
-            Debug.Log("Checkhowmanyitemscontainname Started = f26 not null");
+            F16Debug.Log("Checkhowmanyitemscontainname Started = f26 not null");
             yield return new WaitForSeconds(2f);
             if (transftolookthru.name.Contains(startstringtosearchfor))
             {
                 // this object starts with the string passed in "start":
                 // do whatever you want with it...
-                Debug.Log("Found this item when searching for (" + startstringtosearchfor + ") = " + transftolookthru.name); // like printing its name
+                F16Debug.Log("Found this item when searching for (" + startstringtosearchfor + ") = " + transftolookthru.name); // like printing its name
             }
             // now search in its children, grandchildren etc.
             foreach (Transform childitems in transftolookthru)
@@ -2828,13 +2904,13 @@ namespace AircraftSwap
             {
                 Destroy(newAircraftUnit);
                 newAircraftUnit = null;
-                Debug.Log("InitWaiter being called by VTOLScenes Mission Restart Case where NewAircraft not null ");
+                F16Debug.Log("InitWaiter being called by VTOLScenes Mission Restart Case where NewAircraft not null ");
                 waitVar = 0.6f;
                 StartCoroutine(InitWaiter(null));
             }
             else
             {
-                Debug.Log("InitWaiter being called by VTOLScenes Mission Restart Case where NewAircraft is null ");
+                F16Debug.Log("InitWaiter being called by VTOLScenes Mission Restart Case where NewAircraft is null ");
                 waitVar = 0.6f;
                 StartCoroutine(InitWaiter(null));
             }
@@ -2843,7 +2919,7 @@ namespace AircraftSwap
         private void SetupNewAircraft(GameObject playeraircraft)
         {
             string directory = ModFolder;
-            Debug.Log("Mod Path = " + directory);
+            F16Debug.Log("Mod Path = " + directory);
 
             PathToBundle = directory + @"\f16v12";
             vehicleType = VTOLAPI.GetPlayersVehicleEnum();
@@ -2860,12 +2936,12 @@ namespace AircraftSwap
             if (newAircraftPrefab != null)
             {
                 Setuprunning = true;
-                Debug.Log("Setuprunning" + Setuprunning);
+                F16Debug.Log("Setuprunning" + Setuprunning);
 
 
 
 
-                Debug.Log("Section1");
+                F16Debug.Log("Section1");
 
                 //Adding localOffset to offset to position the aircraft shell correctly. the first vector is the axis sideways, the second is the height vector, and third is forwards and backwards
 
@@ -2888,17 +2964,17 @@ namespace AircraftSwap
                         break;
                 }
 
-                Debug.Log("Section2");
+                F16Debug.Log("Section2");
 
                 if (aircraftSwitchEnabled)
                 {
-                    //set this to false to remove all debug codes
-                    Debug.unityLogger.logEnabled = debugbool;
-                    Debug.Log("Section2_1");
+                    //set this to false to remove all F16Debug codes
+                   // F16Debug.unityLogger.logEnabled = F16Debugbool;
+                    F16Debug.Log("Section2_1");
 
 
                     VariableSetting();
-                    Debug.Log("Section2_2");
+                    F16Debug.Log("Section2_2");
 
                     //Move the aircraft around to fix issues
 
@@ -2906,13 +2982,19 @@ namespace AircraftSwap
                     if (playeraircraft != null)
                         defaultf26 = playeraircraft;
                     else
-                        defaultf26 = VTOLAPI.GetPlayersVehicleGameObject();
+                    {
+                        if (VTOLAPI.currentScene == VTOLScenes.VehicleConfiguration)
+                            defaultf26 = VTOLAPI.GetPlayersVehicleGameObject(); 
+                        else
+                            defaultf26 = FlightSceneManager.instance.playerActor.gameObject;
+                    }
+                       
 
-                    Debug.Log("Section2_3");
+                    F16Debug.Log("Section2_3");
                     defaultF26Transform = defaultf26.transform;
-                    Debug.Log("Section2_4");
+                    F16Debug.Log("Section2_4");
                     defaultF26AFTransform = PickupAllChildrensTransforms(defaultf26, "aFighter2");
-                    Debug.Log("Section2_5");
+                    F16Debug.Log("Section2_5");
                     defaultF26AFTransformBody = PickupAllChildrensTransforms(defaultF26AFTransform.gameObject, "body");
                     defaultF26AFTransformBodyMF = defaultF26AFTransformBody.GetComponent<MeshFilter>();
                     defaultF26AFTransformBody.localScale = new Vector3(0.01f, 0.01f, 0.01f);
@@ -2937,7 +3019,7 @@ namespace AircraftSwap
                     
 
 
-                    Debug.Log("Section Aero");
+                    F16Debug.Log("Section Aero");
 
 
 
@@ -2952,14 +3034,14 @@ namespace AircraftSwap
 
                     //Comvalue.position = new Vector3(0f, 0.03f, -5f);
 
-                    Debug.Log("Section Fuel Tank");
+                    F16Debug.Log("Section Fuel Tank");
 
                     //setting the fuel tank
                     maxaircraftfuelinkg = 3200f;
                     ft = defaultf26.GetComponent<FuelTank>();
                     ff = ft.fuelFraction;
 
-                    Debug.Log("Fuel Fraction = " + ff);
+                    F16Debug.Log("Fuel Fraction = " + ff);
 
                     actualfuel = 0.45f * ff;
 
@@ -2967,19 +3049,19 @@ namespace AircraftSwap
                     ft.maxFuel = maxaircraftfuelinkg;
 
                     port = defaultf26.GetComponentInChildren<RefuelPort>();
-                    Debug.Log("Section Engine");
+                    F16Debug.Log("Section Engine");
 
 
 
                     //the value here is in kN not lbs
-                    Debug.Log("engmultiplier = " + engMultiplier);
+                    F16Debug.Log("engmultiplier = " + engMultiplier);
 
                     //f16:
                     engValue = 120f;
 
 
 
-                    Debug.Log("eng value = " + engValue);
+                    F16Debug.Log("eng value = " + engValue);
 
                     vehMaster = defaultf26.GetComponent<VehicleMaster>();
                     leftengineactual = PickupAllChildrensTransforms(defaultf26, "fa26-leftEngine").gameObject;
@@ -2996,9 +3078,9 @@ namespace AircraftSwap
                     foreach (var engine in vehMaster.engines)
                     {
                         engValue = engValue * i;
-                        Debug.Log("Engine MT Before = " + engine.maxThrust);
+                        F16Debug.Log("Engine MT Before = " + engine.maxThrust);
                         engine.maxThrust = engValue;
-                        Debug.Log("Engine MT After = " + engine.maxThrust);
+                        F16Debug.Log("Engine MT After = " + engine.maxThrust);
                         engine.abThrustMult = 1.8f;
                         engine.abSpoolMult = 1.8f;
                         //engine.fuelDrain = 0; //aerodynamics test only
@@ -3030,7 +3112,7 @@ namespace AircraftSwap
                     LeftEngineJetWash.gameObject.SetActiveRecursively(false);
                     RightEngineJetWash.gameObject.SetActiveRecursively(false);
 
-                    Debug.Log("Section HP");
+                    F16Debug.Log("Section HP");
 
                     // This allows you to disable hardpoints as needed only runs in the configurator screen
 
@@ -3038,11 +3120,11 @@ namespace AircraftSwap
                     HardpointChecker();
 
                     //Setting aero capabilities
-                    Debug.Log("Section Drag");
+                    F16Debug.Log("Section Drag");
 
                     //simple drag is the drag area i scaled this by looking at the settings for the f35 which is equivalent to the f45 in game it has an area of ,18 in game
                     sd = defaultf26.GetComponent<SimpleDrag>();
-                    Debug.Log("Default f26 Drag = " + sd.area);
+                    F16Debug.Log("Default f26 Drag = " + sd.area);
 
                     //f16
                     sd.area = 0.07f;
@@ -3068,40 +3150,40 @@ namespace AircraftSwap
                     Wing latBodyLift = PickupAllChildrensTransforms(defaultf26, "aileronRightAero").GetComponent<Wing>();
 
                     wllift = wingLeft.liftArea * wingLeft.liftCoefficient;
-                    Debug.Log("Lifting: WLLift = " + wingLeft.liftArea + "*" + wingLeft.liftCoefficient);
+                    F16Debug.Log("Lifting: WLLift = " + wingLeft.liftArea + "*" + wingLeft.liftCoefficient);
                     wrlift = wingRight.liftArea * wingRight.liftCoefficient;
-                    Debug.Log("Lifting: WRLift = " + wingRight.liftArea + "*" + wingRight.liftCoefficient);
+                    F16Debug.Log("Lifting: WRLift = " + wingRight.liftArea + "*" + wingRight.liftCoefficient);
                     rllift = rudderLeft.liftArea * rudderLeft.liftCoefficient;
-                    Debug.Log("Lifting: RLLift = " + rudderLeft.liftArea + "*" + rudderLeft.liftCoefficient);
+                    F16Debug.Log("Lifting: RLLift = " + rudderLeft.liftArea + "*" + rudderLeft.liftCoefficient);
                     rrlift = rudderRight.liftArea * rudderRight.liftCoefficient;
-                    Debug.Log("Lifting: RRLift = " + rudderRight.liftArea + "*" + rudderRight.liftCoefficient);
+                    F16Debug.Log("Lifting: RRLift = " + rudderRight.liftArea + "*" + rudderRight.liftCoefficient);
                     balift = bodyAero.liftArea * bodyAero.liftCoefficient;
-                    Debug.Log("Lifting: BALift = " + bodyAero.liftArea + "*" + bodyAero.liftCoefficient);
+                    F16Debug.Log("Lifting: BALift = " + bodyAero.liftArea + "*" + bodyAero.liftCoefficient);
                     wlolift = wingLeftOuter.liftArea * wingLeftOuter.liftCoefficient;
-                    Debug.Log("Lifting: WLOLift = " + wingLeftOuter.liftArea + "*" + wingLeftOuter.liftCoefficient);
+                    F16Debug.Log("Lifting: WLOLift = " + wingLeftOuter.liftArea + "*" + wingLeftOuter.liftCoefficient);
                     wrolift = wingRightOuter.liftArea * wingRightOuter.liftCoefficient;
-                    Debug.Log("Lifting: WROLift = " + wingRightOuter.liftArea + "*" + wingRightOuter.liftCoefficient);
+                    F16Debug.Log("Lifting: WROLift = " + wingRightOuter.liftArea + "*" + wingRightOuter.liftCoefficient);
                     wlelift = wingLeftElevon.liftArea * wingLeftElevon.liftCoefficient;
-                    Debug.Log("Lifting: WLELift = " + wingLeftElevon.liftArea + "*" + wingLeftElevon.liftCoefficient);
+                    F16Debug.Log("Lifting: WLELift = " + wingLeftElevon.liftArea + "*" + wingLeftElevon.liftCoefficient);
                     wrelift = wingRightElevon.liftArea * wingRightElevon.liftCoefficient;
-                    Debug.Log("Lifting: WRELift = " + wingRightElevon.liftArea + "*" + wingRightElevon.liftCoefficient);
+                    F16Debug.Log("Lifting: WRELift = " + wingRightElevon.liftArea + "*" + wingRightElevon.liftCoefficient);
                     wlvslift = wingLeftVertStab.liftArea * wingLeftVertStab.liftCoefficient;
-                    Debug.Log("Lifting: WLVSLift = " + wingLeftVertStab.liftArea + "*" + wingLeftVertStab.liftCoefficient);
+                    F16Debug.Log("Lifting: WLVSLift = " + wingLeftVertStab.liftArea + "*" + wingLeftVertStab.liftCoefficient);
                     wrvslift = wingRightVertStab.liftArea * wingRightVertStab.liftCoefficient;
-                    Debug.Log("Lifting: WRVSLift = " + wingRightVertStab.liftArea + "*" + wingRightVertStab.liftCoefficient);
+                    F16Debug.Log("Lifting: WRVSLift = " + wingRightVertStab.liftArea + "*" + wingRightVertStab.liftCoefficient);
                     flalift = flapLeftAero.liftArea * flapLeftAero.liftCoefficient;
-                    Debug.Log("Lifting: FLALift = " + flapLeftAero.liftArea + "*" + flapLeftAero.liftCoefficient);
+                    F16Debug.Log("Lifting: FLALift = " + flapLeftAero.liftArea + "*" + flapLeftAero.liftCoefficient);
                     fralift = flapRightAero.liftArea * flapRightAero.liftCoefficient;
-                    Debug.Log("Lifting: FRALift = " + flapRightAero.liftArea + "*" + flapRightAero.liftCoefficient);
+                    F16Debug.Log("Lifting: FRALift = " + flapRightAero.liftArea + "*" + flapRightAero.liftCoefficient);
                     alalift = aileronLeftAero.liftArea * aileronLeftAero.liftCoefficient;
-                    Debug.Log("Lifting: ALALift = " + aileronLeftAero.liftArea + "*" + aileronLeftAero.liftCoefficient);
+                    F16Debug.Log("Lifting: ALALift = " + aileronLeftAero.liftArea + "*" + aileronLeftAero.liftCoefficient);
                     aralift = aileronRightAero.liftArea * aileronRightAero.liftCoefficient;
-                    Debug.Log("Lifting: ARALift = " + aileronRightAero.liftArea + "*" + aileronRightAero.liftCoefficient);
+                    F16Debug.Log("Lifting: ARALift = " + aileronRightAero.liftArea + "*" + aileronRightAero.liftCoefficient);
                     lbllift = latBodyLift.liftArea * latBodyLift.liftCoefficient;
-                    Debug.Log("Lifting: LBLLift = " + latBodyLift.liftArea + "*" + latBodyLift.liftCoefficient);
+                    F16Debug.Log("Lifting: LBLLift = " + latBodyLift.liftArea + "*" + latBodyLift.liftCoefficient);
 
                     totalLift = wllift + wrlift + rllift + rrlift + balift + wlolift + wrolift + wlelift + wrelift + wlvslift + wrvslift + flalift + fralift + alalift + aralift + lbllift;
-                    Debug.Log("Lifting Total: = " + totalLift);
+                    F16Debug.Log("Lifting Total: = " + totalLift);
 
 
 
@@ -3130,11 +3212,11 @@ namespace AircraftSwap
                     //Usermods = VTOLAPI.GetUsersMods();
                     //foreach (Mod moditem in Usermods)
                     //{
-                    //    Debug.Log("Mod found: " + moditem.name);
+                    //    F16Debug.Log("Mod found: " + moditem.name);
                     //    if (moditem.name == "Multiplayer")
                     //    {
                     //        mploaded = true;
-                    //        Debug.Log("Found MP");
+                    //        F16Debug.Log("Found MP");
                     //    }
                     //}
 
@@ -3183,7 +3265,7 @@ namespace AircraftSwap
                     //this creates the new vehicle based on the old one and resizes it , then moves and rotates into position
 
 
-                    newAircraftUnit = Instantiate(newAircraftPrefab, VTOLAPI.GetPlayersVehicleGameObject().transform);
+                    newAircraftUnit = Instantiate(newAircraftPrefab, defaultf26.transform);
                    
                     newAircraftUnitbody = PickupAllChildrensTransforms(newAircraftUnit, "Body");
                     newAircraftUnitBodyMF = newAircraftUnitbody.GetComponent<MeshFilter>();
@@ -3222,7 +3304,7 @@ namespace AircraftSwap
                     if (blackoutEffectTransform == null) { }
                     else
                     {
-                        Debug.Log("Blackout implemented");
+                        F16Debug.Log("Blackout implemented");
                         blackoutEffectobj = blackoutEffectTransform.gameObject;
                         BlackoutEffect blackoutvars = blackoutEffectobj.GetComponent<BlackoutEffect>();
                         blackoutvars.gTolerance = 7.5f;
@@ -3233,21 +3315,21 @@ namespace AircraftSwap
                     }
 
                     //radar setup for f16
-                    Debug.Log("radar setup 1");
+                    F16Debug.Log("radar setup 1");
 
 
                     RadarTransform = PickupAllChildrensTransforms(defaultf26, "Radar");
                     f16radarsystem = RadarTransform.GetComponent<LockingRadar>();
                     f16radaradvanced = RadarTransform.GetComponent<AdvancedRadarController>();
                     f16radarbase = RadarTransform.GetComponent<Radar>();
-                    Debug.Log("radar setup 2");
+                    F16Debug.Log("radar setup 2");
                     f26uiradar = PickupAllChildrensTransforms(defaultf26, "RadarUIController");
                     f26uiradarmfd = f26uiradar.GetComponent<MFDRadarUI>();
 
-                    Debug.Log("radar setup 3");
+                    F16Debug.Log("radar setup 3");
                     f26uiradarmfdviewr = f26uiradarmfd.viewRanges;
 
-                    Debug.Log("radar setup 4" + f26uiradarmfdviewr[3]);
+                    F16Debug.Log("radar setup 4" + f26uiradarmfdviewr[3]);
                     f26uiradarmfdviewr[0] = 10000f;
                     f26uiradarmfdviewr[1] = 25000f;
                     f26uiradarmfdviewr[2] = 60000f;
@@ -3255,8 +3337,8 @@ namespace AircraftSwap
 
                     if (f16radarsystem != null)
                     {
-                        Debug.Log("Existing Radar Max Range = " + f16radarsystem.maxRange);
-                        Debug.Log("Tansmissionstrength = " + f16radarsystem.transmissionStrength);
+                        F16Debug.Log("Existing Radar Max Range = " + f16radarsystem.maxRange);
+                        F16Debug.Log("Tansmissionstrength = " + f16radarsystem.transmissionStrength);
 
                         f16radarsystem.enabled = false;
                         f16radaradvanced.enabled = false;
@@ -3280,18 +3362,18 @@ namespace AircraftSwap
 
 
                     //lights - setup lights in the function
-                    Debug.Log("Lights");
+                    F16Debug.Log("Lights");
                     lights();
 
                     //wheels - setup wheel rotations in the function and start gear positions
-                    Debug.Log("Wheels");
+                    F16Debug.Log("Wheels");
                     wheels();
 
 
-                    Debug.Log("Section Control Surfaces");
+                    F16Debug.Log("Section Control Surfaces");
 
                     frontlandinglightsf26light = PickupAllChildrensTransforms(defaultf26, "LandingLight");
-                    if (frontlandinglightsf26light == null) { Debug.Log("Got light"); }
+                    if (frontlandinglightsf26light == null) { F16Debug.Log("Got light"); }
 
 
                     //hud scaling
@@ -3325,35 +3407,35 @@ namespace AircraftSwap
 
                     //get the hinges and activators from f-16 model
 
-                    Debug.Log("test 1_1");
+                    F16Debug.Log("test 1_1");
                     //left elements
                     AileronLeftf16 = PickupAllChildrensTransforms(newAircraftUnit, "Aileron_Left").gameObject;
                     Transform AileronLeftf16t = AileronLeftf16.transform;
-                    Debug.Log("test 1_2");
+                    F16Debug.Log("test 1_2");
                     aileronlefthinge = PickupAllChildrensTransforms(newAircraftUnit, "aileronlefthinge").gameObject;
                     Transform aileronlefthinget = aileronlefthinge.transform;
                     f16aileronlefthingeatrest = aileronlefthinget.localEulerAngles;
-                    Debug.Log("test 1_3");
+                    F16Debug.Log("test 1_3");
                     taileronlefthinge = PickupAllChildrensTransforms(newAircraftUnit, "taileronlefthinge").gameObject;
                     Transform taileronlefthinget = taileronlefthinge.transform;
                     f16taileronlefthingeatrest = taileronlefthinget.localEulerAngles;
-                    Debug.Log("test 1_4");
+                    F16Debug.Log("test 1_4");
                     moveaileronlefthinge = f16aileronlefthingeatrest;
                     movetaileronlefthinge = f16taileronlefthingeatrest;
-                    Debug.Log("test 1_5");
+                    F16Debug.Log("test 1_5");
                     //right elements
                     Aileronrightf16 = PickupAllChildrensTransforms(newAircraftUnit, "Aileron_Right").gameObject;
                     Transform Aileronrightf16t = Aileronrightf16.transform;
-                    Debug.Log("test 1_6");
+                    F16Debug.Log("test 1_6");
                     aileronrighthinge = PickupAllChildrensTransforms(newAircraftUnit, "aileronrighthinge").gameObject;
-                    Debug.Log("test 1_7");
+                    F16Debug.Log("test 1_7");
                     Transform aileronrighthinget = aileronrighthinge.transform;
                     f16aileronrighthingeatrest = aileronrighthinget.localEulerAngles;
-                    Debug.Log("test 1_8");
+                    F16Debug.Log("test 1_8");
                     taileronrighthinge = PickupAllChildrensTransforms(newAircraftUnit, "taileronrighthinge").gameObject;
                     Transform taileronrighthinget = taileronrighthinge.transform;
                     f16taileronrighthingeatrest = taileronrighthinget.localEulerAngles;
-                    Debug.Log("test 1_9");
+                    F16Debug.Log("test 1_9");
 
                     moveaileronrighthinge = f16aileronrighthingeatrest;
                     movetaileronrighthinge = f16taileronrighthingeatrest;
@@ -3363,7 +3445,7 @@ namespace AircraftSwap
                     Transform rudderhinget = rudderhinge.transform;
                     f16rudderhingeatrest = rudderhinget.localEulerAngles;
                     moverudderhinge = f16rudderhingeatrest;
-                    Debug.Log("test 1_10");
+                    F16Debug.Log("test 1_10");
 
                     //get lef 
                     //left
@@ -3371,19 +3453,19 @@ namespace AircraftSwap
                     Transform leflaplefthinget = leflaplefthinge.transform;
                     f16leflefthingeatrest = leflaplefthinget.localEulerAngles;
                     moveleftlefhinge = f16leflefthingeatrest;
-                    Debug.Log("test 1_11");
+                    F16Debug.Log("test 1_11");
                     //right
                     leflaprighthinge = PickupAllChildrensTransforms(newAircraftUnit, "leflaprighthinge").gameObject;
                     Transform leflaprighthinget = leflaprighthinge.transform;
                     f16lefrighthingeatrest = leflaprighthinget.localEulerAngles;
                     moverightlefhinge = f16lefrighthingeatrest;
-                    Debug.Log("test 1_12");
+                    F16Debug.Log("test 1_12");
 
 
 
 
 
-                    Debug.Log("Section4");
+                    F16Debug.Log("Section4");
 
                     //create all the hardpoint variables
 
@@ -3449,7 +3531,7 @@ namespace AircraftSwap
 
                     f26GunTransform.position = f16GunTransform.position;
 
-                    Debug.Log("Section5");
+                    F16Debug.Log("Section5");
 
                     //Move Hardpoints
 
@@ -3505,31 +3587,31 @@ namespace AircraftSwap
                     HP13actual.transform.localScale = Scaleoffset;
                     leftengineactual.transform.localScale = new Vector3(0.88f, 0.88f, 0.88f);
 
-                    Debug.Log("Section6");
+                    F16Debug.Log("Section6");
 
                     //this makes the whole body disappear by setting the renderer off
 
-                    Debug.Log("Section7");
+                    F16Debug.Log("Section7");
 
                     Transform bodytohide = defaultF26Transform.Find("aFighter2");
                     GameObject bodytohideobj = bodytohide.gameObject;
                     disableMesh(bodytohideobj);
 
 
-                    Debug.Log("Section9");
+                    F16Debug.Log("Section9");
                     Transform ejecttohide = defaultF26Transform.Find("EjectorSeat");
                     GameObject ejecttohideobj = ejecttohide.gameObject;
                     disableMesh(ejecttohideobj);
 
                     
 
-                    Debug.Log("Section10");
+                    F16Debug.Log("Section10");
 
 
 
 
 
-                    Debug.Log("Section15");
+                    F16Debug.Log("Section15");
 
                     //This reenables the things we need
                     List<string> partstounhidelist = new List<string>()
@@ -3538,7 +3620,7 @@ namespace AircraftSwap
                         };
                     foreach (String partstounhidename in partstounhidelist)
                     {
-                        Debug.Log("finding: " + partstounhidename);
+                        F16Debug.Log("finding: " + partstounhidename);
                         GameObject parttounhide = PickupAllChildrensTransforms(defaultf26, partstounhidename).gameObject as GameObject;
                         if (parttounhide != null)
                         {
@@ -3546,7 +3628,7 @@ namespace AircraftSwap
 
                             enableMesh(parttounhide);
 
-                            Debug.Log("Part alive: " + partstounhidename);
+                            F16Debug.Log("Part alive: " + partstounhidename);
                         }
                     }
 
@@ -3556,7 +3638,7 @@ namespace AircraftSwap
                         };
                     foreach (String partstohidename in partstohidelist)
                     {
-                        Debug.Log("finding: " + partstohidename);
+                        F16Debug.Log("finding: " + partstohidename);
                         GameObject parttohide = PickupAllChildrensTransforms(defaultf26, partstohidename).gameObject as GameObject;
                         if (parttohide != null)
                         {
@@ -3572,7 +3654,7 @@ namespace AircraftSwap
                             disableVTT(parttohide);
 
 
-                            Debug.Log("Part alive: " + partstohidename);
+                            F16Debug.Log("Part alive: " + partstohidename);
                         }
                     }
 
@@ -3589,7 +3671,7 @@ namespace AircraftSwap
                     disableSprites(subPartToScaleTransform.gameObject);
                     subPartToScaleTransform.gameObject.SetActive(false);
 
-                    Debug.Log("wingtipvapors");
+                    F16Debug.Log("wingtipvapors");
                     //wingtip vapors
                     leftwingtipvapors = PickupAllChildrensTransforms(defaultf26, "WingVapor (7)");
                     rightwingtipvapors = PickupAllChildrensTransforms(defaultf26, "WingVapor (6)");
@@ -3616,7 +3698,7 @@ namespace AircraftSwap
                     leftwingovervapors.localScale = new Vector3(0.66f, 1f, 0.66f);
                     rightwingovervapors.localScale = new Vector3(0.66f, 1f, 0.66f);
 
-                    //Debug.Log("wing folders");
+                    //F16Debug.Log("wing folders");
                     wingFoldSwitch = PickupAllChildrensTransforms(defaultf26, "WingSwitch");
                     wingFoldSwitchI = PickupAllChildrensTransforms(defaultf26, "WingSwitchInteractable");
                     wingFoldSwitchIVR = wingFoldSwitchI.GetComponent<VRLever>();
@@ -3634,7 +3716,7 @@ namespace AircraftSwap
 
 
 
-                    Debug.Log("Flap Lever State = " + flc);
+                    F16Debug.Log("Flap Lever State = " + flc);
                     //FlapsLeverCheck.OnSetState = new IntEvent();
                     FlapsLeverCheck.OnSetState.AddListener(FlapLeverCheckState);
 
@@ -3646,18 +3728,18 @@ namespace AircraftSwap
                     VRLever internalLightsLeverCheck = internalLightsLeverObject.GetComponentInChildren<VRLever>();
                     ilCheck = internalLightsLeverCheck.currentState;
 
-                    Debug.Log("Internal Light State = " + lglCheck);
+                    F16Debug.Log("Internal Light State = " + lglCheck);
                     allInstrumentsLightsTransformParentObj = PickupAllChildrensTransforms(newAircraftUnit, "InstrumentLights").gameObject;
                     allInstrumentsLights = allInstrumentsLightsTransformParentObj.GetComponentsInChildren(typeof(Light));
 
-                    Debug.Log("Internal Light 2 ");
+                    F16Debug.Log("Internal Light 2 ");
 
                     //left panel
                     leftPanelgObj = PickupAllChildrensTransforms(newAircraftUnit, "console_L").gameObject;
                     leftPanelRendererMaterials = leftPanelgObj.GetComponent<MeshRenderer>().materials;
                     foreach (Material materialitem in leftPanelRendererMaterials)
                     {
-                        Debug.Log("Material Name = " + materialitem.name);
+                        F16Debug.Log("Material Name = " + materialitem.name);
                         if (materialitem.name == "con_ltx (Instance)")
                         {
                             leftPanelRendererMaterial = materialitem;
@@ -3670,7 +3752,7 @@ namespace AircraftSwap
                     leftauxpanelrenderermaterials = leftauxpanelgobj.GetComponent<MeshRenderer>().materials;
                     foreach (Material materialitem in leftauxpanelrenderermaterials)
                     {
-                        Debug.Log("Material Name = " + materialitem.name);
+                        F16Debug.Log("Material Name = " + materialitem.name);
                         if (materialitem.name == "claux_tx (Instance)")
                         {
                             leftauxpanelrenderermaterial = materialitem;
@@ -3682,7 +3764,7 @@ namespace AircraftSwap
                     rightpanelrenderermaterials = rightPanelgObj.GetComponent<MeshRenderer>().materials;
                     foreach (Material materialitem in rightpanelrenderermaterials)
                     {
-                        Debug.Log("Material Name = " + materialitem.name);
+                        F16Debug.Log("Material Name = " + materialitem.name);
                         if (materialitem.name == "conr_txt (Instance)")
                         {
                             rightpanelrenderermaterial = materialitem;
@@ -3696,7 +3778,7 @@ namespace AircraftSwap
                     rightauxpanelrenderermaterials = rightauxpanelgobj.GetComponent<MeshRenderer>().materials;
                     foreach (Material materialitem in rightauxpanelrenderermaterials)
                     {
-                        Debug.Log("Material Name = " + materialitem.name);
+                        F16Debug.Log("Material Name = " + materialitem.name);
                         if (materialitem.name == "pan_txt (Instance)")
                         {
                             rightauxpanelrenderermaterial = materialitem;
@@ -3709,7 +3791,7 @@ namespace AircraftSwap
                     frontcentrepanelrenderermaterials = frontcentrepanelgobj.GetComponent<MeshRenderer>().materials;
                     foreach (Material materialitem in frontcentrepanelrenderermaterials)
                     {
-                        Debug.Log("Material Name = " + materialitem.name);
+                        F16Debug.Log("Material Name = " + materialitem.name);
                         if (materialitem.name == "panel_tx (Instance)")
                         {
                             frontcentrepanelrenderermaterial = materialitem;
@@ -3722,7 +3804,7 @@ namespace AircraftSwap
                     frontupperpanelrenderermaterials = frontupperpanelgobj.GetComponent<MeshRenderer>().materials;
                     foreach (Material materialitem in frontupperpanelrenderermaterials)
                     {
-                        Debug.Log("Material Name = " + materialitem.name);
+                        F16Debug.Log("Material Name = " + materialitem.name);
                         if (materialitem.name == "conf_text (Instance)")
                         {
                             frontupperpanelrenderermaterial = materialitem;
@@ -3736,7 +3818,7 @@ namespace AircraftSwap
                     frontsightpanelrenderermaterials = frontsightpanelgobj.GetComponent<MeshRenderer>().materials;
                     foreach (Material materialitem in frontsightpanelrenderermaterials)
                     {
-                        Debug.Log("Material Name = " + materialitem.name);
+                        F16Debug.Log("Material Name = " + materialitem.name);
                         if (materialitem.name == "sight_tx (Instance)")
                         {
                             frontsightpanelrenderermaterial = materialitem;
@@ -3751,7 +3833,7 @@ namespace AircraftSwap
                     CompasscylinderobjRendererMaterials = Compasscylinderobj.GetComponent<MeshRenderer>().materials;
                     foreach (Material materialitem in CompasscylinderobjRendererMaterials)
                     {
-                        Debug.Log("Material Name = " + materialitem.name);
+                        F16Debug.Log("Material Name = " + materialitem.name);
                         if (materialitem.name == "Material.001 (Instance)")
                         {
                             Compasscylindermaterial = materialitem;
@@ -3763,7 +3845,7 @@ namespace AircraftSwap
                     AOAcylinderobjRendererMaterials = AOAcylinderobj.GetComponent<MeshRenderer>().materials;
                     foreach (Material materialitem in AOAcylinderobjRendererMaterials)
                     {
-                        Debug.Log("Material Name = " + materialitem.name);
+                        F16Debug.Log("Material Name = " + materialitem.name);
                         if (materialitem.name == "aoaindicator (Instance)")
                         {
                             AOAcylindermaterial = materialitem;
@@ -3776,7 +3858,7 @@ namespace AircraftSwap
                     rightUpperInstrumentsRendererMaterials = rightUpperInstruments.GetComponent<MeshRenderer>().materials;
                     foreach (Material materialitem in rightUpperInstrumentsRendererMaterials)
                     {
-                        Debug.Log("Material Name = " + materialitem.name);
+                        F16Debug.Log("Material Name = " + materialitem.name);
                         if (materialitem.name == "scale_07 (Instance)")
                         {
                             rightUpperInstrumentsRPM = materialitem;
@@ -3810,7 +3892,7 @@ namespace AircraftSwap
                     contr2ParentRendererMaterials = contr2Parent.GetComponent<MeshRenderer>().sharedMaterials;
                     foreach (Material materialitem in contr2ParentRendererMaterials)
                     {
-                        Debug.Log("Material Name = " + materialitem.name);
+                        F16Debug.Log("Material Name = " + materialitem.name);
 
                         if (materialitem.name == "contr2")
                         {
@@ -3822,7 +3904,7 @@ namespace AircraftSwap
                     contr1ParentRendererMaterials = contr1Parent.GetComponent<MeshRenderer>().sharedMaterials;
                     foreach (Material materialitem in contr1ParentRendererMaterials)
                     {
-                        Debug.Log("Material Name = " + materialitem.name);
+                        F16Debug.Log("Material Name = " + materialitem.name);
 
                         if (materialitem.name == "contr1")
                         {
@@ -3836,7 +3918,7 @@ namespace AircraftSwap
                     controlParentRendererMaterials = controlParent.GetComponent<MeshRenderer>().sharedMaterials;
                     foreach (Material materialitem in controlParentRendererMaterials)
                     {
-                        Debug.Log("Material Name = " + materialitem.name);
+                        F16Debug.Log("Material Name = " + materialitem.name);
 
                         if (materialitem.name == "control")
                         {
@@ -3851,7 +3933,7 @@ namespace AircraftSwap
                     contr4ParentRendererMaterials = contr4Parent.GetComponent<MeshRenderer>().sharedMaterials;
                     foreach (Material materialitem in contr4ParentRendererMaterials)
                     {
-                        Debug.Log("Material Name = " + materialitem.name);
+                        F16Debug.Log("Material Name = " + materialitem.name);
 
                         if (materialitem.name == "contr4")
                         {
@@ -3870,7 +3952,7 @@ namespace AircraftSwap
                     rightAuxInstrumentsRendererMaterials = rightAuxInstruments.GetComponent<MeshRenderer>().materials;
                     foreach (Material materialitem in rightAuxInstrumentsRendererMaterials)
                     {
-                        Debug.Log("Material Name = " + materialitem.name);
+                        F16Debug.Log("Material Name = " + materialitem.name);
                         if (materialitem.name == "crau_sc3 (Instance)")
                         {
                             rightAuxInstrumentsHydraulics = materialitem;
@@ -3916,7 +3998,7 @@ namespace AircraftSwap
                     frontPanelICFRendererMaterials = frontPanelICF.GetComponent<MeshRenderer>().materials;
                     foreach (Material materialitem in frontPanelICFRendererMaterials)
                     {
-                        Debug.Log("Material Name = " + materialitem.name);
+                        F16Debug.Log("Material Name = " + materialitem.name);
                         if (materialitem.name == "key_txt 1 (Instance)")
                         {
                             frontPanelICFMat = materialitem;
@@ -3945,12 +4027,11 @@ namespace AircraftSwap
                     cl = CanopyLeverCheck.currentState;
 
 
-                    Debug.Log("Canopy State = " + cl);
+                    F16Debug.Log("Canopy State = " + cl);
 
 
 
-
-
+               
                     //how loing to wait before starting
                     waitInterval = 0.5f;
                     //how long to take in seconds
@@ -3979,7 +4060,7 @@ namespace AircraftSwap
                     //now make the actual pivot transfor be in the right place
                      
 
-                    Debug.Log("CockpitPivot Position = (" + cockpitPivot.transform.position.x + "," + cockpitPivot.transform.position.y + "," + cockpitPivot.transform.position.z + ")");
+                    F16Debug.Log("CockpitPivot Position = (" + cockpitPivot.transform.position.x + "," + cockpitPivot.transform.position.y + "," + cockpitPivot.transform.position.z + ")");
 
                     //tie the pivot point to the aircraft
                     //cockpitPivot.transform.SetParent(defaultF26Transform);
@@ -3987,16 +4068,16 @@ namespace AircraftSwap
                     
 
 
-                    Debug.Log("Cockpit Position = (" + cockpit.transform.position.x + "," + cockpit.transform.position.y + "," + cockpit.transform.position.z + ")");
-                    Debug.Log("Cockpit localPosition = (" + cockpit.transform.localPosition.x + "," + cockpit.transform.localPosition.y + "," + cockpit.transform.localPosition.z + ")");
+                    F16Debug.Log("Cockpit Position = (" + cockpit.transform.position.x + "," + cockpit.transform.position.y + "," + cockpit.transform.position.z + ")");
+                    F16Debug.Log("Cockpit localPosition = (" + cockpit.transform.localPosition.x + "," + cockpit.transform.localPosition.y + "," + cockpit.transform.localPosition.z + ")");
 
                     //this works out where we are now
 
-                    Debug.Log("CockpitPivot Rotation = (" + cockpitPivot.localEulerAngles.x + "," + cockpitPivot.localEulerAngles.y + "," + cockpitPivot.localEulerAngles.z + ")");
+                    F16Debug.Log("CockpitPivot Rotation = (" + cockpitPivot.localEulerAngles.x + "," + cockpitPivot.localEulerAngles.y + "," + cockpitPivot.localEulerAngles.z + ")");
 
 
 
-                    Debug.Log("CockpitPivot Rotation = (" + cockpitPivot.localEulerAngles.x + "," + cockpitPivot.localEulerAngles.y + "," + cockpitPivot.localEulerAngles.z + ")");
+                    F16Debug.Log("CockpitPivot Rotation = (" + cockpitPivot.localEulerAngles.x + "," + cockpitPivot.localEulerAngles.y + "," + cockpitPivot.localEulerAngles.z + ")");
 
                     defaultRotation = cockpitPivot.localEulerAngles;
 
@@ -4043,12 +4124,12 @@ namespace AircraftSwap
 
 
                     gearStateStart = f26landinggearintlever.currentState;
-                    Debug.Log("F26 Landing Gear State = " + gearStateStart);
+                    F16Debug.Log("F26 Landing Gear State = " + gearStateStart);
 
 
                     f16landinggearleverVRL = CreateSwitch("Landing Gear", f16landinggearlevertrans.gameObject, f16landinggearleverPivot, 15f, 2, gearStateStart, LeftFWDDashPoseBoundsF16.GetComponent<PoseBounds>(), false, true);
                     lglCheck = f16landinggearleverVRL.currentState;
-                    Debug.Log("F16 Landing Gear State = " + lglCheck);
+                    F16Debug.Log("F16 Landing Gear State = " + lglCheck);
                     landinggearcount = 0;
 
 
@@ -4059,14 +4140,14 @@ namespace AircraftSwap
 
 
 
-                    Debug.Log("F26 Landing Gear State 2 = " + f26landinggearintlever.currentState);
-                    Debug.Log("f16 Landing Gear State 2 = " + f16landinggearleverVRL.currentState);
+                    F16Debug.Log("F26 Landing Gear State 2 = " + f26landinggearintlever.currentState);
+                    F16Debug.Log("f16 Landing Gear State 2 = " + f16landinggearleverVRL.currentState);
 
 
                     f16landinggearleverVRL.OnSetState.AddListener(LandingGearPreCheck);
 
-                    Debug.Log("F26 Landing Gear State 3 = " + f26landinggearintlever.currentState);
-                    Debug.Log("f16 Landing Gear State 3 = " + f16landinggearleverVRL.currentState);
+                    F16Debug.Log("F26 Landing Gear State 3 = " + f26landinggearintlever.currentState);
+                    F16Debug.Log("f16 Landing Gear State 3 = " + f16landinggearleverVRL.currentState);
 
                     //how loing to wait before starting
                     landinggearwaitInterval = 0.5f;
@@ -4078,8 +4159,8 @@ namespace AircraftSwap
                     ///airbrake setup
                     airbrakeobj = PickupAllChildrensTransforms(defaultf26, "airbrakeParent").gameObject;
                     airbrakepiston = PickupAllChildrensTransforms(airbrakeobj, "airbrakePiston").gameObject;
-                    Debug.Log("airbrake default rotation :" + airbrakeobj.transform.localEulerAngles.x + "," + airbrakeobj.transform.localEulerAngles.y + "," + airbrakeobj.transform.localEulerAngles.z);
-                    Debug.Log("airbrakepiston default rotation :" + airbrakepiston.transform.localEulerAngles.x + "," + airbrakepiston.transform.localEulerAngles.y + "," + airbrakepiston.transform.localEulerAngles.z);
+                    F16Debug.Log("airbrake default rotation :" + airbrakeobj.transform.localEulerAngles.x + "," + airbrakeobj.transform.localEulerAngles.y + "," + airbrakeobj.transform.localEulerAngles.z);
+                    F16Debug.Log("airbrakepiston default rotation :" + airbrakepiston.transform.localEulerAngles.x + "," + airbrakepiston.transform.localEulerAngles.y + "," + airbrakepiston.transform.localEulerAngles.z);
                     airBrakeController = airbrakeobj.GetComponent<AirBrakeController>();
 
                     defaultairbrakerotation = new Vector3(271.5f, 180f, 180f);
@@ -4131,11 +4212,11 @@ namespace AircraftSwap
                     LeftWingObject = PickupAllChildrensTransforms(defaultf26, "wingLeftPart").gameObject;
                     LeftWingHealth = LeftWingObject.GetComponent<Health>();
                     LeftWingHealthStatus = LeftWingHealth.currentHealth;
-                    Debug.Log("LeftWing Health = " + LeftWingHealthStatus);
+                    F16Debug.Log("LeftWing Health = " + LeftWingHealthStatus);
                     RighttWingObject = PickupAllChildrensTransforms(defaultf26, "wingRightPart").gameObject;
                     RightWingHealth = RighttWingObject.GetComponent<Health>();
                     RightWingHealthStatus = RightWingHealth.currentHealth;
-                    Debug.Log("RightWing Health = " + RightWingHealthStatus);
+                    F16Debug.Log("RightWing Health = " + RightWingHealthStatus);
 
                     //Get heat of engines
 
@@ -4156,22 +4237,22 @@ namespace AircraftSwap
 
                     foreach (var tank in fuelTanks)
                     {
-                        Debug.Log("Tank = " + tank.name);
+                        F16Debug.Log("Tank = " + tank.name);
 
                         maxfuel = tank.maxFuel;
-                        Debug.Log("Tank Max Fuel = " + tank.name + " : " + maxfuel);
+                        F16Debug.Log("Tank Max Fuel = " + tank.name + " : " + maxfuel);
 
 
                         totalfuelinaircraft = totalfuelinaircraft + maxfuel;
-                        Debug.Log("Total Fuel = " + totalfuelinaircraft);
+                        F16Debug.Log("Total Fuel = " + totalfuelinaircraft);
                         externalfueltanks = tank.subFuelTanks;
                         foreach (var subtank in externalfueltanks)
                         {
                             maxfuel = subtank.maxFuel;
-                            Debug.Log("Tank Max Fuel = " + subtank.name + " : " + maxfuel);
+                            F16Debug.Log("Tank Max Fuel = " + subtank.name + " : " + maxfuel);
 
                             totalfuelinaircraft = totalfuelinaircraft + maxfuel;
-                            Debug.Log("Total Fuel = " + totalfuelinaircraft);
+                            F16Debug.Log("Total Fuel = " + totalfuelinaircraft);
                         }
                     }
 
@@ -4195,13 +4276,13 @@ namespace AircraftSwap
 
                     f16LazerArmintTK.OnSetState.AddListener(HelperLights);
 
-                    Debug.Log("finished hide");
+                    F16Debug.Log("finished hide");
 
 
 
 
                     //make somethings large again
-                    Debug.Log("Line 294");
+                    F16Debug.Log("Line 294");
                     //CanopyLeverCheck.OnSetState = new IntEvent();
                     CanopyLeverCheck.OnSetState.AddListener(CanopyCheckState);
 
@@ -4209,16 +4290,14 @@ namespace AircraftSwap
 
                     Setuprunning = false;
 
-                    //get mp buttons
-                    mpRadioButton1 = PickupAllChildrensTransforms(defaultf26, "1");
-
+                    //get mp buttons  
                     if (MPActive)
                     {
-                        Debug.Log("enabling mp radio");
+                        mpRadioButton1 = PickupAllChildrensTransforms(defaultf26, "1");
+
+                  
+                        F16Debug.Log("enabling mp radio");
                         StartCoroutine(MPRadio());
-
-                        
-
                     }
 
                     //setupded
@@ -4559,7 +4638,7 @@ namespace AircraftSwap
 
         private IEnumerator MPRadio()
         {
-            Debug.Log("MP Radio Start");
+            F16Debug.Log("MP Radio Start");
             mpradiobutton2 = PickupAllChildrensTransforms(defaultf26, "2");
             mpradiobutton3 = PickupAllChildrensTransforms(defaultf26, "3");
             mpradiobutton4 = PickupAllChildrensTransforms(defaultf26, "4");
@@ -4663,23 +4742,23 @@ namespace AircraftSwap
 
         private void CockpitPanelHider()
         {
-            Debug.Log("cph0 ");
+            F16Debug.Log("cph0 ");
             //fuel Dump panel
             fueldumppanel = f26LeftPanel.Find("panelEnd (3)");
 
-            Debug.Log("cph1 : " + fueldumppanel.name);
+            F16Debug.Log("cph1 : " + fueldumppanel.name);
             fueldumppanel1 = fueldumppanel.Find("panelEnd (1)");
-            Debug.Log("cph2");
+            F16Debug.Log("cph2");
             fueldumppanel2 = fueldumppanel.Find("panelMidsection");
-            Debug.Log("cph3");
+            F16Debug.Log("cph3");
             disableMesh(fueldumppanel.gameObject);
             disableVTT(fueldumppanel.gameObject);
             disableSprites(fueldumppanel.gameObject);
-            Debug.Log("cph4");
+            F16Debug.Log("cph4");
             disableMesh(fueldumppanel1.gameObject);
             disableVTT(fueldumppanel1.gameObject);
             disableSprites(fueldumppanel1.gameObject);
-            Debug.Log("cph5");
+            F16Debug.Log("cph5");
             disableMesh(fueldumppanel2.gameObject);
             disableVTT(fueldumppanel2.gameObject);
             disableSprites(fueldumppanel2.gameObject);
@@ -4693,12 +4772,12 @@ namespace AircraftSwap
             disableVTT(cmpanelparent.gameObject);
             disableSprites(cmpanelparent.gameObject);
 
-            Debug.Log("cph6");
+            F16Debug.Log("cph6");
             disableMesh(cmpanel1.gameObject);
             disableVTT(cmpanel1.gameObject);
             disableSprites(cmpanel1.gameObject);
 
-            Debug.Log("cph7");
+            F16Debug.Log("cph7");
             disableMesh(cmpanel2.gameObject);
             disableVTT(cmpanel2.gameObject);
             disableSprites(cmpanel2.gameObject);
@@ -4730,12 +4809,12 @@ namespace AircraftSwap
             disableVTT(FlightAssistPanelpanelparent.gameObject);
             disableSprites(FlightAssistPanelpanelparent.gameObject);
 
-            Debug.Log("cph8");
+            F16Debug.Log("cph8");
             disableMesh(FlightAssistPanelpanel1.gameObject);
             disableVTT(FlightAssistPanelpanel1.gameObject);
             disableSprites(FlightAssistPanelpanel1.gameObject);
 
-            Debug.Log("cph9");
+            F16Debug.Log("cph9");
             disableMesh(FlightAssistPanelpanel2.gameObject);
             disableVTT(FlightAssistPanelpanel2.gameObject);
             disableSprites(FlightAssistPanelpanel2.gameObject);
@@ -4781,11 +4860,11 @@ namespace AircraftSwap
             disableMesh(FuelPortSwitchpanelparent.gameObject);
             disableVTT(FuelPortSwitchpanelparent.gameObject);
             disableSprites(FuelPortSwitchpanelparent.gameObject);
-            Debug.Log("cph10");
+            F16Debug.Log("cph10");
             disableMesh(FuelPortSwitchpanel1.gameObject);
             disableVTT(FuelPortSwitchpanel1.gameObject);
             disableSprites(FuelPortSwitchpanel1.gameObject);
-            Debug.Log("cph11");
+            F16Debug.Log("cph11");
             disableMesh(FuelPortSwitchpanel2.gameObject);
             disableVTT(FuelPortSwitchpanel2.gameObject);
             disableSprites(FuelPortSwitchpanel2.gameObject);
@@ -4801,12 +4880,12 @@ namespace AircraftSwap
             disableVTT(RadioDashpanelparent.gameObject);
             disableSprites(RadioDashpanelparent.gameObject);
 
-            Debug.Log("cph12");
+            F16Debug.Log("cph12");
             disableMesh(RadioDashpanel1.gameObject);
             disableVTT(RadioDashpanel1.gameObject);
             disableSprites(RadioDashpanel1.gameObject);
 
-            Debug.Log("cph13");
+            F16Debug.Log("cph13");
             disableMesh(RadioDashpanel2.gameObject);
             disableVTT(RadioDashpanel2.gameObject);
             disableSprites(RadioDashpanel2.gameObject);
@@ -4819,11 +4898,11 @@ namespace AircraftSwap
             disableMesh(Basicpanel1panel.gameObject);
             disableVTT(Basicpanel1panel.gameObject);
             disableSprites(Basicpanel1panel.gameObject);
-            Debug.Log("cph14");
+            F16Debug.Log("cph14");
             disableMesh(Basicpanel1panel1.gameObject);
             disableVTT(Basicpanel1panel1.gameObject);
             disableSprites(Basicpanel1panel1.gameObject);
-            Debug.Log("cph15");
+            F16Debug.Log("cph15");
             disableMesh(Basicpanel1panel2.gameObject);
             disableVTT(Basicpanel1panel2.gameObject);
             disableSprites(Basicpanel1panel2.gameObject);
@@ -4834,9 +4913,9 @@ namespace AircraftSwap
             Basicpanel3panel1 = Basicpanel3panel.Find("panelEnd (1)");
             Basicpanel3panel2 = Basicpanel3panel.Find("panelMidsection");
             disableMesh(Basicpanel3panel2.gameObject);
-            Debug.Log("cph16");
+            F16Debug.Log("cph16");
             disableMesh(Basicpanel3panel.gameObject);
-            Debug.Log("cph17");
+            F16Debug.Log("cph17");
             disableMesh(Basicpanel3panel1.gameObject);
 
             // Basicpanel4panel
@@ -4845,9 +4924,9 @@ namespace AircraftSwap
             Basicpanel4panel1 = Basicpanel4panel.Find("panelEnd (1)");
             Basicpanel4panel2 = Basicpanel4panel.Find("panelMidsection");
             disableMesh(Basicpanel4panel2.gameObject);
-            Debug.Log("cph18");
+            F16Debug.Log("cph18");
             disableMesh(Basicpanel4panel.gameObject);
-            Debug.Log("cph19");
+            F16Debug.Log("cph19");
             disableMesh(Basicpanel4panel1.gameObject);
 
 
@@ -4858,9 +4937,9 @@ namespace AircraftSwap
             Basicpanel4panelR1 = Basicpanel4panelR.Find("panelEnd (1)");
             Basicpanel4panelR2 = Basicpanel4panelR.Find("panelMidsection");
             disableMesh(Basicpanel4panelR2.gameObject);
-            Debug.Log("cph20");
+            F16Debug.Log("cph20");
             disableMesh(Basicpanel4panelR.gameObject);
-            Debug.Log("cph21");
+            F16Debug.Log("cph21");
             disableMesh(Basicpanel4panelR1.gameObject);
 
             //brakeandwing panel
@@ -4869,9 +4948,9 @@ namespace AircraftSwap
             Basicpanel3panelR1 = Basicpanel3panelR.Find("panelEnd (1)");
             Basicpanel3panelR2 = Basicpanel3panelR.Find("panelMidsection");
             disableMesh(Basicpanel3panelR2.gameObject);
-            Debug.Log("cph22");
+            F16Debug.Log("cph22");
             disableMesh(Basicpanel3panelR.gameObject);
-            Debug.Log("cph23");
+            F16Debug.Log("cph23");
             disableMesh(Basicpanel3panelR1.gameObject);
 
             //commspanel
@@ -4880,9 +4959,9 @@ namespace AircraftSwap
             Basicpanel2panelR1 = Basicpanel2panelR.Find("panelEnd (1)");
             Basicpanel2panelR2 = Basicpanel2panelR.Find("panelMidsection");
             disableMesh(Basicpanel2panelR2.gameObject);
-            Debug.Log("cph24");
+            F16Debug.Log("cph24");
             disableMesh(Basicpanel2panelR.gameObject);
-            Debug.Log("cph25");
+            F16Debug.Log("cph25");
             disableMesh(Basicpanel2panelR1.gameObject);
 
             //RFD
@@ -4891,9 +4970,9 @@ namespace AircraftSwap
             Basicpanel4panelRF1 = Basicpanel4panelRF.Find("panelEnd (1)");
             Basicpanel4panelRF2 = Basicpanel4panelRF.Find("panelMidsection");
             disableMesh(Basicpanel4panelRF2.gameObject);
-            Debug.Log("cph26");
+            F16Debug.Log("cph26");
             disableMesh(Basicpanel4panelRF.gameObject);
-            Debug.Log("cph27");
+            F16Debug.Log("cph27");
             disableMesh(Basicpanel4panelRF1.gameObject);
 
             Basicpanel3panelRF = f26RightFwdPanel.Find("panelEnd (3)");
@@ -4902,9 +4981,9 @@ namespace AircraftSwap
 
             Basicpanel3panelRF2 = Basicpanel3panelRF.Find("panelMidsection");
             disableMesh(Basicpanel3panelRF2.gameObject);
-            Debug.Log("cph28");
+            F16Debug.Log("cph28");
             disableMesh(Basicpanel3panelRF.gameObject);
-            Debug.Log("cph29");
+            F16Debug.Log("cph29");
             disableMesh(Basicpanel3panelRF1.gameObject);
 
 
@@ -4914,9 +4993,9 @@ namespace AircraftSwap
             Basicpanel4panelLF1 = Basicpanel4panelLF.Find("panelEnd (1)");
             Basicpanel4panelLF2 = Basicpanel4panelLF.Find("panelMidsection");
             disableMesh(Basicpanel4panelLF2.gameObject);
-            Debug.Log("cph28");
+            F16Debug.Log("cph28");
             disableMesh(Basicpanel4panelLF.gameObject);
-            Debug.Log("cph29");
+            F16Debug.Log("cph29");
             disableMesh(Basicpanel4panelLF1.gameObject);
 
             
@@ -5041,7 +5120,7 @@ namespace AircraftSwap
             ThrottleParent = Afighter2t.Find("ThrottleParent");
             disableMesh(ThrottleParent.gameObject);
             f16throttlepivot = PickupAllChildrensTransforms(F16Cockpit.gameObject, "Throttlepivot");
-            Debug.Log("f16 throttle angle : " + f16throttlepivot.localEulerAngles.x);
+            F16Debug.Log("f16 throttle angle : " + f16throttlepivot.localEulerAngles.x);
 
             f16throttle = PickupAllChildrensTransforms(f16throttlepivot.gameObject, "throttle");
             f16throttletf = PickupAllChildrensTransforms(f16throttle.gameObject, "throttletff16");
@@ -5118,7 +5197,7 @@ namespace AircraftSwap
             f26leftenginestartswitchmaincoverparentcoverSwitch2I = PickupAllChildrensTransforms(f26leftenginestartswitchmaincoverparentcoverSwitch2.gameObject, "coverSwitchInteractable_leftEngine");
             f26leftenginestartswitchmaincoverparentcoverSwitch2Ilever = f26leftenginestartswitchmaincoverparentcoverSwitch2I.GetComponent<VRLever>();
             f26leftenginestartswitchmaincoverparentcoverSwitch2Ilever.LockTo(0);
-            Debug.Log("leftenginecover : " + f26leftenginestartswitchmaincoverparentcoverSwitch2Ilever.currentState);
+            F16Debug.Log("leftenginecover : " + f26leftenginestartswitchmaincoverparentcoverSwitch2Ilever.currentState);
 
             //f26leftenginestartswitchlabel.localScale = new Vector3(0f, 0f, 0f);
             //f26leftenginestartswitchon.localScale = new Vector3(0f, 0f, 0f);
@@ -5262,7 +5341,7 @@ namespace AircraftSwap
 
 
 
-            Debug.Log("Switchmoves _1");
+            F16Debug.Log("Switchmoves _1");
             f26LeftPanelPoseBounds = PickupAllChildrensTransforms(F26Posebounds.gameObject, "LeftPanelPoseBounds");
             f26LeftPanelPoseBoundsComp = f26LeftPanelPoseBounds.GetComponent<PoseBounds>();
             f26LeftPanel = PickupAllChildrensTransforms(defaultf26, "LeftDash");
@@ -5271,11 +5350,11 @@ namespace AircraftSwap
             LeftDashPoseBoundsf16 = PickupAllChildrensTransforms(f16posebounds.gameObject, "ConsoleLeftDashposebounds");
             RightDashPoseBoundsf16 = PickupAllChildrensTransforms(f16posebounds.gameObject, "ConsoleR_posebound");
 
-            Debug.Log("Switchmoves _4");
+            F16Debug.Log("Switchmoves _4");
             f16leftpanelposebound = PickupAllChildrensTransforms(newAircraftUnit, "ConsoleL_posebound");
-            Debug.Log("Switchmoves _5");
-            Debug.Log("f26 left panel position = " + f26LeftPanelPoseBounds.position.x + "," + f26LeftPanelPoseBounds.position.y + "," + f26LeftPanelPoseBounds.position.z);
-            Debug.Log("f16 left panel position = " + f16leftpanelposebound.position.x + "," + f16leftpanelposebound.position.y + "," + f16leftpanelposebound.position.z);
+            F16Debug.Log("Switchmoves _5");
+            F16Debug.Log("f26 left panel position = " + f26LeftPanelPoseBounds.position.x + "," + f26LeftPanelPoseBounds.position.y + "," + f26LeftPanelPoseBounds.position.z);
+            F16Debug.Log("f16 left panel position = " + f16leftpanelposebound.position.x + "," + f16leftpanelposebound.position.y + "," + f16leftpanelposebound.position.z);
 
             //f26LeftPanel.position = f16leftpanelposebound.position;
             f26LeftPanelPoseBounds.position = f16leftpanelposebound.position;
@@ -5411,7 +5490,7 @@ namespace AircraftSwap
 
             f26CMSFlare = PickupAllChildrensTransforms(f26LeftPanel.gameObject, "FlareSwitch");
             f26CMSFlareSwitchLever = PickupAllChildrensTransforms(f26CMSFlare.gameObject, "switchParent");
-            Debug.Log("Chaff Flare 1");
+            F16Debug.Log("Chaff Flare 1");
             f26cmsparent = PickupAllChildrensTransforms(f26LeftPanel.gameObject, "Countermeasures");
             f26CMSChaffBase = PickupAllChildrensTransforms(f26CMSChaff.gameObject, "m_radioSwitchBase");
             f26CMSFlareBase = PickupAllChildrensTransforms(f26CMSFlare.gameObject, "m_radioSwitchBase");
@@ -5442,13 +5521,13 @@ namespace AircraftSwap
             f26CMSFlareIndic.position = f16FlareInidicator.position;
             f26CMSChaffIndic.rotation = f16ChaffInidicator.rotation;
             f26CMSFlareIndic.rotation = f16FlareInidicator.rotation;
-            Debug.Log("Chaff Flare 2");
+            F16Debug.Log("Chaff Flare 2");
             disableMesh(f26cmsparent.gameObject);
             enableMesh(f26CMSFlare.gameObject);
             enableMesh(f26CMSChaff.gameObject);
             disableMesh(f26CMSChaffIndic.gameObject);
             disableMesh(f26CMSFlareIndic.gameObject);
-            Debug.Log("Chaff Flare 3");
+            F16Debug.Log("Chaff Flare 3");
             disableVTT(f26cmsparent.gameObject);
 
             disableMesh(f26CMSChaffBase.gameObject);
@@ -5477,14 +5556,14 @@ namespace AircraftSwap
             f26SpeedIndicator.position = f16SpeedIndicator.position;
 
 
-            Debug.Log("IM1");
+            F16Debug.Log("IM1");
 
             f26AltitudeIndicator.position = f16AltitudeIndicator.position;
             f26VSIIndicator.position = f16VSIIndicator.position;
-            Debug.Log("IM2");
+            F16Debug.Log("IM2");
             f26AttitudeIndicator.position = f16AttitudeIndicator.position;
             f26CompassIndicator.position = f16CompassIndicator.position;
-            Debug.Log("IM3");
+            F16Debug.Log("IM3");
             //f26CMSChaffIndic.localPosition = new Vector3(0f, 0.1f, 0.0359f);
             //f26CMSFlareIndic.localPosition = new Vector3(0f, 0.1f, 0.0359f);
 
@@ -5497,48 +5576,48 @@ namespace AircraftSwap
             f26SecondaryAttIndicator.transform.localPosition = new Vector3(0f, 0f, 0f);
             f26SecondaryAttIndicator.transform.rotation = f16SecondaryAttIndicatorTrans.rotation;
 
-            Debug.Log("IM4");
+            F16Debug.Log("IM4");
             f26SpeedIndicator.rotation = f16SpeedIndicator.rotation;
             f26AltitudeIndicator.rotation = f16AltitudeIndicator.rotation;
-            Debug.Log("IM5");
+            F16Debug.Log("IM5");
             f26VSIIndicator.rotation = f16VSIIndicator.rotation;
             f26AttitudeIndicator.rotation = f16AttitudeIndicator.rotation;
             f26CompassIndicator.rotation = f16CompassIndicator.rotation;
-            Debug.Log("IM51");
+            F16Debug.Log("IM51");
             f26CMSChaffSwitchLever.rotation = f16CMSChaff.rotation;
             f26CMSFlareSwitchLever.rotation = f16CMSFlare.rotation;
-            Debug.Log("IM");
+            F16Debug.Log("IM");
 
             
 
             //joystick
-            Debug.Log("Joystick");
+            F16Debug.Log("Joystick");
 
             f16controlstick = PickupAllChildrensTransforms(F16CockpitActiveSwitches.gameObject, "cont_stick");
             f26sidestickobjects = PickupAllChildrensTransforms(defaultf26.gameObject, "SideStickObjects");
             f26controlstick = PickupAllChildrensTransforms(f26sidestickobjects.gameObject, "joyYaw.001");
             f26controlstickparent = PickupAllChildrensTransforms(f26sidestickobjects.gameObject, "joyParent");
 
-            Debug.Log("Joystick1");
+            F16Debug.Log("Joystick1");
 
             f26controlstickmesh = f26controlstick.GetComponent<MeshFilter>();
             if (f26controlstickmesh == null)
             {
-                Debug.Log("f26csmes = null");
+                F16Debug.Log("f26csmes = null");
             }
-            Debug.Log("Joystick2");
+            F16Debug.Log("Joystick2");
 
             f16controlstickmesh = f16controlstick.GetComponent<MeshFilter>();
             if (f16controlstickmesh == null)
             {
-                Debug.Log("f16csmes = null");
+                F16Debug.Log("f16csmes = null");
             }
 
-            Debug.Log("Joystick3");
+            F16Debug.Log("Joystick3");
 
 
             f26controlstickmeshitem = f26controlstickmesh.mesh;
-            Debug.Log("Joystick4");
+            F16Debug.Log("Joystick4");
 
             f16controlstickmeshitem = f16controlstickmesh.sharedMesh;
             f26controlstickmesh.sharedMesh = f16controlstickmeshitem;
@@ -5552,11 +5631,11 @@ namespace AircraftSwap
             disableMesh(f16controlstick.gameObject);
             if (f16controlstickmeshitem == null)
             {
-                Debug.Log("f16csmeshi = null");
+                F16Debug.Log("f16csmeshi = null");
             }
             if (f26controlstickmeshitem == null)
             {
-                Debug.Log("f26csmeshi = null");
+                F16Debug.Log("f26csmeshi = null");
             }
 
 
@@ -5570,18 +5649,18 @@ namespace AircraftSwap
 
             //instrument switches
 
-            Debug.Log("Switchmoves _2");
+            F16Debug.Log("Switchmoves _2");
             
-            Debug.Log("Switchmoves _3");
+            F16Debug.Log("Switchmoves _3");
             
             F26Posebounds = PickupAllChildrensTransforms(defaultf26, "PoseBounds");
-            Debug.Log("Switchmoves _6");
+            F16Debug.Log("Switchmoves _6");
             f26RightPanelPoseBounds = PickupAllChildrensTransforms(defaultf26, "RightPanelPoseBounds");
             f26RightPanelPoseBoundsComp = f26RightPanelPoseBounds.GetComponent<PoseBounds>();
             f26RightPanel = PickupAllChildrensTransforms(defaultf26, "RightDash");
-            Debug.Log("Switchmoves _2");
+            F16Debug.Log("Switchmoves _2");
             f16rightpanelposebound = PickupAllChildrensTransforms(newAircraftUnit, "ConsoleR_posebound");
-            Debug.Log("Switchmoves _5");
+            F16Debug.Log("Switchmoves _5");
             
             //f26LeftPanel.position = f16leftpanelposebound.position;
             f26RightPanelPoseBounds.position = f16rightpanelposebound.position;
@@ -5591,22 +5670,22 @@ namespace AircraftSwap
             
             f26RightFwdPanel = PickupAllChildrensTransforms(defaultf26, "RightFwdDash");
 
-            Debug.Log("after move f26 left panel position = " + f26LeftPanelPoseBounds.position.x + "," + f26LeftPanelPoseBounds.position.y + "," + f26LeftPanelPoseBounds.position.z);
+            F16Debug.Log("after move f26 left panel position = " + f26LeftPanelPoseBounds.position.x + "," + f26LeftPanelPoseBounds.position.y + "," + f26LeftPanelPoseBounds.position.z);
 
 
 
-            Debug.Log("Switchmoves _6");
+            F16Debug.Log("Switchmoves _6");
             //Battery Switch
             MainBatterySwitchF26 = PickupAllChildrensTransforms(defaultf26, "MainBatterySwitch");
             MainBatterySwitchF26I = PickupAllChildrensTransforms(MainBatterySwitchF26.gameObject, "mainBattSwitchInteractable");
             MainBatterySwitchF26IVR = MainBatterySwitchF26I.GetComponent<VRInteractable>();
             MainBatterySwitchF26IVR.poseBounds = f26LeftPanelPoseBoundsComp;
 
-            Debug.Log("Switchmoves _7");
+            F16Debug.Log("Switchmoves _7");
             
-            Debug.Log("Switchmoves _8");
+            F16Debug.Log("Switchmoves _8");
             F16ElectricMainSwitch = PickupAllChildrensTransforms(F16CockpitActiveSwitches.gameObject, "elecmainpower_normalswitch");
-            Debug.Log("Switchmoves _9");
+            F16Debug.Log("Switchmoves _9");
             F26ElectricMainSwitchLever = PickupAllChildrensTransforms(MainBatterySwitchF26.gameObject, "radioSwitch");
             F26ElectricMainSwitchParent = PickupAllChildrensTransforms(MainBatterySwitchF26.gameObject, "switchParent");
             disableMesh(MainBatterySwitchF26.gameObject);
@@ -5614,14 +5693,14 @@ namespace AircraftSwap
             enableMesh(F26ElectricMainSwitchLever.gameObject);
 
 
-            Debug.Log("Switchmoves _10");
+            F16Debug.Log("Switchmoves _10");
             F26ElectricMainSwitchParent.position = F16ElectricMainSwitch.position;
             F26ElectricMainSwitchParent.localEulerAngles = new Vector3(30f, 0f, 0f);
             // Check State of main power so it switches on the APU straight after
             BatteryLever = F26ElectricMainSwitchLever.GetComponentInChildren<VRLever>();
             BatteryLeverCheck = BatteryLever.currentState;
 
-            Debug.Log("Batt Switch State = " + BatteryLeverCheck);
+            F16Debug.Log("Batt Switch State = " + BatteryLeverCheck);
             APUPart = PickupAllChildrensTransforms(defaultf26, "apu");
             APUauxunit = APUPart.GetComponent<AuxilliaryPowerUnit>();
             
@@ -5663,60 +5742,60 @@ namespace AircraftSwap
             scaletozero = new Vector3(0f, 0f, 0f);
             lines1.gameObject.SetActive(false);
             lines2.gameObject.SetActive(false);
-            Debug.Log("line2");
+            F16Debug.Log("line2");
 
             lines3.gameObject.SetActive(false);
-            Debug.Log("line3");
+            F16Debug.Log("line3");
 
             lines4.gameObject.SetActive(false);
-            Debug.Log("line4");
+            F16Debug.Log("line4");
 
             lines5.gameObject.SetActive(false);
-            Debug.Log("line5");
+            F16Debug.Log("line5");
 
             lines6.gameObject.SetActive(false);
-            Debug.Log("line6");
+            F16Debug.Log("line6");
 
             lines7.gameObject.SetActive(false);
-            Debug.Log("line7");
+            F16Debug.Log("line7");
 
             lines8.gameObject.SetActive(false);
-            Debug.Log("line8");
+            F16Debug.Log("line8");
 
             lines9.gameObject.SetActive(false);
-            Debug.Log("line9");
+            F16Debug.Log("line9");
 
             lines10.gameObject.SetActive(false);
-            Debug.Log("line10");
+            F16Debug.Log("line10");
 
             lines11.gameObject.SetActive(false);
-            Debug.Log("line11");
+            F16Debug.Log("line11");
 
             lines12.gameObject.SetActive(false);
-            Debug.Log("line12");
+            F16Debug.Log("line12");
 
             lines13.gameObject.SetActive(false);
-            Debug.Log("line13");
+            F16Debug.Log("line13");
 
             lines14.gameObject.SetActive(false);
-            Debug.Log("line14");
+            F16Debug.Log("line14");
             if (lines15 != null)
             {
                 lines15.gameObject.SetActive(false);
             }
-                Debug.Log("line15");
+                F16Debug.Log("line15");
 
             lines16.gameObject.SetActive(false);
-            Debug.Log("line16");
+            F16Debug.Log("line16");
 
             lines17.gameObject.SetActive(false);
-            Debug.Log("line17");
+            F16Debug.Log("line17");
 
             if (lines18 != null)
             {
                 lines18.gameObject.SetActive(false);
             }
-                Debug.Log("line18");
+                F16Debug.Log("line18");
 
             if (lines19 != null)
             {
@@ -5882,13 +5961,13 @@ namespace AircraftSwap
             disableVTT(f26brightknob.gameObject);
             disableVRI(f26brightknob.gameObject);
 
-            Debug.Log("light_test1");
+            F16Debug.Log("light_test1");
             f26brightknob.gameObject.SetActive(false);
-            Debug.Log("light_test2");
+            F16Debug.Log("light_test2");
             disableMesh(f26navlightbase.gameObject);
-            Debug.Log("light_test3");
+            F16Debug.Log("light_test3");
             disableVTT(f26lightspanel.gameObject);
-            Debug.Log("light_test4");
+            F16Debug.Log("light_test4");
 
             //radioswitches
             disableMesh(f26commspanel.gameObject);
@@ -5897,7 +5976,7 @@ namespace AircraftSwap
             //enableMesh(f26CommsVolumeKnob.gameObject);
             f26CommsMicKnobswitch = PickupAllChildrensTransforms(f26CommsMicKnob.gameObject, "knobParent");
             //enableMesh(f26CommsMicKnobswitch.gameObject);
-                Debug.Log("radios1");
+                F16Debug.Log("radios1");
             f16commspowerswitch = PickupAllChildrensTransforms(F16CockpitActiveSwitches.gameObject, "audio1comm1_fulltwisty");
             f16audio1comm1parent = PickupAllChildrensTransforms(f16commspowerswitch.gameObject, "knobTF");
             f16audio1comm1int = PickupAllChildrensTransforms(f16commspowerswitch.gameObject, "rotatorknob4Interactable");
@@ -5913,7 +5992,7 @@ namespace AircraftSwap
             //f26CommsMicKnobswitch.rotation = f16commspowerswitch.rotation;
             f26CommsVolumeKnob.position = f16commsuhfvolume.position;
             f26CommsVolumeKnobIVR = f26CommsVolumeKnob.GetComponent<VRInteractable>();
-            Debug.Log("radios2");
+            F16Debug.Log("radios2");
             //f26CommsVolumeKnobIVR.poseBounds = f26LeftPanelPoseBoundsComp;
             f26CommsMicKnobswitchI = PickupAllChildrensTransforms(f26CommsMicKnob.gameObject, "MicPowerInteractable");
             //f26CommsMicKnobswitchI.position = f16commspowerswitch.position;
@@ -5921,7 +6000,7 @@ namespace AircraftSwap
             f26CommsMicKnobswitchIVR.poseBounds = f26LeftPanelPoseBoundsComp;
 
             //hud power
-            Debug.Log("hudpower1");
+            F16Debug.Log("hudpower1");
             f26hudpower = PickupAllChildrensTransforms(HUDDashF26.gameObject, "HUDPower");
             f26hudpoweri = PickupAllChildrensTransforms(f26hudpower.gameObject, "hudPowerInteractable");
             f16hudpower = PickupAllChildrensTransforms(F16CockpitActiveSwitches.gameObject, "HUDPower_switch");
@@ -5934,7 +6013,7 @@ namespace AircraftSwap
             f26hmcspower = PickupAllChildrensTransforms(HUDDashF26.gameObject, "HMCSPower");
             f26hmcspowerradioswitch = PickupAllChildrensTransforms(f26hmcspower.gameObject, "radioSwitch");
             f26hmcspowerint = PickupAllChildrensTransforms(f26hmcspower.gameObject, "hmcsPowerInteractable");
-            Debug.Log("hmcs1");
+            F16Debug.Log("hmcs1");
             
             f16hmcspower = PickupAllChildrensTransforms(leftauxpanelgobj.gameObject, "HMCSDial");
             f16hmcspowerknobparent = PickupAllChildrensTransforms(f16hmcspower.gameObject, "knobTF");
@@ -5957,19 +6036,19 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             
 
             disableVTT(f26hmcspower.gameObject);
-            Debug.Log("radar1");
+            F16Debug.Log("radar1");
             f26RadarPwrSwitchKnob = PickupAllChildrensTransforms(f26RadarPwrSwitch.gameObject, "knobParent");
             f26RadarPwrSwitch.gameObject.SetActive(false);
             f16radarpowert = PickupAllChildrensTransforms(rightPanelgObj.gameObject, "avionicsinst");
             f26RadarPwrSwitchKnob.position = f16radarpowert.position;
             f26RadarPwrSwitchKnob.rotation = f16radarpowert.rotation;
-            Debug.Log("radar2");
+            F16Debug.Log("radar2");
             f26RadarPwrSwitchi = PickupAllChildrensTransforms(f26RadarPwrSwitch.gameObject, "RadarPowerInteractable");
             f26RadarPwrSwitchi.position = f16radarpowert.position;
             f26RadarPwrSwitchi.rotation = f16radarpowert.rotation;
             f26RadarPwrSwitchiVR = f26RadarPwrSwitchi.GetComponent<VRInteractable>();
             f26RadarPwrSwitchiVR.poseBounds = f26RightPanelPoseBoundsComp;
-            Debug.Log("radar3");
+            F16Debug.Log("radar3");
 
             //radar
             
@@ -5993,7 +6072,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
 
 
-            Debug.Log("rwr1");
+            F16Debug.Log("rwr1");
             f16rwrmodeswitch = PickupAllChildrensTransforms(F16CockpitActiveSwitches.gameObject, "RWR_normalswitch");
             f16rwrmodeswitchParent = PickupAllChildrensTransforms(f16rwrmodeswitch.gameObject, "radioSwitch");
             radioSwitchInteractable = PickupAllChildrensTransforms(f16rwrmodeswitchParent.gameObject, "radioSwitchInteractable");
@@ -6045,7 +6124,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             InternalLampTransrenderermaterials = InternalLampTrans.GetComponent<MeshRenderer>().materials;
             foreach (Material materialitem in InternalLampTransrenderermaterials)
             {
-                Debug.Log("Material Name = " + materialitem.name);
+                F16Debug.Log("Material Name = " + materialitem.name);
                 if (materialitem.name == "l_refl (Instance)")
                 {
                     InternalLamprenderermaterial = materialitem;
@@ -6065,7 +6144,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             f26dashrwr = f26RWR.GetComponent<DashRWR>();
 
 
-            Debug.Log("rwr3");
+            F16Debug.Log("rwr3");
 
             
             
@@ -6768,7 +6847,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             f26CMSChaffIndicTextVTT.fontSize = 72;
             f26CMSFlareIndicTextVTT.fontSize = 72;
 
-            Debug.Log("f16 Hud font : " + f16HudFont.font.name);
+            F16Debug.Log("f16 Hud font : " + f16HudFont.font.name);
 
 
 
@@ -6777,10 +6856,10 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             foreach (Text HUDCanvasItems in HUDCanvasElements)
             {
                 
-                Debug.Log("Hud Item : " + HUDCanvasItems.name + ", Hud Item font: " + HUDCanvasItems.font.name);
+                F16Debug.Log("Hud Item : " + HUDCanvasItems.name + ", Hud Item font: " + HUDCanvasItems.font.name);
                 HUDCanvasItems.font = f16HudFont.font;
                 HUDCanvasItems.fontSize = Convert.ToInt32( HUDCanvasItems.fontSize*1);
-                Debug.Log("Hud Item After : " + HUDCanvasItems.name + ", Hud Item font: " + HUDCanvasItems.font.name);
+                F16Debug.Log("Hud Item After : " + HUDCanvasItems.name + ", Hud Item font: " + HUDCanvasItems.font.name);
 
             }
 
@@ -6796,10 +6875,10 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 }
                 else
                 {
-                    Debug.Log("Hud Item : " + HUDCanvasItems.name + ", Hud Item font: " + HUDCanvasItems.font.name);
+                    F16Debug.Log("Hud Item : " + HUDCanvasItems.name + ", Hud Item font: " + HUDCanvasItems.font.name);
                     HUDCanvasItems.font = f16HudFont.font;
                     HUDCanvasItems.fontSize = Convert.ToInt32(HUDCanvasItems.fontSize * 1);
-                    Debug.Log("Hud Item After : " + HUDCanvasItems.name + ", Hud Item font: " + HUDCanvasItems.font.name);
+                    F16Debug.Log("Hud Item After : " + HUDCanvasItems.name + ", Hud Item font: " + HUDCanvasItems.font.name);
                 }
             }
             foreach (Text HUDCanvasItems in f26MFDRightTextElements)
@@ -6810,20 +6889,20 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 }
                 else
                 {
-                    Debug.Log("Hud Item : " + HUDCanvasItems.name + ", Hud Item font: " + HUDCanvasItems.font.name);
+                    F16Debug.Log("Hud Item : " + HUDCanvasItems.name + ", Hud Item font: " + HUDCanvasItems.font.name);
                     HUDCanvasItems.font = f16HudFont.font;
                     HUDCanvasItems.fontSize = Convert.ToInt32(HUDCanvasItems.fontSize * 1);
-                    Debug.Log("Hud Item After : " + HUDCanvasItems.name + ", Hud Item font: " + HUDCanvasItems.font.name);
+                    F16Debug.Log("Hud Item After : " + HUDCanvasItems.name + ", Hud Item font: " + HUDCanvasItems.font.name);
 
                 }
             }
                 foreach (Text HUDCanvasItems in f26MiniMFDLeftTextElements)
             {
                 HUDCanvasItems.gameObject.SetActive(true);
-                Debug.Log("Hud Item : " + HUDCanvasItems.name + ", Hud Item font: " + HUDCanvasItems.font.name);
+                F16Debug.Log("Hud Item : " + HUDCanvasItems.name + ", Hud Item font: " + HUDCanvasItems.font.name);
                 HUDCanvasItems.font = f16HudFont.font;
                 HUDCanvasItems.fontSize = Convert.ToInt32(HUDCanvasItems.fontSize * 1);
-                Debug.Log("Hud Item After : " + HUDCanvasItems.name + ", Hud Item font: " + HUDCanvasItems.font.name);
+                F16Debug.Log("Hud Item After : " + HUDCanvasItems.name + ", Hud Item font: " + HUDCanvasItems.font.name);
 
             }
 
@@ -6851,30 +6930,31 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             verticalvelTransform.gameObject.SetActive(false);
 
             AirspeedTransform.localPosition = new Vector3(-377.5f, -105.75f, -61.5f);
-            Debug.Log("HEC1");
+            F16Debug.Log("HEC1");
             MachTransform.localPosition = new Vector3(-267.75f, -217.75f, 0f);
-            Debug.Log("HEC2");
+            F16Debug.Log("HEC2");
             GmeterTransform.localPosition = new Vector3(-261.75f, 29f, 44.25f);
-            Debug.Log("HEC3");
+            F16Debug.Log("HEC3");
             HeadingtextTransform.localPosition = new Vector3(0.85f, -317.0518f, 0.5f);
-            Debug.Log("HEC4");
-            Debug.Log("HEC5");
+            F16Debug.Log("HEC4");
+            F16Debug.Log("HEC5");
             weaponsublabelTransform.localPosition = new Vector3(-251.4f, -282.201f, 0f);
-            Debug.Log("HEC6");
+            F16Debug.Log("HEC6");
             weaponAmmocountlabelTransform.localPosition = new Vector3(-251.4f, -282.201f, 0f);
         }
 
         private IEnumerator UpdateInstruments()
         {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             if (!AircraftLoaded) { yield break; }
-            //Debug.Log("ui1");
+            //F16Debug.Log("ui1");
             instrumentsupdateflag = true;
-            //Debug.Log("ui2");
+            //F16Debug.Log("ui2");
 
             StartCoroutine(Controlsurfacemovers());
-            //Debug.Log("ui3");
+            //F16Debug.Log("ui3");
             StartCoroutine(updateAOAGauge());
-            //Debug.Log("ui4");
+            //F16Debug.Log("ui4");
             instrumentsupdateflag = false;
 
 
@@ -6883,6 +6963,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
        
     private IEnumerator updaterightHydraulics()
 {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             if (airbrakeobj == null) { yield break; }
             if (engineheat == 0) { yield break; }
             if (!AircraftLoaded) { yield break; }
@@ -6891,21 +6972,21 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             {
                 AngleRightHydraulics = new Vector3(-135f, 0f, 29f);
                 Hydraulicsrightneed.localEulerAngles = AngleRightHydraulics;
-                Debug.Log("RightWing Destroyed = " + RightWingHealthStatus);
+                F16Debug.Log("RightWing Destroyed = " + RightWingHealthStatus);
                 yield break;
             }
             if (RightWingHealthStatus < 50)
             {
                 AngleRightHydraulics = new Vector3(-135f, 0f, 139f);
                 Hydraulicsrightneed.localEulerAngles = AngleRightHydraulics;
-                Debug.Log("RightWing Damaged = " + RightWingHealthStatus);
+                F16Debug.Log("RightWing Damaged = " + RightWingHealthStatus);
                 yield break;
             }
             else
             {
                 AngleRightHydraulics = new Vector3(-135f, 0f, 265f);
                 Hydraulicsrightneed.localEulerAngles = AngleRightHydraulics;
-                Debug.Log("RightWing Normal = " + RightWingHealthStatus);
+                F16Debug.Log("RightWing Normal = " + RightWingHealthStatus);
                 yield break;
             }
 
@@ -6917,13 +6998,14 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private IEnumerator refuelIndexerlights(RefuelPort port)
         {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             if (airbrakeobj == null) { yield break; }
             if (!AircraftLoaded) { yield break; }
 
-            Debug.Log("Starting RFI");
+            F16Debug.Log("Starting RFI");
             if(!port.open)
             {
-                Debug.Log("Starting RFI port null");
+                F16Debug.Log("Starting RFI port null");
 
                 refuelDisconnectLight_light.enabled = true;
                 refuelReadyLight_light.enabled = false;
@@ -6932,7 +7014,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             }
             if (port.currentRefuelPlane == null)
             {
-                Debug.Log("Starting RFI plane null");
+                F16Debug.Log("Starting RFI plane null");
 
                 refuelDisconnectLight_light.enabled = false;
                 refuelReadyLight_light.enabled = true;
@@ -6949,30 +7031,31 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private IEnumerator updateleftHydraulics()
         {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             if (airbrakeobj == null) { yield break; }
             if (engineheat == 0) { yield break; }
             if (!AircraftLoaded) { yield break; }
-            Debug.Log("Checking Wing Status ");
+            F16Debug.Log("Checking Wing Status ");
             yield return new WaitForSecondsRealtime(20f);
             if (LeftWingHealthStatus == 0)
             {
                 AngleLeftHydraulics = new Vector3(-135f, 0f, 29f);
                 Hydraulicsleftneed.localEulerAngles = AngleLeftHydraulics;
-                Debug.Log("LeftWing Destroyed = " + LeftWingHealthStatus);
+                F16Debug.Log("LeftWing Destroyed = " + LeftWingHealthStatus);
                 yield break;
             }
             if (LeftWingHealthStatus < 50)
             {
                 AngleLeftHydraulics = new Vector3(-135f, 0f, 139f);
                 Hydraulicsleftneed.localEulerAngles = AngleLeftHydraulics;
-                Debug.Log("LeftWing Damaged = " + LeftWingHealthStatus);
+                F16Debug.Log("LeftWing Damaged = " + LeftWingHealthStatus);
                 yield break;
             }
             else
             {
                 AngleLeftHydraulics = new Vector3(-135f, 0f, 265f);
                 Hydraulicsleftneed.localEulerAngles = AngleLeftHydraulics;
-                Debug.Log("LeftWing Normal = " + LeftWingHealthStatus);
+                F16Debug.Log("LeftWing Normal = " + LeftWingHealthStatus);
                 yield break;
             }
 
@@ -6984,19 +7067,19 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private IEnumerator CheckForPlaneRespawnMPtimer()
         {
-            //Debug.Log("mploaded = " + mploaded);
+            //F16Debug.Log("mploaded = " + mploaded);
             if (mploaded == false || mploaded == null) { yield break; }
             if (leftEngineVar.maxThrust == 177f) { yield break; }
             for (; ; )
             {
-                Debug.Log("CheckForPlaneRespawnMPtimer start");
+                F16Debug.Log("CheckForPlaneRespawnMPtimer start");
                 Setuprunning = true;
                 CheckForPlaneRespawnMP();
 
                 yield return new WaitForSecondsRealtime(5f);
              
 
-                Debug.Log("CheckForPlaneRespawnMP returned");
+                F16Debug.Log("CheckForPlaneRespawnMP returned");
 
                 Setuprunning = false;
             }
@@ -7007,30 +7090,30 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
            /* currentTime = DateTime.Now;
 
             timeNow = currentTime.ToString("HH:mm:ss\\Z");
-            Debug.Log(timeNow + " : CFPR Step1 : " + Spawncount);
+            F16Debug.Log(timeNow + " : CFPR Step1 : " + Spawncount);
             
 
             f26playerobject = VTOLAPI.GetPlayersVehicleGameObject();
             if (f26playerobject == null) { return; }
 
             f26playerobjectBody = PickupAllChildrensTransforms(f26playerobject,"body");
-            Debug.Log("CFPR Step3");
+            F16Debug.Log("CFPR Step3");
             f26playerobjectBodyMesh = f26playerobjectBody.GetComponent<MeshFilter>();
-            Debug.Log("CFPR Step4 Body Mesh Name = " + f26playerobjectBodyMesh.sharedMesh.name);
+            F16Debug.Log("CFPR Step4 Body Mesh Name = " + f26playerobjectBodyMesh.sharedMesh.name);
 
             if (f26playerobjectBodyMesh.sharedMesh.name == "body_livery" )
             {
-                Debug.Log("mp spawn check");
+                F16Debug.Log("mp spawn check");
 
                                 {
                     waitVar = 0.3f;
-                    Debug.Log("StartCoroutine(InitWaiter());");
+                    F16Debug.Log("StartCoroutine(InitWaiter());");
                     StartCoroutine(InitWaiter());
 
 
                 }
             }
-            Debug.Log("not body_livery");
+            F16Debug.Log("not body_livery");
 
             return;*/
 
@@ -7038,7 +7121,9 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private IEnumerator updateAOAGauge()
         {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             yield return new WaitForSecondsRealtime(2f);
+            if(!AircraftInfo.AircraftSelected) { yield break; }
             if (!AircraftLoaded) { yield break; }
             if (airbrakeobj == null) { yield break; }
             if (attitude.airspeed <5f) { yield break; }
@@ -7049,7 +7134,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             aoavalue = attitude.aoa;
 
 
-            Debug.Log("aoavalue " + aoavalue );
+            F16Debug.Log("aoavalue " + aoavalue );
 
             if (aoavalue < 11)
             {
@@ -7057,17 +7142,17 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 {
                     currenteleclight.enabled = true;
                 }
-                Debug.Log("aoayellowlight = true");
+                F16Debug.Log("aoayellowlight = true");
                 foreach (Light currenteleclight in aoaRedLight_lights)
                 {
                     currenteleclight.enabled = false;
                 }
-                Debug.Log("aoaredlight = false");
+                F16Debug.Log("aoaredlight = false");
                 foreach (Light currenteleclight in aoaGreenLight_lights)
                 {
                     currenteleclight.enabled = false;
                 }
-                Debug.Log("aoaGreenlight = false");
+                F16Debug.Log("aoaGreenlight = false");
             }
             if (aoavalue > 11 && aoavalue < 15)
             {
@@ -7075,17 +7160,17 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 {
                     currenteleclight.enabled = false;
                 }
-                Debug.Log("aoayellowlight = false" );
+                F16Debug.Log("aoayellowlight = false" );
                 foreach (Light currenteleclight in aoaRedLight_lights)
                 {
                     currenteleclight.enabled = false;
                 }
-                Debug.Log("aoaredlight = false");
+                F16Debug.Log("aoaredlight = false");
                 foreach (Light currenteleclight in aoaGreenLight_lights)
                 {
                     currenteleclight.enabled = true;
                 }
-                Debug.Log("aoaGreenlight = true");
+                F16Debug.Log("aoaGreenlight = true");
 
             }
 
@@ -7095,21 +7180,21 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 {
                     currenteleclight.enabled = false;
                 }
-                Debug.Log("aoayellowlight = false");
+                F16Debug.Log("aoayellowlight = false");
                 foreach (Light currenteleclight in aoaRedLight_lights)
                 {
                     currenteleclight.enabled = true;
                 }
-                Debug.Log("aoaredlight = true");
+                F16Debug.Log("aoaredlight = true");
                 foreach (Light currenteleclight in aoaGreenLight_lights)
                 {
                     currenteleclight.enabled = false;
                 }
-                Debug.Log("aoaGreenlight = false");
+                F16Debug.Log("aoaGreenlight = false");
 
             }
 
-            Debug.Log("AOA = " + aoavalue);
+            F16Debug.Log("AOA = " + aoavalue);
            
             AOAGaugeAngle = (aoavalue*(-26.5f/10)) - 15;
             AOAGauge.localEulerAngles = new Vector3(-90f, 0f, AOAGaugeAngle);
@@ -7118,13 +7203,14 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private IEnumerator updateHeat()
         {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             if (!AircraftLoaded) { yield break; }
             if (airbrakeobj == null || VTOLAPI.currentScene == VTOLScenes.VehicleConfiguration) { yield break; }
             yield return new WaitForSecondsRealtime(15f);
             engineheat = heatemitter.heat;
 
 
-            Debug.Log("Engine Heat = " + engineheat);
+            F16Debug.Log("Engine Heat = " + engineheat);
             realengineheat = engineheat * 0.36f;
             ftitneedleangle = (realengineheat * 0.28f) + ftitnatzero;
             ftitneedle.localEulerAngles = new Vector3(-15f, 180f, ftitneedleangle);
@@ -7133,10 +7219,11 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private IEnumerator updateCockpitPressure()
         {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             if (!AircraftLoaded) { yield break; }
             if (airbrakeobj == null || VTOLAPI.currentScene == VTOLScenes.VehicleConfiguration) { yield break; }
             yield return new WaitForSecondsRealtime(20f);
-            Debug.Log("Altitude ASL = " + attitude.altitudeASL);
+            F16Debug.Log("Altitude ASL = " + attitude.altitudeASL);
 
             
 
@@ -7148,7 +7235,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             }
             if (attitude.altitudeASL < 2000f) { cockpitPressure = attitude.altitudeASL * 3.33f / 1000; }
 
-                Debug.Log("Cockpit Press = " + cockpitPressure);
+                F16Debug.Log("Cockpit Press = " + cockpitPressure);
 
 
             cabinpressneedleangle = (cockpitPressure * (61 / 10)) + cabinpressatzero;
@@ -7160,15 +7247,16 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
         private IEnumerator updateRPM()
 
         {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             if (!AircraftLoaded) { yield break; }
 
             if (f26RPMneedle == null || VTOLAPI.currentScene == VTOLScenes.VehicleConfiguration) { yield break; }
             yield return new WaitForSecondsRealtime(2f);
 
-            Debug.Log("RPM Updater 1");
+            F16Debug.Log("RPM Updater 1");
             currentRPM = f26RPMneedle.localEulerAngles.y;
             maxRPM = 180f;
-            Debug.Log("RPM Updater 2 -" + currentRPM );
+            F16Debug.Log("RPM Updater 2 -" + currentRPM );
 
             f16RPMAngle = (currentRPM - 85f) * 1.2f;
 
@@ -7180,28 +7268,29 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
         private IEnumerator nozzleposition()
 
         {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             if (!AircraftLoaded) { yield break; }
 
             if (F26Nozzle == null || VTOLAPI.currentScene == VTOLScenes.VehicleConfiguration) { yield break; }
             yield return new WaitForSecondsRealtime(5f);
 
-            Debug.Log("Nozzle Updater 1");
+            F16Debug.Log("Nozzle Updater 1");
             currentNozzleAngle = F26Nozzle.localEulerAngles.x;
             if (currentNozzleAngle < 10f) { currentNozzleAngle = 360 - currentNozzleAngle; }
 
-            Debug.Log("Nozzle Updater 2 - " + currentNozzleAngle);
+            F16Debug.Log("Nozzle Updater 2 - " + currentNozzleAngle);
 
             currentNozzleAngleDifference = currentNozzleAngle - 349.4f;
 
             Nozzlepercentage = 1-(currentNozzleAngleDifference / 10.7f);
 
-            Debug.Log("Nozzle Percentage - " + Nozzlepercentage);
+            F16Debug.Log("Nozzle Percentage - " + Nozzlepercentage);
 
 
 
-            Debug.Log("Nozzle needle default Angle - " + nozzleNeedleDefault);
+            F16Debug.Log("Nozzle needle default Angle - " + nozzleNeedleDefault);
             f16NozzleinstrumentAngle = nozzleNeedleDefault + (Nozzlepercentage * 250);
-            Debug.Log("Nozzle Instrument Angle - " + f16NozzleinstrumentAngle);
+            F16Debug.Log("Nozzle Instrument Angle - " + f16NozzleinstrumentAngle);
 
             
 
@@ -7229,29 +7318,30 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private IEnumerator updateFuel()
         {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             if (!AircraftLoaded) { yield break; }
             yield return new WaitForSecondsRealtime(20f);
             if (VTOLAPI.currentScene == VTOLScenes.VehicleConfiguration || BatteryLever.currentState == 0 || BatteryLever == null) { yield break; }
             foreach (var tank in fuelTanks)
             {
                 if (tank == null) { yield break; }
-                Debug.Log("Tank = " + tank.name);
-                Debug.Log("Main Tank Fuel Fraction  = " + tank.fuelFraction);
+                F16Debug.Log("Tank = " + tank.name);
+                F16Debug.Log("Main Tank Fuel Fraction  = " + tank.fuelFraction);
 
 
 
                 currentfuelvalue = tank.fuelFraction * tank.maxFuel;
-                Debug.Log("Main Tank Needle Zero angle  = " + fuelMNatZero);
+                F16Debug.Log("Main Tank Needle Zero angle  = " + fuelMNatZero);
 
 
                 mainneedleangle = (currentfuelvalue * 0.058f) + fuelMNatZero;
-                Debug.Log("Main Tank Needle  angle  = " + mainneedleangle);
+                F16Debug.Log("Main Tank Needle  angle  = " + mainneedleangle);
 
 
                 fuelMainNeedle.localEulerAngles = new Vector3 (-135f, -1.525f, mainneedleangle);
 
 
-                Debug.Log("Main Tank Current Fuel = " + tank.name + " : " + currentfuelvalue);
+                F16Debug.Log("Main Tank Current Fuel = " + tank.name + " : " + currentfuelvalue);
 
                
                 externalfueltanks = tank.subFuelTanks;
@@ -7259,30 +7349,30 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 foreach (var subtank in externalfueltanks)
                 {
                     currentfuelvalue = subtank.fuelFraction * subtank.maxFuel;
-                    Debug.Log("Tank Current Fuel = " + subtank.name + " : " + currentfuelvalue);
+                    F16Debug.Log("Tank Current Fuel = " + subtank.name + " : " + currentfuelvalue);
 
 
                     switch (i)
                     {
                         case 0:
-                            Debug.Log("Left Tank Needle Zero angle  = " + fuelLNatZero);
+                            F16Debug.Log("Left Tank Needle Zero angle  = " + fuelLNatZero);
 
                             leftneedleangle = (currentfuelvalue * 0.058f) + fuelLNatZero;
-                            Debug.Log("Left Tank Needle angle  = " + leftneedleangle);
+                            F16Debug.Log("Left Tank Needle angle  = " + leftneedleangle);
                             fuelLeftNeedle.localEulerAngles = new Vector3(-135f, -1.525f, leftneedleangle);
                             break;
                         case 1:
                             rightneedleangle = (currentfuelvalue * 0.058f) + fuelrnatzero;
 
-                            Debug.Log("Right Tank Needle Zero angle  = " + fuelrnatzero);
+                            F16Debug.Log("Right Tank Needle Zero angle  = " + fuelrnatzero);
                             fuelRightNeedle.localEulerAngles = new Vector3(-135f, -1.525f, rightneedleangle);
-                            Debug.Log("Right Tank Needle angle  = " + rightneedleangle);
+                            F16Debug.Log("Right Tank Needle angle  = " + rightneedleangle);
                             break;
                         case 2:
                             underneedleangle = (currentfuelvalue * 0.058f) + fuelunatzero;
-                            Debug.Log("Under Tank Needle Zero angle  = " + fuelunatzero);
+                            F16Debug.Log("Under Tank Needle Zero angle  = " + fuelunatzero);
                             fuelUnderNeedle.localEulerAngles = new Vector3(-135f, -1.525f, underneedleangle);
-                            Debug.Log("Under Tank Needle angle  = " + rightneedleangle);
+                            F16Debug.Log("Under Tank Needle angle  = " + rightneedleangle);
                             break;
                     }
                     i++;
@@ -7300,10 +7390,10 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             if (VTOLAPI.currentScene == VTOLScenes.VehicleConfiguration || BatteryLever.currentState == 0) { yield break; }
 
             Altitude = attitude.altitudeASL;
-            Debug.Log("Altitude = " + Altitude);
+            F16Debug.Log("Altitude = " + Altitude);
             vector = sd.rb.worldCenterOfMass + sd.rb.transform.TransformVector(sd.offsetFromCoM);
             MachInternal = MeasurementManager.SpeedToMach(sd.rb.GetPointVelocity(vector).magnitude, Altitude);
-            Debug.Log("Mach = " + MachInternal);
+            F16Debug.Log("Mach = " + MachInternal);
             
 
             if (MachInternal < 0.77f && MachInternal > 0.375f)
@@ -7323,13 +7413,13 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 //sd.area = (0.3064f * (MachNumber * MachNumber)) - (0.2335f * MachNumber) + 0.0275f;
                  sd.area = 0.15f;
                 }
-            Debug.Log("SimpleDragArea = " + sd.area);
+            F16Debug.Log("SimpleDragArea = " + sd.area);
             
             DragOutput =  0.5f * AerodynamicsController.fetch.AtmosDensityAtPosition(defaultf26.transform.position) * AerodynamicsController.fetch.DragMultiplierAtSpeed(sd.rb.GetPointVelocity(vector).magnitude, defaultf26.transform.position);
 
            
 
-            Debug.Log("Drag Multiplier = " + DragOutput+ ", TotalDrag = " + DragOutput * sd.area + ", Mach = "+ MachNumber);
+            F16Debug.Log("Drag Multiplier = " + DragOutput+ ", TotalDrag = " + DragOutput * sd.area + ", Mach = "+ MachNumber);
             
         }
         */
@@ -7337,6 +7427,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private IEnumerator updateCompass()
         {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             if (!AircraftLoaded) { yield break; }
             yield return new WaitForSecondsRealtime(2f);
 
@@ -7346,12 +7437,12 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
             
             
-                Debug.Log("Updating compass");
+                F16Debug.Log("Updating compass");
                 
                
 
                 positionToMoveCompassNeedleTo = 360f - currentHeading + 6.54f ;
-                Debug.Log("got compass and heading");
+                F16Debug.Log("got compass and heading");
 
                 compassBlock.localEulerAngles = new Vector3(-81.57101f, -82.692f, positionToMoveCompassNeedleTo);
                 
@@ -7376,20 +7467,20 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private IEnumerator DEDElements()
         {
-            Debug.unityLogger.logEnabled = debugbool;
-            Debug.Log("ded1 ");
+            //F16Debug.unityLogger.logEnabled = F16Debugbool;
+            F16Debug.Log("ded1 ");
             if (!AircraftLoaded) { yield break; }
             if (f16DEDLine3RTM != null)
             {
-                Debug.Log("ded2 ");
+                F16Debug.Log("ded2 ");
                 f16DEDLine4LTM.text = "VS = " + attitude.verticalSpeed.ToString().Substring(0, 4) + "M/S";
                 
             }
-            Debug.Log("ded3 ");
+            F16Debug.Log("ded3 ");
             if (MPActive == true)
             {
-                Debug.Log("ded4 ");
-                Debug.Log("UHF: ");
+                F16Debug.Log("ded4 ");
+                F16Debug.Log("UHF: ");
 
                 MPRadioFrequencyDED();
 
@@ -7398,11 +7489,11 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             else
             {
                 if (f16uhftext1text == null) { yield break; }
-                Debug.Log("ded5 ");
+                F16Debug.Log("ded5 ");
                 noMPDEDRadioText = f16uhftext1text.text + f16uhftext2text.text + f16uhftext3text.text + "." + f16uhftext4text.text + f16uhftext5text.text;
-                Debug.Log("ded6 ");
+                F16Debug.Log("ded6 ");
                 f16DEDLine2LTM.text = "UHF: " + noMPDEDRadioText + " HZ";
-                Debug.Log("ded7 ");
+                F16Debug.Log("ded7 ");
             }
             yield return null;
         }
@@ -7414,6 +7505,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private IEnumerator updateClock()
         {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             yield return new WaitForSecondsRealtime(60f);
             if (!AircraftLoaded) { yield break; }
             if (airbrakeobj == null) { yield break; }
@@ -7424,7 +7516,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             currentHour = currentTime.Hour;
             currentMinute = currentTime.Minute;
             if (f16DEDLine3RTM != null) {
-                Debug.Log("found text mesh");
+                F16Debug.Log("found text mesh");
                 f16DEDLine3RTM.text = timeNow;
                 
             }
@@ -7437,7 +7529,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
                 if (f16DEDLine3RTM != null)
                 {
-                    Debug.Log("found text mesh");
+                    F16Debug.Log("found text mesh");
                     f16DEDLine3RTM.text = timeNow;
                 }
                 positionToMoveMinuteNeedleTo = (currentMinute * 6) + 90;
@@ -7462,21 +7554,21 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
         //this function allows me to find all elements with a name containing string and return that list
         public List<GameObject> Namecontains(string searchfortext, Transform Objectsearchinginside)
         {
-            Debug.Log("Started NameContains for " + Objectsearchinginside.ToString() + " = " + searchfortext);
+            F16Debug.Log("Started NameContains for " + Objectsearchinginside.ToString() + " = " + searchfortext);
 
             if (Objectsearchinginside.name == searchfortext)
             {
                 
                 nameofthing = Objectsearchinginside.name;
-                Debug.Log("Adding name to list: " + nameofthing);
+                F16Debug.Log("Adding name to list: " + nameofthing);
                 ListOfObjectsWithName.Add(Objectsearchinginside.gameObject);
-                Debug.Log("next step");
-                Debug.Log("Added name to list: " + Objectsearchinginside.name);
+                F16Debug.Log("next step");
+                F16Debug.Log("Added name to list: " + Objectsearchinginside.name);
             }
             // now search in its children, grandchildren etc.
             foreach (Transform childelement in Objectsearchinginside)
             {
-                Debug.Log("Started NameContains for grandchildren: " + childelement.ToString() + " = " + searchfortext);
+                F16Debug.Log("Started NameContains for grandchildren: " + childelement.ToString() + " = " + searchfortext);
                 Namecontains(searchfortext, childelement);
                 
             }
@@ -7485,7 +7577,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private void ElecPowerLightsOn()
         {
-            Debug.Log("Elec Powe Lights On");
+            F16Debug.Log("Elec Powe Lights On");
 
             allElecPowerLights = PickupAllChildrensTransforms(newAircraftUnit, "ElectricsStartupLights").gameObject;
             allElecPowerLightsArrayOfLights = allElecPowerLights.GetComponentsInChildren(typeof(Light));
@@ -7499,7 +7591,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private void ElecPowerLightsOff()
         {
-            Debug.Log("Elec Powe Lights On");
+            F16Debug.Log("Elec Powe Lights On");
 
             allElecPowerLights = PickupAllChildrensTransforms(newAircraftUnit, "ElectricsStartupLights").gameObject;
             allElecPowerLightsArrayOfLights = allElecPowerLights.GetComponentsInChildren(typeof(Light));
@@ -7517,24 +7609,24 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             if (nlo == 1)
             {
                 IntakeLightLeftLightComp.enabled = true;
-                Debug.Log("IL1");
+                F16Debug.Log("IL1");
                 IntakeLightRightLightComp.enabled = true;
-                Debug.Log("IL2");
+                F16Debug.Log("IL2");
                 tailLightComp.enabled = true;
-                Debug.Log("IL3");
+                F16Debug.Log("IL3");
                 tailLightCompRendererMaterial.EnableKeyword("_EMISSION");
-                Debug.Log("IL4");
+                F16Debug.Log("IL4");
             }
             else
             {
                 IntakeLightLeftLightComp.enabled = false;
-                Debug.Log("IL5");
+                F16Debug.Log("IL5");
                 IntakeLightRightLightComp.enabled = false;
-                Debug.Log("IL6");
+                F16Debug.Log("IL6");
                 tailLightComp.enabled = false;
-                Debug.Log("IL7");
+                F16Debug.Log("IL7");
                 tailLightCompRendererMaterial.DisableKeyword("_EMISSION");
-                Debug.Log("IL8");
+                F16Debug.Log("IL8");
             }
         }
 
@@ -7543,14 +7635,14 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             //FlightLogger.Log("Internal Lights Check Triggered");
             if (ilcst == 1)
             {
-                Debug.Log("Internal Lights  Check State = 1");
+                F16Debug.Log("Internal Lights  Check State = 1");
                 //FlightLogger.Log("Internal Lights Check State = 1");
                 CustomInternalLightsOn();
             }
             else
             {
 
-                Debug.Log("Internal Lights  Check State = 0");
+                F16Debug.Log("Internal Lights  Check State = 0");
                 //FlightLogger.Log("Internal Lights Check State = 0");
 
                 CustomInternalLightsOff();
@@ -7560,7 +7652,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private void CustomInternalLightsOn()
         {
-            Debug.Log("Turn Internal Lights On");
+            F16Debug.Log("Turn Internal Lights On");
             //foreach (Light currentlight in allinstrumentslights)
             //{
             //    currentlight.enabled = true;
@@ -7613,7 +7705,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private void CustomInternalLightsOff()
         {
-            Debug.Log("Turn Internal Lights Off");
+            F16Debug.Log("Turn Internal Lights Off");
             //foreach (Light currentlight in allinstrumentslights)
             //{
             //    currentlight.enabled = false;
@@ -7621,58 +7713,59 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
             panelLightColorOff = new Color(0.5f, 0.5f, 0.5f, 0.5f);
             leftPanelRendererMaterial.color = panelLightColorOff;
-            Debug.Log("Turn Internal Lights Off 1");
+            F16Debug.Log("Turn Internal Lights Off 1");
             rightpanelrenderermaterial.color = panelLightColorOff;
             rightauxpanelrenderermaterial.color = panelLightColorOff;
             frontcentrepanelrenderermaterial.color = panelLightColorOff;
             frontupperpanelrenderermaterial.color = panelLightColorOff;
-            Debug.Log("Turn Internal Lights Off2");
+            F16Debug.Log("Turn Internal Lights Off2");
             leftauxpanelrenderermaterial.color = panelLightColorOff;
-            Debug.Log("Turn Internal Lights Off21");
+            F16Debug.Log("Turn Internal Lights Off21");
             frontsightpanelrenderermaterial.color = panelLightColorOff;
-            Debug.Log("Turn Internal Lights Off22");
+            F16Debug.Log("Turn Internal Lights Off22");
             rightAuxInstrumentsHydraulics.DisableKeyword("_EMISSION");
-            Debug.Log("Turn Internal Lights Off3");
+            F16Debug.Log("Turn Internal Lights Off3");
             rightAuxInstrumentsFuel.DisableKeyword("_EMISSION");
             rightAuxInstrumentsOxygen.DisableKeyword("_EMISSION");
             rightAuxInstrumentsClock.DisableKeyword("_EMISSION");
             rightAuxInstrumentsCPressure.DisableKeyword("_EMISSION");
-            Debug.Log("Turn Internal Lights Off4");
+            F16Debug.Log("Turn Internal Lights Off4");
             rightAuxInstrumentsEPUFuel.DisableKeyword("_EMISSION");
-            Debug.Log("Turn Internal Lights Off4_1");
+            F16Debug.Log("Turn Internal Lights Off4_1");
             rightUpperInstrumentsRPM.DisableKeyword("_EMISSION");
-            Debug.Log("Turn Internal Lights Off4_2");
+            F16Debug.Log("Turn Internal Lights Off4_2");
             rightUpperInstrumentsFTIT.DisableKeyword("_EMISSION");
-            Debug.Log("Turn Internal Lights Off51");
+            F16Debug.Log("Turn Internal Lights Off51");
             rightUpperInstrumentsOil.DisableKeyword("_EMISSION");
-            Debug.Log("Turn Internal Lights Off52");
+            F16Debug.Log("Turn Internal Lights Off52");
 
             rightUpperInstrumentsAtt2.DisableKeyword("_EMISSION");
-            Debug.Log("Turn Internal Lights Off53");
+            F16Debug.Log("Turn Internal Lights Off53");
 
             Compasscylindermaterial.DisableKeyword("_EMISSION");
-            Debug.Log("Turn Internal Lights Off54");
+            F16Debug.Log("Turn Internal Lights Off54");
 
             AOAcylindermaterial.DisableKeyword("_EMISSION");
-            Debug.Log("Turn Internal Lights Off55");
+            F16Debug.Log("Turn Internal Lights Off55");
 
             rightUpperInstrumentsNozzle.DisableKeyword("_EMISSION");
-            Debug.Log("Turn Internal Lights Off56");
+            F16Debug.Log("Turn Internal Lights Off56");
             frontPanelICFMat.DisableKeyword("_EMISSION");
-            Debug.Log("Turn Internal Lights Off57");
+            F16Debug.Log("Turn Internal Lights Off57");
             contr4KnobMaterial.DisableKeyword("_EMISSION");
-            Debug.Log("Turn Internal Lights Off58");
+            F16Debug.Log("Turn Internal Lights Off58");
             contr1KnobMaterial.DisableKeyword("_EMISSION");
-            Debug.Log("Turn Internal Lights Off59");
+            F16Debug.Log("Turn Internal Lights Off59");
             controlKnobMaterial.DisableKeyword("_EMISSION");
-            Debug.Log("Turn Internal Lights Off60");
+            F16Debug.Log("Turn Internal Lights Off60");
             contr2KnobMaterial.DisableKeyword("_EMISSION");
-            Debug.Log("Turn Internal Lights Off61");
+            F16Debug.Log("Turn Internal Lights Off61");
 
         }
 
         private IEnumerator AirbrakeCheck()
         {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             if (!PlaneSetupDone) { yield break; }
             if (airbrakeobj == null) { yield break; }
             float Mach = MeasurementManager.SpeedToMach(attitude.airspeed, attitude.altitudeASL);
@@ -7696,6 +7789,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private IEnumerator AltitudePowerAdjustment()
         {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             if (!PlaneSetupDone) { yield break; }
             yield return new WaitForSecondsRealtime(5f);
             if (airbrakeobj == null) { yield break; }
@@ -7714,21 +7808,22 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 if (attitude.airspeed >= 305)
                     {
                     spdMultiplier = 1+(((attitude.airspeed - 305)*0.25f)/400);
-                    Debug.Log("SPD Multiplier =" + spdMultiplier );
+                    F16Debug.Log("SPD Multiplier =" + spdMultiplier );
                         }
             }
 
             leftEngineVar.maxThrust = 120f * engMultiplier * spdMultiplier;
             rightEngineVar.maxThrust = 0f * engMultiplier;
 
-            Debug.Log("currentLeftThrust =" + leftEngineVar.maxThrust + ", currentRightThrust = " + rightEngineVar.maxThrust);
+            F16Debug.Log("currentLeftThrust =" + leftEngineVar.maxThrust + ", currentRightThrust = " + rightEngineVar.maxThrust);
 
             yield break;
         }
 
         private void ThrottleAnimatorSet(float throttle)
         {
-            Debug.Log("throttle: " + throttle);
+
+            F16Debug.Log("throttle: " + throttle);
             
             newf16throttleangle = -115 + (50 * throttle);
             f16throttlepivot.localEulerAngles = new Vector3(newf16throttleangle,0,0);
@@ -7738,6 +7833,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private IEnumerator ThrottleIAnimator()
         {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             if (airbrakeobj == null) { yield break; }
             if (!PlaneSetupDone) { yield break; }
             throttlef26I.transform.position = f16throttletf.position;
@@ -7771,7 +7867,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
         {
             if (bsst == 1)
             {
-                Debug.Log("Batt Switch State = 1");
+                F16Debug.Log("Batt Switch State = 1");
                 //APUauxunit.SetPower(1);
                 ElecPowerLightsOn();
 
@@ -7781,7 +7877,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
                 if (bsst == 0)
                 {
-                    Debug.Log("Batt Switch  State = 0");
+                    F16Debug.Log("Batt Switch  State = 0");
                     //APUauxunit.SetPower(0);
                     ElecPowerLightsOff();
                 }
@@ -7874,7 +7970,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
         {
             if (flst == 1)
             {
-                Debug.Log("Flaps Switch State = 1");
+                F16Debug.Log("Flaps Switch State = 1");
                 landingflapposition = 10f;
 
 
@@ -7884,14 +7980,14 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
                 if (flst == 0)
                 {
-                    Debug.Log("Flaps Switch State = 0");
+                    F16Debug.Log("Flaps Switch State = 0");
                     landingflapposition = 0f;
                 }
                 else
                 {
 
 
-                    Debug.Log("Flaps Switch State = 2");
+                    F16Debug.Log("Flaps Switch State = 2");
                     landingflapposition = 20f;
 
                 }
@@ -7903,7 +7999,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private void LandingGearPreCheck(int lgc)
         {
-            Debug.Log("lgc = " + lgc);
+            F16Debug.Log("lgc = " + lgc);
             if (landinggearcount == 0)
             {
                 if (lgc == 1) {
@@ -7920,32 +8016,32 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private void LandingGearCheckState(int lgcst)
         {
-            Debug.Log("Landing Gear Check State1");
-            Debug.Log("lgcst = " + lgcst);
+            F16Debug.Log("Landing Gear Check State1");
+            F16Debug.Log("lgcst = " + lgcst);
             if (f16landinggearleverVRL.currentState == 1)
             {
-                Debug.Log("Landing Gear Check State = 1");
+                F16Debug.Log("Landing Gear Check State = 1");
                 LandingFlapsLeverObject = PickupAllChildrensTransforms(defaultf26, "FlapsLever").gameObject;
                 VRLever FlapsLeverCheck = LandingFlapsLeverObject.GetComponentInChildren<VRLever>();
                 FlapsLeverCheck.RemoteSetState(0);
-                Debug.Log("F26 Landing Gear State 4 = " + f26landinggearintlever.currentState);
-                Debug.Log("f16 Landing Gear State 4 = " + f16landinggearleverVRL.currentState);
+                F16Debug.Log("F26 Landing Gear State 4 = " + f26landinggearintlever.currentState);
+                F16Debug.Log("f16 Landing Gear State 4 = " + f16landinggearleverVRL.currentState);
                 LandingGearRaiseTimeMover();
                 LandingGearLightCylMat.DisableKeyword("_EMISSION");
 
-                Debug.Log("F26 Landing Gear State 5 = " + f26landinggearintlever.currentState);
-                Debug.Log("f16 Landing Gear State 5 = " + f16landinggearleverVRL.currentState);
+                F16Debug.Log("F26 Landing Gear State 5 = " + f26landinggearintlever.currentState);
+                F16Debug.Log("f16 Landing Gear State 5 = " + f16landinggearleverVRL.currentState);
             }
             else
             {
-                Debug.Log("Landing Gear count = " + landinggearcount);
-                Debug.Log("Landing Gear Check State = 0");
+                F16Debug.Log("Landing Gear count = " + landinggearcount);
+                F16Debug.Log("Landing Gear Check State = 0");
                 
                 LandingFlapsLeverObject = PickupAllChildrensTransforms(defaultf26, "FlapsLever").gameObject;
                 VRLever FlapsLeverCheck = LandingFlapsLeverObject.GetComponentInChildren<VRLever>();
                 FlapsLeverCheck.RemoteSetState(1);
-                Debug.Log("F26 Landing Gear State 6 = " + f26landinggearintlever.currentState);
-                Debug.Log("f16 Landing Gear State 6 = " + f16landinggearleverVRL.currentState);
+                F16Debug.Log("F26 Landing Gear State 6 = " + f26landinggearintlever.currentState);
+                F16Debug.Log("f16 Landing Gear State 6 = " + f16landinggearleverVRL.currentState);
                 LandingGearLowerTimeMover();
                 LandingGearLightCylMat.EnableKeyword("_EMISSION");
 
@@ -7969,7 +8065,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
         {
             //this sets the angles and things to rotate
             float counter = 0;
-            Debug.Log("Starting landing gear Rot7: " + counter);
+            F16Debug.Log("Starting landing gear Rot7: " + counter);
 
             
             f16leftgeardown = new Vector3(30.5f, 0, 0);
@@ -7983,7 +8079,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             f16rightwheelpivotindown = new Vector3(0, 0, 0);
             f16frontwheelpivotindown = new Vector3(0, 0, -100);
 
-            Debug.Log("Default Angles = Created");
+            F16Debug.Log("Default Angles = Created");
             f16leftgearup = new Vector3(30.5f,0f, -95f);
             f16rightgearup = new Vector3(-30.5f, 0f, -95f);
             f16frontgearup = new Vector3(0, 0, 108f);
@@ -7996,7 +8092,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             f16frontwheelpivotinup = new Vector3(20, 90, -90);
 
 
-            Debug.Log("New Rotation created");
+            F16Debug.Log("New Rotation created");
 
             //FlightLogger.Log("Canopy Rotation Starting Point ");
 
@@ -8004,7 +8100,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             while (counter < landinggearduration)
             {
 
-                Debug.Log("Starting Covers Rot8: " + counter);
+                F16Debug.Log("Starting Covers Rot8: " + counter);
                 counter += Time.deltaTime;
                 f16leftgear.transform.localEulerAngles = Vector3.Lerp(f16leftgeardown, f16leftgearup, counter / landinggearduration);
                 f16rightgear.transform.localEulerAngles = Vector3.Lerp(f16rightgeardown, f16rightgearup, counter / landinggearduration);
@@ -8024,10 +8120,10 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
         {
             //this sets the angles and things to rotate
             float counter = 0;
-            Debug.Log("Starting landing gear cover Rot7: " + counter);
+            F16Debug.Log("Starting landing gear cover Rot7: " + counter);
 
 
-            Debug.Log("New Rotation created");
+            F16Debug.Log("New Rotation created");
 
             FlightLogger.Log("lg Rotation Starting Point ");
 
@@ -8035,7 +8131,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             while (counter < landinggearduration)
             {
 
-                Debug.Log("Starting Covers Rot8: " + counter);
+                F16Debug.Log("Starting Covers Rot8: " + counter);
                 counter += Time.deltaTime;
                 f16leftgearcover.transform.localEulerAngles = Vector3.Lerp(f16leftgearcoverdown, f16leftgearcoverup, counter / landinggearcoverduration);
                 f16rightgearcover.transform.localEulerAngles = Vector3.Lerp(f16rightgearcoverdown, f16rightgearcoverup, counter / landinggearcoverduration);
@@ -8050,13 +8146,13 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
         {
             //this sets the angles and things to rotate
             float counter = 0;
-            Debug.Log("Starting landing gear lower Rot7: " + counter);
+            F16Debug.Log("Starting landing gear lower Rot7: " + counter);
 
 
             
 
 
-            Debug.Log("New Rotation created");
+            F16Debug.Log("New Rotation created");
 
             //FlightLogger.Log("lg Rotation Starting Point ");
 
@@ -8064,7 +8160,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             while (counter < landinggearduration)
             {
 
-                Debug.Log("Starting Covers Rot8: " + counter);
+                F16Debug.Log("Starting Covers Rot8: " + counter);
                 counter += Time.deltaTime;
                 f16leftgear.transform.localEulerAngles = Vector3.Lerp(f16leftgearup, f16leftgeardown, counter / landinggearduration);
                 f16rightgear.transform.localEulerAngles = Vector3.Lerp(f16rightgearup, f16rightgeardown, counter / landinggearduration);
@@ -8084,7 +8180,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
         {
             //this sets the angles and things to rotate
             float counter = 0;
-            Debug.Log("Starting landing gear cover lower Rot7: " + counter);
+            F16Debug.Log("Starting landing gear cover lower Rot7: " + counter);
             f16leftgeardown = new Vector3(30.5f, 0, 0);
             f16rightgeardown = new Vector3(-30.5f, 0, 0);
             f16frontgeardown = new Vector3(0, 0, 0);
@@ -8096,7 +8192,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             f16rightwheelpivotindown = new Vector3(0, 0, 0);
             f16frontwheelpivotindown = new Vector3(0, 0, -100);
 
-            Debug.Log("Default Angles = Created");
+            F16Debug.Log("Default Angles = Created");
             f16leftgearup = new Vector3(30.5f, 0f, -95f);
             f16rightgearup = new Vector3(-30.5f, 0f, -95f);
             f16frontgearup = new Vector3(0, 0, 108f);
@@ -8108,7 +8204,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             f16rightwheelpivotinup = new Vector3(0, 0, -104.1f);
             f16frontwheelpivotinup = new Vector3(20, 90, -90);
 
-            Debug.Log("New Rotation created");
+            F16Debug.Log("New Rotation created");
 
             //FlightLogger.Log("Gear Rotation Starting Point ");
 
@@ -8116,7 +8212,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             while (counter < landinggearduration)
             {
 
-                Debug.Log("Starting Covers Rot8: " + counter);
+                F16Debug.Log("Starting Covers Rot8: " + counter);
                 counter += Time.deltaTime;
                 f16leftgearcover.transform.localEulerAngles = Vector3.Lerp(f16leftgearcoverup, f16leftgearcoverdown, counter / landinggearcoverduration);
                 f16rightgearcover.transform.localEulerAngles = Vector3.Lerp(f16rightgearcoverup, f16rightgearcoverdown, counter / landinggearcoverduration);
@@ -8135,7 +8231,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             //FlightLogger.Log("Canopy Check Triggered");
             if (st == 1)
             {
-                Debug.Log("Canopy Switch State = 1");
+                F16Debug.Log("Canopy Switch State = 1");
                 foreach (Light light in CanopyLights)
                 {
                     light.enabled = true;
@@ -8147,7 +8243,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             else
             {
                 
-                    Debug.Log("Canopy Switch State = 0");
+                    F16Debug.Log("Canopy Switch State = 0");
                 //FlightLogger.Log("Canopy Check Switch State = 0");
                 foreach (Light light in CanopyLights)
                 {
@@ -8183,17 +8279,17 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             //this sets the angles and things to rotate
             if (isActive)
                 yield break;
-            Debug.Log("Starting Cockpit Rot1");
+            F16Debug.Log("Starting Cockpit Rot1");
             isActive = true;
-            Debug.Log("Starting Cockpit Rot2");
+            F16Debug.Log("Starting Cockpit Rot2");
             outputofcalc = cockpitPivot.eulerAngles + targetRotationopen;
             FlightLogger.Log("Canopy Lower Rotation Starting, Angle to reach = " + outputofcalc.x + "," + outputofcalc.y + "," + outputofcalc.z);
 
 
             yield return StartCoroutine(Rotatecockpit(cockpitPivot.eulerAngles + targetRotationopen)); // open the door
-            Debug.Log("Starting Cockpit Rot3");
+            F16Debug.Log("Starting Cockpit Rot3");
             
-            Debug.Log("Starting Cockpit Rot4");
+            F16Debug.Log("Starting Cockpit Rot4");
             isActive = false;
             
         }
@@ -8209,16 +8305,16 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             //this sets the angles and things to rotate
             if (isActive)
                 yield break;
-            Debug.Log("Starting Cockpit Rot1");
+            F16Debug.Log("Starting Cockpit Rot1");
             isActive = true;
-            Debug.Log("Starting Cockpit Rot2");
+            F16Debug.Log("Starting Cockpit Rot2");
             outputofcalc = cockpitPivot.eulerAngles - targetRotationopen;
             //FlightLogger.Log("Canopy Lower Rotation Starting, Angle to reach = " + outputofcalc.x + ","+ outputofcalc.y+","+ outputofcalc.z);
             yield return StartCoroutine(Rotatecockpit(cockpitPivot.eulerAngles - targetRotationopen)); // open the door
-            Debug.Log("Starting Cockpit Rot3");
+            F16Debug.Log("Starting Cockpit Rot3");
             
 
-            Debug.Log("Starting Cockpit Rot4");
+            F16Debug.Log("Starting Cockpit Rot4");
             isActive = false;
 
         }
@@ -8226,12 +8322,12 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
         private IEnumerator Rotatecockpit(Vector3 newRotation) // cockpit rotation
         {
             float counter = 0;
-            Debug.Log("Starting Cockpit Rot7: " + counter);
+            F16Debug.Log("Starting Cockpit Rot7: " + counter);
 
             Vector3 defaultAngles = cockpitPivot.eulerAngles;
-            Debug.Log("Default Angles = (" + defaultAngles.x + "," + defaultAngles.y + "," + defaultAngles.z + ")");
+            F16Debug.Log("Default Angles = (" + defaultAngles.x + "," + defaultAngles.y + "," + defaultAngles.z + ")");
             
-            Debug.Log("New Rotation = (" + newRotation.x + "," + newRotation.y + "," + newRotation.z + ")");
+            F16Debug.Log("New Rotation = (" + newRotation.x + "," + newRotation.y + "," + newRotation.z + ")");
 
             //FlightLogger.Log("Canopy Rotation Starting Point = " + defaultAngles.x + "," + defaultAngles.y + "," + defaultAngles.z + " : Canopy End point = " + newRotation.x + "," + newRotation.y + "," + newRotation.z + " : Will take = " + canopyduration + "s");
 
@@ -8240,7 +8336,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             while (counter < canopyduration)
             {
                 
-                Debug.Log("Starting Cockpit Rot8: " + counter);
+                F16Debug.Log("Starting Cockpit Rot8: " + counter);
                 counter += Time.deltaTime;
                 cockpitPivot.eulerAngles = Vector3.Lerp(defaultAngles, newRotation, counter / canopyduration);
                 yield return null;
@@ -8255,7 +8351,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
             foreach (VTText vtttohide in VTTs)
             {
-                Debug.Log("Hiding VTT: " + vtttohide.ToString());
+                F16Debug.Log("Hiding VTT: " + vtttohide.ToString());
                 vtttohide.enabled = false;
 
             }
@@ -8270,7 +8366,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
             foreach (SpriteRenderer spritestohide in Sprites)
             {
-                Debug.Log("Hiding sprites: " + spritestohide.ToString());
+                F16Debug.Log("Hiding sprites: " + spritestohide.ToString());
                 spritestohide.enabled = false;
 
             }
@@ -8284,7 +8380,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
             foreach (Image imagestohide in images)
             {
-                Debug.Log("Hiding images: " + imagestohide.ToString());
+                F16Debug.Log("Hiding images: " + imagestohide.ToString());
                 imagestohide.enabled = false;
 
             }
@@ -8298,7 +8394,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
             foreach (MeshRenderer meshtohide in meshes)
             {
-                Debug.Log("Hiding: " + meshtohide.ToString());
+                F16Debug.Log("Hiding: " + meshtohide.ToString());
                 meshtohide.enabled = false;
 
             }
@@ -8312,7 +8408,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             foreach (MeshRenderer meshtounhide in meshes)
             {
                 meshtounhide.enabled = true;
-                Debug.Log("Unhiding: " + meshtounhide.name);
+                F16Debug.Log("Unhiding: " + meshtounhide.name);
             }
 
         }
@@ -8324,7 +8420,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
             foreach (Text textitem in textbits)
             {
-                Debug.Log("Hiding text: " + textitem.ToString());
+                F16Debug.Log("Hiding text: " + textitem.ToString());
                 textitem.enabled = false;
 
             }
@@ -8338,7 +8434,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
             foreach (VRInteractable vriitem in vribits)
             {
-                Debug.Log("Hiding vri: " + vriitem.ToString());
+                F16Debug.Log("Hiding vri: " + vriitem.ToString());
                 vriitem.radius = 0f;
                 vriitem.useRect = false;
 
@@ -8354,7 +8450,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
             foreach (UILineRenderer uilritem in uilrbits)
             {
-                Debug.Log("Hiding uilr: " + uilritem.ToString());
+                F16Debug.Log("Hiding uilr: " + uilritem.ToString());
                 uilritem.enabled = false;
             }
 
@@ -8365,7 +8461,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             Transform[] allChildren = go.GetComponentsInChildren<Transform>();
             foreach (Transform child in allChildren)
             {
-                Debug.Log("Getting child: " + child.gameObject.name);
+                F16Debug.Log("Getting child: " + child.gameObject.name);
 
 
                 if (child.gameObject.name != namewanted)
@@ -8374,7 +8470,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 }
                 else
                 {
-                    Debug.Log("Getting components");
+                    F16Debug.Log("Getting components");
 
                     GameObject childobj = child.gameObject;
 
@@ -8384,8 +8480,8 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                     foreach (ParticleSystem component in allComponents)
                     {
                         ++i;
-                        Debug.Log(childobj.name + " Particle Systems " + i + ": " + component.name);
-                        Debug.Log("Duration of " + component.name + " = " + component.main.duration);
+                        F16Debug.Log(childobj.name + " Particle Systems " + i + ": " + component.name);
+                        F16Debug.Log("Duration of " + component.name + " = " + component.main.duration);
                         return component;
                     }
 
@@ -8405,7 +8501,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             Light[] allChildren = go.GetComponentsInChildren<Light>(true);
             foreach (Light child in allChildren)
             {
-                Debug.Log("Getting child: " + child.gameObject.name);
+                F16Debug.Log("Getting child: " + child.gameObject.name);
 
 
                 if (child.gameObject.name != namewanted)
@@ -8414,7 +8510,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 }
                 else
                 {
-                    Debug.Log("Getting components");
+                    F16Debug.Log("Getting components");
 
                     GameObject childobj = child.gameObject;
 
@@ -8424,7 +8520,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                     foreach (Light component in allComponents)
                     {
                         ++i;
-                        Debug.Log(childobj.name + " Particle Systems " + i + ": " + component.name);
+                        F16Debug.Log(childobj.name + " Particle Systems " + i + ": " + component.name);
 
                         return component;
                     }
@@ -8447,7 +8543,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             SpriteRenderer[] allChildren = go.GetComponentsInChildren<SpriteRenderer>(true);
             foreach (SpriteRenderer child in allChildren)
             {
-                Debug.Log("Getting child: " + child.gameObject.name);
+                F16Debug.Log("Getting child: " + child.gameObject.name);
 
 
                 if (child.gameObject.name != namewanted)
@@ -8456,7 +8552,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 }
                 else
                 {
-                    Debug.Log("Getting components");
+                    F16Debug.Log("Getting components");
 
                     GameObject childobj = child.gameObject;
 
@@ -8466,7 +8562,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                     foreach (SpriteRenderer component in allComponents)
                     {
                         ++i;
-                        Debug.Log(childobj.name + " Particle Systems " + i + ": " + component.name);
+                        F16Debug.Log(childobj.name + " Particle Systems " + i + ": " + component.name);
 
                         return component;
                     }
@@ -8488,7 +8584,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             Text[] allChildren = go.GetComponentsInChildren<Text>(true);
             foreach (Text child in allChildren)
             {
-                Debug.Log("Getting child: " + child.gameObject.name);
+                F16Debug.Log("Getting child: " + child.gameObject.name);
 
 
                 if (child.gameObject.name != namewanted)
@@ -8497,7 +8593,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 }
                 else
                 {
-                    Debug.Log("Getting components");
+                    F16Debug.Log("Getting components");
 
                     GameObject childobj = child.gameObject;
 
@@ -8507,7 +8603,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                     foreach (Text component in allComponents)
                     {
                         ++i;
-                        Debug.Log(childobj.name + " Text " + i + ": " + component.name);
+                        F16Debug.Log(childobj.name + " Text " + i + ": " + component.name);
                         
                         return component;
                     }
@@ -8525,11 +8621,11 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         public Transform PickupAllChildrensTransforms(GameObject go, string namewanted)
         {
-            Debug.Log("Running PickupAllChildrensTransforms for : " + go +" , " + namewanted);
+            F16Debug.Log("Running PickupAllChildrensTransforms for : " + go +" , " + namewanted);
             Transform[] allChildren = go.GetComponentsInChildren<Transform>(true);
             foreach (Transform child in allChildren)
             {
-                Debug.Log("Getting child: " + child.gameObject.name);
+                F16Debug.Log("Getting child: " + child.gameObject.name);
 
 
                 if (child.gameObject.name != namewanted)
@@ -8538,7 +8634,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 }
                 else
                 {
-                    Debug.Log("Getting components of children");
+                    F16Debug.Log("Getting components of children");
 
                     GameObject childobj = child.gameObject;
 
@@ -8548,7 +8644,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                     foreach (Transform component in allComponents)
                     {
                         ++i;
-                        Debug.Log(childobj.name + " Text " + i + ": " + component.name);
+                        F16Debug.Log(childobj.name + " Text " + i + ": " + component.name);
 
                         return component;
                     }
@@ -8566,20 +8662,21 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private IEnumerator BrakesOpener(Vector3 newRotationlu, Vector3 newRotationll, Vector3 newRotationru, Vector3 newRotationrl) // cockpit rotation
         {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             if (airbrakeflag) { } else { 
             float counter = 0;
             float brakeduration = 1.5f;
-            Debug.Log("Starting AirBrake Rot7: " + counter);
+            F16Debug.Log("Starting AirBrake Rot7: " + counter);
 
             Vector3 defaultAngles = new Vector3(0f,0f,0f);
-            Debug.Log("Default Airbrake Angles = (" + defaultAngles.x + "," + defaultAngles.y + "," + defaultAngles.z + ")");
+            F16Debug.Log("Default Airbrake Angles = (" + defaultAngles.x + "," + defaultAngles.y + "," + defaultAngles.z + ")");
 
             
 
             //simple Lerp rotation around a point over time
             while (counter < brakeduration)
             {
-                Debug.Log("Starting Break Open : " + counter);
+                F16Debug.Log("Starting Break Open : " + counter);
                 counter += Time.deltaTime;
                 airbrakelefthingeupperobj.transform.localEulerAngles = Vector3.Lerp(defaultAngles, newRotationlu, counter / brakeduration);
                 airbrakelefthingelowerobj.transform.localEulerAngles = Vector3.Lerp(defaultAngles, newRotationll, counter / brakeduration);
@@ -8594,12 +8691,13 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private IEnumerator BrakesCloser(Vector3 newRotationlu, Vector3 newRotationll, Vector3 newRotationru, Vector3 newRotationrl) // cockpit rotation
         {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             if (!airbrakeflag) { }
             else
             {
                 float counter = 0;
                 float brakeduration = 1.5f;
-                Debug.Log("Starting AirBrake Rot7: " + counter);
+                F16Debug.Log("Starting AirBrake Rot7: " + counter);
 
                 Vector3 defaultlowerAngles = new Vector3(0f, 0f, -43f);
                 Vector3 defaultupperAngles = new Vector3(0f, 0f, 43f);
@@ -8609,7 +8707,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 //simple Lerp rotation around a point over time
                 while (counter < brakeduration)
                 {
-                    Debug.Log("Starting Brake Close : " + counter);
+                    F16Debug.Log("Starting Brake Close : " + counter);
                     counter += Time.deltaTime;
                     airbrakelefthingeupperobj.transform.localEulerAngles = Vector3.Lerp(defaultupperAngles, newRotationlu, counter / brakeduration);
                     airbrakelefthingelowerobj.transform.localEulerAngles = Vector3.Lerp(defaultlowerAngles, newRotationll, counter / brakeduration);
@@ -8623,32 +8721,32 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private void wheels()
         {
-            Debug.Log("wheels_1");
+            F16Debug.Log("wheels_1");
             GameObject faFrontGear = PickupAllChildrensTransforms(defaultf26, "FrontGear").gameObject;
             GameObject faLeftGear = PickupAllChildrensTransforms(defaultf26, "LeftGear").gameObject;
             GameObject faRightGear = PickupAllChildrensTransforms(defaultf26, "RightGear").gameObject;
-            Debug.Log("wheels_2");
+            F16Debug.Log("wheels_2");
             f16leftgear = PickupAllChildrensTransforms(newAircraftUnit, "LeftLGmainpivot").gameObject;
             f16rightgear = PickupAllChildrensTransforms(newAircraftUnit, "RightLGmainpivot").gameObject;
             f16frontgear = PickupAllChildrensTransforms(newAircraftUnit, "FrontLGPivot").gameObject;
             f16frontgearlever = PickupAllChildrensTransforms(newAircraftUnit, "PivotforFGbacklever").gameObject;
-            Debug.Log("wheels_3");
+            F16Debug.Log("wheels_3");
             f16leftgearcover = PickupAllChildrensTransforms(newAircraftUnit, "LeftMainLGCoverPivot").gameObject;
             f16rightgearcover = PickupAllChildrensTransforms(newAircraftUnit, "RightMainLGCoverPivot").gameObject;
             f16frontgearcover = PickupAllChildrensTransforms(newAircraftUnit, "frontLGcoverpivot").gameObject;
-            Debug.Log("wheels_4");
+            F16Debug.Log("wheels_4");
             f16leftwheelpivotin = PickupAllChildrensTransforms(newAircraftUnit, "wheelturninpivotleft").gameObject;
             f16rightwheelpivotin = PickupAllChildrensTransforms(newAircraftUnit, "wheelturninpivotright").gameObject;
             f16frontwheelpivotin = PickupAllChildrensTransforms(newAircraftUnit, "PivotforFLGWheelTurn").gameObject;
 
 
-            Debug.Log("wheels_5");
+            F16Debug.Log("wheels_5");
             gearAnim = faFrontGear.transform.parent.gameObject.GetComponent<GearAnimator>();
             Transform frontwheelpivot = PickupAllChildrensTransforms(newAircraftUnit, "frontwheelpivot");
             Transform leftwheelpivot = PickupAllChildrensTransforms(newAircraftUnit, "leftwheelpivot");
             Transform rightwheelpivot = PickupAllChildrensTransforms(newAircraftUnit, "rightwheelpivot");
 
-            Debug.Log("wheels_6");
+            F16Debug.Log("wheels_6");
             //Wheel animations
             Transform f16FrontWheel = PickupAllChildrensTransforms(newAircraftUnit, "Whel_Lg_Front");
             SuspensionWheelAnimator faFrontWheelController = faFrontGear.GetComponent<SuspensionWheelAnimator>();
@@ -8682,7 +8780,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             {
                 case GearAnimator.GearStates.Extended:
 
-                    Debug.Log("wheels_extended");
+                    F16Debug.Log("wheels_extended");
                     f16leftgear.transform.localEulerAngles = new Vector3(30.5f, 0, 0);
                     f16rightgear.transform.localEulerAngles = new Vector3(-30.5f, 0, 0);
                     f16frontgear.transform.localEulerAngles = new Vector3(0, 0, 0);
@@ -8696,7 +8794,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
                     break;
                 case GearAnimator.GearStates.Retracted:
-                    Debug.Log("wheels_retracted");
+                    F16Debug.Log("wheels_retracted");
                     f16leftgear.transform.localEulerAngles = new Vector3(30.5f, 0, -95);
                     f16rightgear.transform.localEulerAngles = new Vector3(-30.5f, 0, -95);
                     f16frontgear.transform.localEulerAngles = new Vector3(0, 0, 108);
@@ -8709,7 +8807,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                     f16frontwheelpivotin.transform.localEulerAngles = new Vector3(20, 90, -90);
                     break;
                 default:
-                    Debug.Log("Gear animator switch statement got to default somehow");
+                    F16Debug.Log("Gear animator switch statement got to default somehow");
                     break;
             }
 
@@ -8720,7 +8818,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
         {
             //get all lights from f26
 
-            Debug.Log("lights_1");
+            F16Debug.Log("lights_1");
            
             tailnavlightsf26 = PickupAllChildrensTransforms(defaultf26, "TailNavLight");
             leftNavLightredf26 = PickupAllChildrensTransforms(defaultf26, "LeftFwdLight");
@@ -8735,7 +8833,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
             frontlandinglightsf26 = PickupAllChildrensTransforms(defaultf26, "LandingLightGearDownEnabler");
 
-            Debug.Log("lights_2");
+            F16Debug.Log("lights_2");
             //get all f16 light locations in model
             frontlandinglightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "frontlandinglightsf16transform");
            rightwingtoplightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "rightwingtoplightsf16transform");
@@ -8749,7 +8847,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             rearfuselageleftlightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "rearfuselageleftlightsf16transform");
             rearfuselagerightlightsf16transform = PickupAllChildrensTransforms(newAircraftUnit, "rearfuselagerightlightsf16transform");
 
-            Debug.Log("lights_3");
+            F16Debug.Log("lights_3");
 
             List<Transform> LightList = new List<Transform>();
             LightList.Add(frontlandinglightsf26);
@@ -8774,7 +8872,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                         foreach (Transform lightitem in LightList)
 
             {
-                if (lightitem == null) { Debug.Log("This item could not be found = " + lightitem.name); } else { Debug.Log("This item found = " + lightitem.name); }
+                if (lightitem == null) { F16Debug.Log("This item could not be found = " + lightitem.name); } else { F16Debug.Log("This item found = " + lightitem.name); }
                 Light lightComponent = lightitem.GetComponent<Light>();
                 SpriteRenderer lightSprite = lightitem.GetComponent<SpriteRenderer>();
                 if (lightComponent != null) { lightComponent.enabled = true; }
@@ -8790,18 +8888,18 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             frontlandinglightsf26.transform.rotation = frontlandinglightsf16transform.rotation;
 
 
-            Debug.Log("lights_4");
+            F16Debug.Log("lights_4");
             leftNavLightredf26.position = leftintakelightsf16transform.position;
             LeftRedStrobeLightf26.position = leftwingbottomlightsf16transform.position;
             leftNavLightRearWhitef26.position = rearfuselageleftlightsf16transform.position;
             LeftStrobeLightWhitef26.position = rearfuselageleftlightsf16transform.position; //needs to be red
 
-            Debug.Log("lights_5");
+            F16Debug.Log("lights_5");
             rightNavLightGreenf26.position = rightintakelightsf16transform.position;
             rightNavLightRearWhitef26.position = rearfuselagerightlightsf16transform.position;
             RightRedStrobeLightf26.position = rightwingtoplightsf16transform.position; //needs to be green
             RightStrobeLightWhitef26.position = rightwingbottomlightsf16transform.position; //needs to be green
-            Debug.Log("lights_6");
+            F16Debug.Log("lights_6");
 
             Color color0 = Color.red;
 
@@ -8817,11 +8915,11 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
             Color color1 = Color.green;
 
-            Debug.Log("lights_7");
+            F16Debug.Log("lights_7");
             //change this red light to green
             RightRedStrobeLightf26obj = RightRedStrobeLightf26.gameObject;
             Light rrsf26 = RightRedStrobeLightf26obj.GetComponent<Light>();
-            Debug.Log("lights_8");
+            F16Debug.Log("lights_8");
 
             rrsf26.color = color1;
 
@@ -8846,7 +8944,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             tailLightCompRendererMaterials = tailLightCylinder.GetComponent<MeshRenderer>().materials;
             foreach (Material materialitem in tailLightCompRendererMaterials)
             {
-                Debug.Log("Material Name = " + materialitem.name);
+                F16Debug.Log("Material Name = " + materialitem.name);
                 if (materialitem.name == "taillight (Instance)")
                 {
                     tailLightCompRendererMaterial = materialitem;
@@ -8873,13 +8971,13 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                     for (int i = 0; i < rootObjects.Count; ++i)
                     {
                         GameObject gameObject = rootObjects[i];
-                        Debug.Log(i + ") " + gameObject);
+                        F16Debug.Log(i + ") " + gameObject);
                     }
 
                     GameObject f26loadoutscreen = GameObject.Find("FA26-LoadoutConfigurator(Clone)");
                     if (f26loadoutscreen != null)
                     {
-                        Debug.Log("Found Configurator");
+                        F16Debug.Log("Found Configurator");
                         lc = f26loadoutscreen.GetComponent<LoadoutConfigurator>();
                         lcleftpanel = PickupAllChildrensTransforms(f26loadoutscreen, "left");
                         lcleftpaneltitle = PickupAllChildrensTransforms(lcleftpanel.gameObject, "title");
@@ -8951,7 +9049,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                         LockedHP.Add(0);
 
 
-                        Debug.Log("List Collected = " + LockedHP);
+                        F16Debug.Log("List Collected = " + LockedHP);
 
                         foreach (int lockedhpnum in LockedHP) {
                             lc.lockedHardpoints.Add(lockedhpnum); }
@@ -8961,7 +9059,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
                         break;
                     }
-                    else { Debug.Log("Not Found Configurator"); break; }
+                    else { F16Debug.Log("Not Found Configurator"); break; }
 
 
             }
@@ -8985,8 +9083,9 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
         private IEnumerator Controlsurfacemovers()
         {
+            if (!AircraftInfo.AircraftSelected) { yield break; }
             if (airbrakeobj == null) { yield break; }
-            Debug.Log("CSM_1");
+            F16Debug.Log("CSM_1");
             if (!AircraftLoaded) { yield break; }
 
 
@@ -9000,7 +9099,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 f26aileronleftdeltax = f26aileronleftatrest.x - aileronleft.localEulerAngles.x;
                 f26aileronleftdeltay = f26aileronleftatrest.y - aileronleft.localEulerAngles.y;
                 f26aileronleftdeltaz = f26aileronleftatrest.z - aileronleft.localEulerAngles.z;
-                Debug.Log("CSM_2");
+                F16Debug.Log("CSM_2");
                 f26elevonleftdeltax = f26elevonleftatrest.x - elevonleft.localEulerAngles.x;
                 f26elevonleftdeltay = f26elevonleftatrest.y - elevonleft.localEulerAngles.y;
                 f26elevonleftdeltaz = f26elevonleftatrest.z - elevonleft.localEulerAngles.z;
@@ -9012,7 +9111,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 moveaileronlefthinge.z = newaileronleftpositionz;
                 newtaileronleftpositionz = (-1f * f26elevonleftdeltax) + f16taileronlefthingeatrest.z;
                 movetaileronlefthinge.z = newtaileronleftpositionz;
-            Debug.Log("CSM_3");
+            F16Debug.Log("CSM_3");
 
             aileronlefthinge.transform.localEulerAngles = moveaileronlefthinge;
                 taileronlefthinge.transform.localEulerAngles = movetaileronlefthinge;
@@ -9036,7 +9135,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
                 
                 aileronrighthinge.transform.localEulerAngles = moveaileronrighthinge;
                 taileronrighthinge.transform.localEulerAngles = movetaileronrighthinge;
-            Debug.Log("CSM_4");
+            F16Debug.Log("CSM_4");
             //rudder controls
 
             //well having read up on the f16 it barely uses rudder so I am not implementing -  screw it. 
@@ -9050,8 +9149,8 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
             if (currentgvalue < 3.0f )
                 {
-                //Debug.Log("g > 3.0");
-                Debug.Log("CSM_6");
+                //F16Debug.Log("g > 3.0");
+                F16Debug.Log("CSM_6");
 
                 newlefleftslatpositionz = -2f + f16leflefthingeatrest.z;
                 newlefrightslatpositionz = -2f + f16lefrighthingeatrest.z;
@@ -9089,7 +9188,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
             //airbrakes
 
 
-            //Debug.Log("CSM_7");
+            //F16Debug.Log("CSM_7");
 
             if (airbrakepiston.transform.localEulerAngles.x <75f || airbrakepiston.transform.localEulerAngles.x > 90f)
             {
@@ -9119,7 +9218,7 @@ f26helmetcont = f26helmet.GetComponent<HelmetController>();
 
 
 
-            //Debug.Log("CSM_8");
+            //F16Debug.Log("CSM_8");
 
                 yield return new WaitForSeconds(2f);
             
@@ -9138,10 +9237,12 @@ public static class Patch0
     {
 
         VTOLVehicles cv = VTOLAPI.GetPlayersVehicleEnum();
+        if (!AircraftSwap.AircraftInfo.AircraftSelected)
+            return true;
         switch (cv)
         {
             case VTOLVehicles.FA26B:
-                Debug.Log("Section 11");
+                AircraftSwap.F16Debug.Log("Section 11");
                 // this creates a dictionary of all the wepaons and where they can be mounted, just alter the second string per weapon according to the wepaon you want.
                 Dictionary<string, string> allowedhardpointbyweapon = new Dictionary<string, string>();
 
@@ -9307,19 +9408,19 @@ public static class Patch0
                 allowedhardpointbyweapon.Add("h70-x14ld", "1,11,10,12");
                 */
 
-                Debug.Log("Equipment: " + equip.name + ", Allowed on" + equip.allowedHardpoints);
+                AircraftSwap.F16Debug.Log("Equipment: " + equip.name + ", Allowed on" + equip.allowedHardpoints);
 
 
 
                 if (allowedhardpointbyweapon.ContainsKey(equip.name))
                 {
                     equip.allowedHardpoints = (string)allowedhardpointbyweapon[equip.name];
-                    Debug.Log("Equipment: " + equip.name + ", Allowed on" + equip.allowedHardpoints);
+                    AircraftSwap.F16Debug.Log("Equipment: " + equip.name + ", Allowed on" + equip.allowedHardpoints);
 
                 }
                 else
                 {
-                    Debug.Log("Equipment: " + equip.name + ", not in dictionary");
+                    AircraftSwap.F16Debug.Log("Equipment: " + equip.name + ", not in dictionary");
                 }
 
                 return true;
@@ -9347,8 +9448,10 @@ public static class Patch2
 {
     public static bool Prefix(SMSInternalWeaponAnimator __instance)
     {
+        if (!AircraftSwap.AircraftInfo.AircraftSelected)
+            return true;
         if (__instance == null)
-            Debug.LogWarning("__instance is null");
+            AircraftSwap.F16Debug.Log("__instance is null");
         return Traverse.Create(__instance).Field("currProfile").GetValue() != null;
     }
 }
@@ -9358,7 +9461,9 @@ class StartPatch
 
     public static bool Prefix(MeshCombiner2 __instance)
     {
-        Debug.Log("Meshcombiner patch");
+        AircraftSwap.F16Debug.Log("Meshcombiner patch");
+        if (!AircraftSwap.AircraftInfo.AircraftSelected)
+            return true;
         if (__instance.gameObject.GetComponentInParent<Actor>() != null)
             return false;
         else return true;
@@ -9377,11 +9482,13 @@ public static class Patch6
     public static bool Prefix(Wing __instance)
     {
         VTOLVehicles cv = VTOLAPI.GetPlayersVehicleEnum();
+        if (!AircraftSwap.AircraftInfo.AircraftSelected)
+            return true;
         switch (cv)
         {
             case VTOLVehicles.FA26B:
                 nameofwing = __instance.name;
-        //Debug.Log("Wing checked: " + nameofwing);
+        //F16Debug.Log("Wing checked: " + nameofwing);
 
                 switch (nameofwing)
                 {
@@ -9449,25 +9556,27 @@ public static class Patch7
     public static void Postfix(float __result, float spd)
     {
         VTOLVehicles cv = VTOLAPI.GetPlayersVehicleEnum();
+        if (!AircraftSwap.AircraftInfo.AircraftSelected)
+            return;
         switch (cv)
         {
             case VTOLVehicles.FA26B:
-                //Debug.Log("Speed of SD = " + spd);
+                //F16Debug.Log("Speed of SD = " + spd);
                 if (spd < 240f || spd > 370f)
                 {
-                    //Debug.Log("SD Patch fallback ");
-                    //Debug.Log("SD Value = " + __result + ", " + spd);
+                    //F16Debug.Log("SD Patch fallback ");
+                    //F16Debug.Log("SD Value = " + __result + ", " + spd);
                     return;
                 }
                 else
                 {
                     float topdrag = __result * 1f;
-                    //Debug.Log("SD Value = " + __result);
-                    //Debug.Log("SD Value after Correction= " + topdrag);
+                    //F16Debug.Log("SD Value = " + __result);
+                    //F16Debug.Log("SD Value after Correction= " + topdrag);
                     __result = topdrag;
-                    //Debug.Log("SD Value = " + __result + ", " + spd);
+                    //F16Debug.Log("SD Value = " + __result + ", " + spd);
 
-                    //Debug.Log("SD Patch recalc ");
+                    //F16Debug.Log("SD Patch recalc ");
                     return;
                 }
             default:
@@ -9486,44 +9595,46 @@ public static class Patch8
     public static bool Prefix(ref float __result, AerodynamicsController __instance, float speed, float altitude)
     {
         VTOLVehicles cv = VTOLAPI.GetPlayersVehicleEnum();
+        if (!AircraftSwap.AircraftInfo.AircraftSelected)
+            return true;
         switch (cv)
         {
             case VTOLVehicles.FA26B:
                 float t = MeasurementManager.SpeedToMach(speed, altitude);
-                //Debug.Log("Mach = " + t);
+                //F16Debug.Log("Mach = " + t);
                 float dragvalue = __instance.defaultDragMachCurve.Evaluate(t);
-                //Debug.Log("Drag Value = " + dragvalue + ", " + t);
+                //F16Debug.Log("Drag Value = " + dragvalue + ", " + t);
 
                 if (t <= 0.375)
                 {
                     __result = dragvalue * 1.2f;
-                    //Debug.Log("New Drag Value = " + __result + ", " + t);
+                    //F16Debug.Log("New Drag Value = " + __result + ", " + t);
                     return false;
                 }
                 else if (t <= 0.77f)
                 {
 
                     __result = dragvalue * 1.05f;
-                    //Debug.Log("New Drag Value = " + __result + ", " + t);
+                    //F16Debug.Log("New Drag Value = " + __result + ", " + t);
                     return false;
                 }
                 else if (t <= 0.82)
                 {
                     __result = dragvalue * 1f;
-                    //Debug.Log("New Drag Value = " + __result + ", " + t);
+                    //F16Debug.Log("New Drag Value = " + __result + ", " + t);
                     return false;
                 }
                 else if (t < 0.88)
                 {
                     __result = dragvalue * 0.05f;
-                    //Debug.Log("New Drag Value = " + __result + ", " + t);
+                    //F16Debug.Log("New Drag Value = " + __result + ", " + t);
                     return false;
                 }
 
                 else if (t < 0.94)
                 {
                     __result = dragvalue * 1.45f;
-                    //Debug.Log("New Drag Value = " + __result + ", " + t);
+                    //F16Debug.Log("New Drag Value = " + __result + ", " + t);
                     return false;
                 }
                 else if (t < 1.08)
@@ -9531,18 +9642,18 @@ public static class Patch8
                     if (altitude <= 1600)
                     {
                         __result = dragvalue * 0.85f;
-                        //Debug.Log("New Drag Value = " + __result + ", " + t);
+                        //F16Debug.Log("New Drag Value = " + __result + ", " + t);
                     }
                     else if (altitude <= 4000)
                     {
                         __result = dragvalue * 0.67f * 1.2f;
-                        //Debug.Log("New Drag Value = " + __result + ", " + t);
+                        //F16Debug.Log("New Drag Value = " + __result + ", " + t);
 
                     }
                     else if (altitude <= 10000)
                     {
                         __result = dragvalue * 0.67f * 1.2f;
-                        //Debug.Log("New Drag Value = " + __result + ", " + t);
+                        //F16Debug.Log("New Drag Value = " + __result + ", " + t);
 
                     }
                     return false;
@@ -9553,18 +9664,18 @@ public static class Patch8
                     if (altitude <= 1600)
                     {
                         __result = dragvalue * 0.8f;
-                        //Debug.Log("New Drag Value = " + __result + ", " + t);
+                        //F16Debug.Log("New Drag Value = " + __result + ", " + t);
                     }
                     else if (altitude <= 4000)
                     {
                         __result = dragvalue * 0.87f * 1.2f;
-                        //Debug.Log("New Drag Value = " + __result + ", " + t);
+                        //F16Debug.Log("New Drag Value = " + __result + ", " + t);
 
                     }
                     else if (altitude <= 10000)
                     {
                         __result = dragvalue * 0.87f * 1.2f;
-                        //Debug.Log("New Drag Value = " + __result + ", " + t);
+                        //F16Debug.Log("New Drag Value = " + __result + ", " + t);
                     }
                     return false;
                 }
@@ -9572,7 +9683,7 @@ public static class Patch8
                 else
                 {
                     __result = dragvalue; //good for any
-                    //Debug.Log("New Drag Value = " + __result + ", " + t);
+                    //F16Debug.Log("New Drag Value = " + __result + ", " + t);
                     return false;
                 }
             default:
@@ -9591,13 +9702,15 @@ public static class Patch9
     private static bool Prefix(LoadoutConfigurator __instance)
     {
         VTOLVehicles cv = VTOLAPI.GetPlayersVehicleEnum();
+        if (!AircraftSwap.AircraftInfo.AircraftSelected)
+            return true;
         switch (cv)
         {
             case VTOLVehicles.FA26B:
                 foreach (ModuleEngine moduleEngine in __instance.wm.GetComponentsInChildren<ModuleEngine>())
                 {
 
-                    //Debug.Log("Adjusting Thrust for LC");
+                    //F16Debug.Log("Adjusting Thrust for LC");
                     moduleEngine.maxThrust = 40f;
                     moduleEngine.abThrustMult = 1.8f;
 
@@ -9612,7 +9725,7 @@ public static class Patch9
     }
 
 }
-
+/*
 [HarmonyPatch(typeof(VehicleSelectUI), nameof(VehicleSelectUI.UpdateUI))]
  
 public static class Patch_VehicleUI
@@ -9623,20 +9736,20 @@ public static class Patch_VehicleUI
 
     public static IEnumerator LoadPlaneImage()
     {
-        Debug.Log("Loading f16 image 1");
+        F16Debug.Log("Loading f16 image 1");
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(Directory.GetCurrentDirectory() + @"\VTOLVR_ModLoader\mods\f16_Viper_Unlimited\av42c.png");
-        Debug.Log("Loading f16 image 2");
+        F16Debug.Log("Loading f16 image 2");
         yield return www.SendWebRequest();
 
         if (www.responseCode != 200)
         {
-            Debug.Log("WWW Response code isn't 200, it's " + www.responseCode + "\n" + www.error);
+            F16Debug.Log("WWW Response code isn't 200, it's " + www.responseCode + "\n" + www.error);
         }
         else
         {
-            Debug.Log("Loading plane image.");
+            F16Debug.Log("Loading plane image.");
             theonesynthsenthowdoiloadimagesagain = ((DownloadHandlerTexture)www.downloadHandler).texture;
-            Debug.Log("Loaded plane image.");
+            F16Debug.Log("Loaded plane image.");
         }
     }
 
@@ -9644,18 +9757,18 @@ public static class Patch_VehicleUI
     {
         if (v.vehicleName != "F/A-26B")
         {
-            Debug.Log(v.vehicleName + " isn't it");
+            F16Debug.Log(v.vehicleName + " isn't it");
             return true;
         }
-        Debug.Log("Loading f16 titles 1");
+        F16Debug.Log("Loading f16 titles 1");
         __instance.vehicleName.text = "F-16C Fighting Falcon";
-        Debug.Log("Loading f16 titles 2");
+        F16Debug.Log("Loading f16 titles 2");
         __instance.vehicleDescription.text = "The F-16C Viper has been the goto airframe of choice for 30 years. This new 2030 variant includes higher payloads and increased weapons systems.";
-        Debug.Log("Loading f16 titles 3");
+        F16Debug.Log("Loading f16 titles 3");
         LoadPlaneImage();
         
 
-        Debug.Log("Loading f16 titles 4");
+        F16Debug.Log("Loading f16 titles 4");
         __instance.vehicleImage.texture = theonesynthsenthowdoiloadimagesagain;
         return false;
     }
@@ -9663,4 +9776,4 @@ public static class Patch_VehicleUI
     
     
 }
-
+*/
