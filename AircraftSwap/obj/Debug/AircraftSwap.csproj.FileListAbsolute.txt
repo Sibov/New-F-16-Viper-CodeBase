@@ -457,15 +457,6 @@ D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\obj\Debug\Aircr
 D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\obj\Debug\AircraftSwap.pdb
 D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\AircraftSwap.dll
 D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\AircraftSwap.pdb
-D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\BDLearningBot.dll
-D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\CsvHelper.dll
-D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\MP3Sharp.dll
-D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\Oculus.VR.dll
-D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\Rewired_Core.dll
-D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\NAudio.dll
-D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\SteamVR.dll
-D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\HttpAuth.dll
-D:\VTOLVRMODS\Code\f16  New\New-F-16-Viper-CodeBase\AircraftSwap\ModLoader.xml
 g:\F16\AircraftSwap\obj\Debug\AircraftSwap.csprojAssemblyReference.cache
 g:\F16\AircraftSwap\obj\Debug\AircraftSwap.csproj.CoreCompileInputs.cache
 g:\F16\AircraftSwap\obj\Debug\AircraftSwap.csproj.CopyComplete
