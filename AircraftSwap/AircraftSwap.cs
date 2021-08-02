@@ -65,12 +65,12 @@ namespace AircraftSwap
         public static bool AircraftSelected = false;
 
         //Info about your aircraft
-        public const string AircraftName = "F16";
+        public const string AircraftName = "F-16C Fighting Falcon";
         public const string AircraftNickName = "F16 Viper";
-        public const string AircraftDescription = "A multi-role light fighter";
+        public const string AircraftDescription = "A multi-role lightweight fighter. Designed to act as an air superiority fighter the Viper has become one of the finest multi-role fighters in the world.";
         public static Texture2D MenuTexture;
         //Names of the various files you need to put in your builds folder
-        public  const string PreviewPngFileName = "preview.png";
+        public  const string PreviewPngFileName = "f16menupreview.png";
         public static string ModFolderString;
     }
    
