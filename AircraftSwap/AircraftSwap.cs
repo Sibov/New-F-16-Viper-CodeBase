@@ -2647,19 +2647,19 @@ namespace AircraftSwap
             PlayerManager.onSpawnLocalPlayer += MPRespawnHook;
             PlayerManager.onSpawnClient += ClientF16Spawned;
 
-            PlayerManager.RegisterCustomPlane("f16","F/A-26B");
+            PlayerManager.RegisterCustomPlane(AircraftInfo.AircraftName, "F/A-26B");
             MPActive = true;
             //PlayerManager.SetCustomPlane("f16");
         }
         public void SetCustomPlaneMP()
         {
-             PlayerManager.SetCustomPlane("f16");
+             PlayerManager.SetCustomPlane(AircraftInfo.AircraftName);
         }
 
         public void ClientF16Spawned(PlayerManager.CustomPlaneDef def)
         {
             F16Debug.Log("checking if customplanestring is f16");
-            if (def.CustomPlaneString == "f16")
+            if (def.CustomPlaneString == AircraftInfo.AircraftName)
             {
                 F16Debug.Log("spawned f16 in mp");
                 ClientAircraftSwapF16 f16client = def.planeObj.AddComponent<ClientAircraftSwapF16>();
