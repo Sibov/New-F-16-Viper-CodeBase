@@ -240,6 +240,7 @@ namespace AircraftSwap
             rightwingovervapors.localScale = new Vector3(0.66f, 1f, 0.66f);
         }
 
+        
         private void hardpoints()
         {
             GameObject HP1actual = PickupAllChildrensTransforms(gameObject, "HP1").gameObject;
@@ -3595,13 +3596,13 @@ namespace AircraftSwap
 
                     F16Debug.Log("Section7");
 
-                    Transform bodytohide = defaultF26Transform.Find("aFighter2");
+                    Transform bodytohide = PickupAllChildrensTransforms(defaultF26Transform.gameObject,"aFighter2");
                     GameObject bodytohideobj = bodytohide.gameObject;
                     disableMesh(bodytohideobj);
 
 
                     F16Debug.Log("Section9");
-                    Transform ejecttohide = defaultF26Transform.Find("EjectorSeat");
+                    Transform ejecttohide = PickupAllChildrensTransforms(defaultF26Transform.gameObject, "EjectorSeat");
                     GameObject ejecttohideobj = ejecttohide.gameObject;
                     disableMesh(ejecttohideobj);
 
@@ -4746,12 +4747,12 @@ namespace AircraftSwap
         {
             F16Debug.Log("cph0 ");
             //fuel Dump panel
-            fueldumppanel = f26LeftPanel.Find("panelEnd (3)");
+            fueldumppanel = PickupAllChildrensTransforms(f26LeftPanel.gameObject, "panelEnd (3)");
 
             F16Debug.Log("cph1 : " + fueldumppanel.name);
-            fueldumppanel1 = fueldumppanel.Find("panelEnd (1)");
+            fueldumppanel1 = PickupAllChildrensTransforms(fueldumppanel.gameObject, "panelEnd (1)");
             F16Debug.Log("cph2");
-            fueldumppanel2 = fueldumppanel.Find("panelMidsection");
+            fueldumppanel2 = PickupAllChildrensTransforms(fueldumppanel.gameObject, "panelMidsection");
             F16Debug.Log("cph3");
             disableMesh(fueldumppanel.gameObject);
             disableVTT(fueldumppanel.gameObject);
@@ -4766,10 +4767,10 @@ namespace AircraftSwap
             disableSprites(fueldumppanel2.gameObject);
             
             // cmpanel
-            cmpanel = f26LeftPanel.Find("Countermeasures");
-            cmpanelparent = cmpanel.Find("panelEnd (1)");
-            cmpanel1 = cmpanelparent.Find("panelEnd (1)");
-            cmpanel2 = cmpanelparent.Find("panelMidsection");
+            cmpanel = PickupAllChildrensTransforms(f26LeftPanel.gameObject, "Countermeasures");
+            cmpanelparent = PickupAllChildrensTransforms(cmpanel.gameObject, "panelEnd (1)");
+            cmpanel1 = PickupAllChildrensTransforms(cmpanelparent.gameObject, "panelEnd (1)");
+            cmpanel2 = PickupAllChildrensTransforms(cmpanelparent.gameObject, "panelMidsection");
             disableMesh(cmpanelparent.gameObject);
             disableVTT(cmpanelparent.gameObject);
             disableSprites(cmpanelparent.gameObject);
@@ -4785,10 +4786,10 @@ namespace AircraftSwap
             disableSprites(cmpanel2.gameObject);
 
             // FlightAssistPanelpanel
-            FlightAssistPanelpanel = f26LeftPanel.Find("FlightAssistPanel");
-            FlightAssistPanelpanelparent = FlightAssistPanelpanel.Find("panelEnd (1)");
-            FlightAssistPanelpanel1 = FlightAssistPanelpanelparent.Find("panelEnd (1)");
-            FlightAssistPanelpanel2 = FlightAssistPanelpanelparent.Find("panelMidsection");
+            FlightAssistPanelpanel = PickupAllChildrensTransforms(f26LeftPanel.gameObject, "FlightAssistPanel");
+            FlightAssistPanelpanelparent = PickupAllChildrensTransforms(FlightAssistPanelpanel.gameObject, "panelEnd (1)");
+            FlightAssistPanelpanel1 = PickupAllChildrensTransforms(FlightAssistPanelpanelparent.gameObject, "panelEnd (1)");
+            FlightAssistPanelpanel2 = PickupAllChildrensTransforms(FlightAssistPanelpanelparent.gameObject, "panelMidsection");
             FlighAssistLines1 = PickupAllChildrensTransforms(FlightAssistPanelpanel.gameObject, "lrRectangle (1)");
             FlightAssistLines2 = PickupAllChildrensTransforms(FlightAssistPanelpanel.gameObject, "lrRectangle (2)");
             FlightAssistLines3 = PickupAllChildrensTransforms(FlightAssistPanelpanel.gameObject, "lrRectangle (3)");
@@ -4837,12 +4838,12 @@ namespace AircraftSwap
             f26refuelport.position = f16refuelport.position;
 
             f16fuelportswitch = PickupAllChildrensTransforms(F16CockpitActiveSwitches.gameObject, "airrefuelswitch_normalswitch");
-            FuelPortSwitchlpanel = f26LeftPanel.Find("FuelPortSwitch");
+            FuelPortSwitchlpanel = PickupAllChildrensTransforms(f26LeftPanel.gameObject, "FuelPortSwitch");
             FuelPortSwitchlpanelswitch = PickupAllChildrensTransforms(FuelPortSwitchlpanel.gameObject, "radioSwitch");
             f16fuelportswitchlever = PickupAllChildrensTransforms(f16fuelportswitch.gameObject, "radioSwitch");
-            FuelPortSwitchpanelparent = FuelPortSwitchlpanel.Find("panelEnd (1)");
-            FuelPortSwitchpanel1 = FuelPortSwitchpanelparent.Find("panelEnd (1)");
-            FuelPortSwitchpanel2 = FuelPortSwitchpanelparent.Find("panelMidsection");
+            FuelPortSwitchpanelparent = PickupAllChildrensTransforms(FuelPortSwitchlpanel.gameObject, "panelEnd (1)");
+            FuelPortSwitchpanel1 = PickupAllChildrensTransforms(FuelPortSwitchpanelparent.gameObject, "panelEnd (1)");
+            FuelPortSwitchpanel2 = PickupAllChildrensTransforms(FuelPortSwitchpanelparent.gameObject, "panelMidsection");
             FuelPortSwitchpanelswitchbase = PickupAllChildrensTransforms(FuelPortSwitchlpanel.gameObject, "m_radioSwitchBase");
             FuelPortSwitchlpanelswitch.gameObject.SetActive(false);
             FuelPortOCLabel = PickupAllChildrensTransforms(FuelPortSwitchlpanel.gameObject, "fuelPortOpenCloseLabel");
@@ -4874,10 +4875,10 @@ namespace AircraftSwap
             disableMesh(FuelPortSwitchpanelswitchbase.gameObject);
 
             // RadioDashpanel
-            RadioDashpanel = f26LeftPanel.Find("RadioDash");
-            RadioDashpanelparent = RadioDashpanel.Find("panelEnd (1)");
-            RadioDashpanel1 = RadioDashpanelparent.Find("panelEnd (1)");
-            RadioDashpanel2 = RadioDashpanelparent.Find("panelMidsection");
+            RadioDashpanel = PickupAllChildrensTransforms(f26LeftPanel.gameObject, "RadioDash");
+            RadioDashpanelparent = PickupAllChildrensTransforms(RadioDashpanel.gameObject, "panelEnd (1)");
+            RadioDashpanel1 = PickupAllChildrensTransforms(RadioDashpanelparent.gameObject, "panelEnd (1)");
+            RadioDashpanel2 = PickupAllChildrensTransforms(RadioDashpanelparent.gameObject, "panelMidsection");
             disableMesh(RadioDashpanelparent.gameObject);
             disableVTT(RadioDashpanelparent.gameObject);
             disableSprites(RadioDashpanelparent.gameObject);
@@ -4893,10 +4894,10 @@ namespace AircraftSwap
             disableSprites(RadioDashpanel2.gameObject);
 
             // Basicpanel1panel
-            Basicpanel1panel = f26LeftPanel.Find("panelEnd (1)");
+            Basicpanel1panel = f26LeftPanel.GetChild(7);
             
-            Basicpanel1panel1 = Basicpanel1panel.Find("panelEnd (1)");
-            Basicpanel1panel2 = Basicpanel1panel.Find("panelMidsection");
+            Basicpanel1panel1 = PickupAllChildrensTransforms(Basicpanel1panel.gameObject, "panelEnd (1)");
+            Basicpanel1panel2 = PickupAllChildrensTransforms(Basicpanel1panel.gameObject, "panelMidsection");
             disableMesh(Basicpanel1panel.gameObject);
             disableVTT(Basicpanel1panel.gameObject);
             disableSprites(Basicpanel1panel.gameObject);
@@ -4910,10 +4911,10 @@ namespace AircraftSwap
             disableSprites(Basicpanel1panel2.gameObject);
 
             // Basicpanel3panel
-            Basicpanel3panel = f26LeftPanel.Find("panelEnd (3)");
+            Basicpanel3panel = PickupAllChildrensTransforms(f26LeftPanel.gameObject, "panelEnd (3)");
             
-            Basicpanel3panel1 = Basicpanel3panel.Find("panelEnd (1)");
-            Basicpanel3panel2 = Basicpanel3panel.Find("panelMidsection");
+            Basicpanel3panel1 = PickupAllChildrensTransforms(Basicpanel3panel.gameObject, "panelEnd (1)");
+            Basicpanel3panel2 = PickupAllChildrensTransforms(Basicpanel3panel.gameObject, "panelMidsection");
             disableMesh(Basicpanel3panel2.gameObject);
             F16Debug.Log("cph16");
             disableMesh(Basicpanel3panel.gameObject);
@@ -4921,10 +4922,10 @@ namespace AircraftSwap
             disableMesh(Basicpanel3panel1.gameObject);
 
             // Basicpanel4panel
-            Basicpanel4panel = f26LeftPanel.Find("panelEnd (4)");
+            Basicpanel4panel = PickupAllChildrensTransforms(f26LeftPanel.gameObject, "panelEnd (4)");
 
-            Basicpanel4panel1 = Basicpanel4panel.Find("panelEnd (1)");
-            Basicpanel4panel2 = Basicpanel4panel.Find("panelMidsection");
+            Basicpanel4panel1 = PickupAllChildrensTransforms(Basicpanel4panel.gameObject, "panelEnd (1)");
+            Basicpanel4panel2 = PickupAllChildrensTransforms(Basicpanel4panel.gameObject, "panelMidsection");
             disableMesh(Basicpanel4panel2.gameObject);
             F16Debug.Log("cph18");
             disableMesh(Basicpanel4panel.gameObject);
@@ -4934,10 +4935,10 @@ namespace AircraftSwap
 
             //RIGHT PANELS
             //blank panel
-            Basicpanel4panelR = f26RightPanel.Find("panelEnd (4)");
+            Basicpanel4panelR = PickupAllChildrensTransforms(f26RightPanel.gameObject, "panelEnd (4)");
 
-            Basicpanel4panelR1 = Basicpanel4panelR.Find("panelEnd (1)");
-            Basicpanel4panelR2 = Basicpanel4panelR.Find("panelMidsection");
+            Basicpanel4panelR1 = PickupAllChildrensTransforms(Basicpanel4panelR.gameObject, "panelEnd (1)");
+            Basicpanel4panelR2 = PickupAllChildrensTransforms(Basicpanel4panelR.gameObject, "panelMidsection");
             disableMesh(Basicpanel4panelR2.gameObject);
             F16Debug.Log("cph20");
             disableMesh(Basicpanel4panelR.gameObject);
@@ -4945,10 +4946,10 @@ namespace AircraftSwap
             disableMesh(Basicpanel4panelR1.gameObject);
 
             //brakeandwing panel
-            Basicpanel3panelR = f26RightPanel.Find("panelEnd (3)");
+            Basicpanel3panelR = PickupAllChildrensTransforms(f26RightPanel.gameObject, "panelEnd (3)");
 
-            Basicpanel3panelR1 = Basicpanel3panelR.Find("panelEnd (1)");
-            Basicpanel3panelR2 = Basicpanel3panelR.Find("panelMidsection");
+            Basicpanel3panelR1 = PickupAllChildrensTransforms(Basicpanel3panelR.gameObject, "panelEnd (1)");
+            Basicpanel3panelR2 = PickupAllChildrensTransforms(Basicpanel3panelR.gameObject, "panelMidsection");
             disableMesh(Basicpanel3panelR2.gameObject);
             F16Debug.Log("cph22");
             disableMesh(Basicpanel3panelR.gameObject);
@@ -4956,10 +4957,10 @@ namespace AircraftSwap
             disableMesh(Basicpanel3panelR1.gameObject);
 
             //commspanel
-            Basicpanel2panelR = f26RightPanel.Find("panelEnd (2)");
+            Basicpanel2panelR = PickupAllChildrensTransforms(f26RightPanel.gameObject, "panelEnd (2)");
 
-            Basicpanel2panelR1 = Basicpanel2panelR.Find("panelEnd (1)");
-            Basicpanel2panelR2 = Basicpanel2panelR.Find("panelMidsection");
+            Basicpanel2panelR1 = PickupAllChildrensTransforms(Basicpanel2panelR.gameObject, "panelEnd (1)");
+            Basicpanel2panelR2 = PickupAllChildrensTransforms(Basicpanel2panelR.gameObject, "panelMidsection");
             disableMesh(Basicpanel2panelR2.gameObject);
             F16Debug.Log("cph24");
             disableMesh(Basicpanel2panelR.gameObject);
@@ -4967,21 +4968,21 @@ namespace AircraftSwap
             disableMesh(Basicpanel2panelR1.gameObject);
 
             //RFD
-            Basicpanel4panelRF = f26RightFwdPanel.Find("panelEnd (4)");
+            Basicpanel4panelRF = PickupAllChildrensTransforms(f26RightFwdPanel.gameObject, "panelEnd (4)");
 
-            Basicpanel4panelRF1 = Basicpanel4panelRF.Find("panelEnd (1)");
-            Basicpanel4panelRF2 = Basicpanel4panelRF.Find("panelMidsection");
+            Basicpanel4panelRF1 = PickupAllChildrensTransforms(Basicpanel4panelRF.gameObject, "panelEnd (1)");
+            Basicpanel4panelRF2 = PickupAllChildrensTransforms(Basicpanel4panelRF.gameObject, "panelMidsection");
             disableMesh(Basicpanel4panelRF2.gameObject);
             F16Debug.Log("cph26");
             disableMesh(Basicpanel4panelRF.gameObject);
             F16Debug.Log("cph27");
             disableMesh(Basicpanel4panelRF1.gameObject);
 
-            Basicpanel3panelRF = f26RightFwdPanel.Find("panelEnd (3)");
+            Basicpanel3panelRF = PickupAllChildrensTransforms(f26RightFwdPanel.gameObject, "panelEnd (3)");
 
-            Basicpanel3panelRF1 = Basicpanel3panelRF.Find("panelEnd (1)");
+            Basicpanel3panelRF1 = PickupAllChildrensTransforms(Basicpanel3panelRF.gameObject, "panelEnd (1)");
 
-            Basicpanel3panelRF2 = Basicpanel3panelRF.Find("panelMidsection");
+            Basicpanel3panelRF2 = PickupAllChildrensTransforms(Basicpanel3panelRF.gameObject, "panelMidsection");
             disableMesh(Basicpanel3panelRF2.gameObject);
             F16Debug.Log("cph28");
             disableMesh(Basicpanel3panelRF.gameObject);
@@ -4990,10 +4991,10 @@ namespace AircraftSwap
 
 
             //LFD
-            Basicpanel4panelLF = f26LeftFwdPanel.Find("panelEnd (3)");
+            Basicpanel4panelLF = f26LeftFwdPanel.GetChild(2);
 
-            Basicpanel4panelLF1 = Basicpanel4panelLF.Find("panelEnd (1)");
-            Basicpanel4panelLF2 = Basicpanel4panelLF.Find("panelMidsection");
+            Basicpanel4panelLF1 = PickupAllChildrensTransforms(Basicpanel4panelLF.gameObject, "panelEnd (1)");
+            Basicpanel4panelLF2 = PickupAllChildrensTransforms(Basicpanel4panelLF.gameObject, "panelMidsection");
             disableMesh(Basicpanel4panelLF2.gameObject);
             F16Debug.Log("cph28");
             disableMesh(Basicpanel4panelLF.gameObject);
@@ -5067,7 +5068,7 @@ namespace AircraftSwap
             //get cockpit elements
             //f16
             //f26
-            DashCanvast = defaultF26Transform.Find("DashCanvas");
+            DashCanvast = PickupAllChildrensTransforms(defaultF26Transform.gameObject, "DashCanvas");
             f26mainDash = PickupAllChildrensTransforms(DashCanvast.gameObject, "Dash");
             APAltNum = PickupAllChildrensTransforms(f26mainDash.gameObject, "apAltNum");
             APAltNum.gameObject.SetActive(true);
@@ -5081,8 +5082,14 @@ namespace AircraftSwap
             f26RWR = PickupAllChildrensTransforms(f26mainDash.gameObject, "MiniMFDLeft");
             f26FuelFlowGauge = PickupAllChildrensTransforms(f26mainDash.gameObject, "FuelFlowGauge");
             f26MFDLeft = PickupAllChildrensTransforms(f26mainDash.gameObject, "MFD1");
+            Transform mapParentleft = PickupAllChildrensTransforms(f26MFDLeft.gameObject, "MapParent").transform;
+            Transform mapDisplayleft = PickupAllChildrensTransforms(f26MFDLeft.gameObject, "MapDisplay").transform;
+            Transform mapTestleft = PickupAllChildrensTransforms(f26MFDLeft.gameObject, "MapTest").transform;
+            Transform mapTransformleft = PickupAllChildrensTransforms(f26MFDLeft.gameObject, "MapTransform").transform;
+
             f26MFDRight = PickupAllChildrensTransforms(f26mainDash.gameObject, "MFD2");
             
+
 
             f26masterArmSwitch = PickupAllChildrensTransforms(f26mainDash.gameObject, "MasterArmSwitch");
             f26coverSwitchBase2 = PickupAllChildrensTransforms(f26masterArmSwitch.gameObject, "coverSwitchBase2");
@@ -5116,10 +5123,10 @@ namespace AircraftSwap
             aoaYellowLight_lights = aoaYellowLight.GetComponentsInChildren(typeof(Light));
 
             //Throttle
-            Afighter2t = defaultF26Transform.Find("aFighter2");
-            ThrottleTrack = Afighter2t.Find("throttleTrack");
+            Afighter2t = PickupAllChildrensTransforms(defaultF26Transform.gameObject, "aFighter2");
+            ThrottleTrack = PickupAllChildrensTransforms(Afighter2t.gameObject, "throttleTrack");
             disableMesh(ThrottleTrack.gameObject);
-            ThrottleParent = Afighter2t.Find("ThrottleParent");
+            ThrottleParent = PickupAllChildrensTransforms(Afighter2t.gameObject, "ThrottleParent");
             disableMesh(ThrottleParent.gameObject);
             f16throttlepivot = PickupAllChildrensTransforms(F16Cockpit.gameObject, "Throttlepivot");
             F16Debug.Log("f16 throttle angle : " + f16throttlepivot.localEulerAngles.x);
@@ -5404,7 +5411,7 @@ namespace AircraftSwap
             //AP AltControls
 
             f26APAltPanel = PickupAllChildrensTransforms(DashCanvast.gameObject, "APAltControls");
-            f26APAltPanelBack = f26mainDash.Find("panelEnd (3)");
+            f26APAltPanelBack = PickupAllChildrensTransforms(f26mainDash.gameObject, "panelEnd (3)");
             f26APAltPanelBack2 = PickupAllChildrensTransforms(f26APAltPanelBack.gameObject, "panelEnd (1)");
             f26APAltPanelBack3 = PickupAllChildrensTransforms(f26APAltPanelBack.gameObject, "panelMidsection");
             f26APAltPanelShadow = PickupAllChildrensTransforms(f26APAltPanel.gameObject, "circleShadow");
@@ -5467,7 +5474,20 @@ namespace AircraftSwap
             f26RWR.localScale = new Vector3(0.7f, 0.7f, 1f);
 
             f26MFDLeft.localScale = new Vector3(65f, 65f, 75f);
+            float smallleft = f26MFDLeft.transform.localScale.x / 99.73274f;
+            float bigleft = 99.73274f / f26MFDLeft.transform.localScale.x;
+
+            Vector3 smallScaleleft = Vector3.one * smallleft;
+            Vector3 bigScaleleft = Vector3.one * bigleft;
+
+            mapParentleft.transform.localScale = smallScaleleft;
+            mapDisplayleft.transform.localScale = bigScaleleft;
+            mapTestleft.transform.localScale = bigScaleleft;
+            mapTransformleft.transform.localScale = bigScaleleft;
+
+
             f26MFDRight.localScale = new Vector3(65f, 65f, 75f);
+           
 
             //instruments
 
@@ -5722,7 +5742,7 @@ namespace AircraftSwap
 
             lines1 = PickupAllChildrensTransforms(f26RightFwdPanel.gameObject, "lrRectangle");
             lines2 = PickupAllChildrensTransforms(lines1.gameObject, "lrRectangle (1)");
-            lines3 = f26RightFwdPanel.Find("lrRectangle (1)");
+            lines3 = f26RightFwdPanel.GetChild(6);
             lines4 = PickupAllChildrensTransforms(f26RightFwdPanel.gameObject, "lrRectangle (2)");
             lines5 = PickupAllChildrensTransforms(CanopyLeverObject, "lrRectangle (3)");
             lines6 = PickupAllChildrensTransforms(f26masterArmSwitch.gameObject, "lrRectangle");
