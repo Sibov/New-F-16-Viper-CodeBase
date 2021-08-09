@@ -1,0 +1,2 @@
+G:\F16\obj\Debug\New Basic Aircraft Swap.csprojAssemblyReference.cache
+G:\F16\obj\Debug\New Basic Aircraft Swap.csproj.CoreCompileInputs.cache

@@ -2667,8 +2667,7 @@ namespace AircraftSwap
                 f16client.planeObject = def.planeObj;
                 f16client.aSwaper = this;
                 f16client.doSetup();
-            }else
-    AircraftInfo.AircraftSelected = false;
+            } 
 
         }
 
@@ -2857,11 +2856,15 @@ namespace AircraftSwap
         }
         private void MPRespawnHook(PlayerManager.CustomPlaneDef def)
         {
-            F16Debug.Log("MP Respawn Hook");
-            MPRadioRunAlready = false;
-            PlaneSetupDone = false;
-            StartCoroutine(InitWaiter(def.planeObj));
-            
+            if (def.CustomPlaneString == AircraftInfo.AircraftName)
+            {
+                AircraftInfo.AircraftSelected = true;
+                F16Debug.Log("MP Respawn Hook");
+                MPRadioRunAlready = false;
+                PlaneSetupDone = false;
+                StartCoroutine(InitWaiter(def.planeObj));
+            }
+            else AircraftInfo.AircraftSelected = false;
             
         }
 
@@ -3280,6 +3283,7 @@ namespace AircraftSwap
                     newAircraftUnit.transform.localEulerAngles = new Vector3(0f, 90.0000f, 0f);
                     f16image = PickupAllChildrensTransforms(newAircraftUnit, "f16image");
                     f16imagetex = f16image.GetComponent<RawImage>();
+                    if(lcimagetex!=null)
                     lcimagetex.texture = f16imagetex.texture;
 
 
