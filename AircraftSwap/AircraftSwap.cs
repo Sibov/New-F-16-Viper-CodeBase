@@ -2837,6 +2837,15 @@ namespace AircraftSwap
                         if (!MPActive)
                         StartCoroutine(InitWaiter(null));
                     break;
+                case VTOLScenes.CustomMapBase_OverCloud:
+
+                    waitVar = 0.6f; changeAmount = 0.05f;
+                    AircraftLoaded = false;
+                    F16Debug.Log("InitWaiter being called by VTOLScenes CustomMap Case");
+                    if (AircraftInfo.AircraftSelected)
+                        if (!MPActive)
+                            StartCoroutine(InitWaiter(null));
+                    break;
                 case VTOLScenes.ReadyRoom:
                     AircraftLoaded = false;
                     break;
